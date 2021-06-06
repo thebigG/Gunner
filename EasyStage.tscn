@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sky-Background.jpg" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="ImageTexture" id=2]
+
+[node name="EasyStage" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+material = SubResource( 1 )
+
+[node name="Background" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 368, 288 )
+scale = Vector2( 1.62813, 1.70035 )
+texture = ExtResource( 1 )
+normal_map = SubResource( 2 )
