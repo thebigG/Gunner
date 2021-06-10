@@ -7,19 +7,20 @@
 [sub_resource type="ImageTexture" id=2]
 
 [node name="EasyStage" type="ParallaxBackground"]
-scroll_offset = Vector2( 1, 1 )
+scroll_offset = Vector2( 1, 360 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, 728.0 ],
+"_edit_vertical_guides_": [ -1808.0 ]
+}
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 material = SubResource( 1 )
 position = Vector2( 168, 184 )
-motion_mirroring = Vector2( 0, 360 )
-__meta__ = {
-"_edit_group_": true
-}
+motion_mirroring = Vector2( 0, 728 )
 
 [node name="Background" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( -168, -184 )
-scale = Vector2( 1.62813, 1.70035 )
+scale = Vector2( 2.03333, 2.04444 )
 texture = ExtResource( 1 )
 normal_map = SubResource( 2 )
 centered = false

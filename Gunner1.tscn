@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Gunner1.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
+[sub_resource type="ImageTexture" id=2]
+flags = 39
+flags = 39
+
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 168, 112 )
+position = Vector2( 440, 304 )
 script = ExtResource( 1 )
-speed = 10
+__meta__ = {
+"_edit_group_": true
+}
+speed = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -16,6 +23,8 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
+normal_map = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.5, 1 )
