@@ -10,12 +10,12 @@ flags = 39
 flags = 39
 
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 440, 304 )
+position = Vector2( 632, 304 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 5
+speed = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
