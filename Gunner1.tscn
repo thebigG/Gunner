@@ -10,7 +10,7 @@ flags = 39
 flags = 39
 
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 632, 304 )
+position = Vector2( 360, 296 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -27,4 +27,4 @@ normal_map = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 1 )
+zoom = Vector2( 0.75, 1 )

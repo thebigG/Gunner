@@ -7,6 +7,5 @@
 
 [node name="Gunner1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 232, 432 )
-speed = 20
 
 [node name="EasyStage" parent="." instance=ExtResource( 1 )]
