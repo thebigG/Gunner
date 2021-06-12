@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Gunner1.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Jet-tilted-right.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -12,16 +12,14 @@ flags = 39
 [node name="Gunner1" type="KinematicBody2D"]
 position = Vector2( 360, 296 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 speed = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 16, 0 )
+scale = Vector2( 0.263672, 0.298828 )
 texture = ExtResource( 2 )
 normal_map = SubResource( 2 )
 
