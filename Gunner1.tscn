@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Gunner1.gd" type="Script" id=1]
 [ext_resource path="res://Jet-tilted-right.png" type="Texture" id=2]
+[ext_resource path="res://Jet.png" type="Texture" id=3]
+[ext_resource path="res://Jet_tilted_left.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
-[sub_resource type="ImageTexture" id=2]
-flags = 39
-flags = 39
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+} ]
 
 [node name="Gunner1" type="KinematicBody2D"]
 position = Vector2( 360, 296 )
@@ -17,11 +28,11 @@ speed = 20
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Turn" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 0 )
 scale = Vector2( 0.263672, 0.298828 )
-texture = ExtResource( 2 )
-normal_map = SubResource( 2 )
+frames = SubResource( 2 )
+animation = "Left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
