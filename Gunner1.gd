@@ -6,11 +6,12 @@ extends KinematicBody2D
 # var b = "text"
 
 var current_direction = Vector2()
+var screen_size
 export var speed = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	screen_size = $Area2D.get_viewport_rect()
+	
 func _physics_process(delta):
 	$Turn.set_frame(0)
 	if Input.is_action_pressed("ui_right"):
@@ -21,7 +22,7 @@ func _physics_process(delta):
 			current_direction.x = speed
 			current_direction.y = 0
 	
-	#Would like a cleaner way of doing this...
+	#Would like a cleaner way of doing this... 
 	else:
 		if $Turn.animation == "Right":
 			$Turn.stop()
@@ -47,7 +48,12 @@ func _physics_process(delta):
 			current_direction.x = 0
 
 
+#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_direction)
+	
+	print("posittion-->"+ str(position))
+	
+#	position.x = clamp(position.x, 0, 1)
 
 
 
