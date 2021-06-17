@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Gunner1.gd" type="Script" id=1]
 [ext_resource path="res://Jet-tilted-right.png" type="Texture" id=2]
@@ -20,9 +20,15 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=3]
+
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 360, 296 )
+position = Vector2( 320, 352 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_vertical_guides_": [ 744.0 ]
+}
 speed = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,5 +41,11 @@ frames = SubResource( 2 )
 animation = "Left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -200 )
 current = true
-zoom = Vector2( 0.75, 1 )
+limit_right = 700
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
