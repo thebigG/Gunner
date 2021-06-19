@@ -51,8 +51,11 @@ func _physics_process(delta):
 #	Figure out a way to limit the viewport for the player
 	move_and_collide(current_direction)
 	
-	print("posittion-->"+ str(position))
+	position.x = clamp(position.x, 0, screen_size.size.x)
+#	print("screen_size-->" + str(screen_size.position.x))
 	
+	print("posittion-->"+ str(position))
+	print("clamped pos-->"+ str(clamp(position.x, 0, screen_size.size.x)))
 #	position.x = clamp(position.x, 0, 1)
 
 

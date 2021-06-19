@@ -9,14 +9,14 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "Right",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Right",
 "speed": 5.0
 } ]
 
@@ -26,7 +26,6 @@ animations = [ {
 position = Vector2( 320, 352 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_vertical_guides_": [ 744.0 ]
 }
 speed = 20
@@ -43,6 +42,7 @@ animation = "Left"
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -200 )
 current = true
+zoom = Vector2( 0.5, 1 )
 limit_right = 700
 
 [node name="Area2D" type="Area2D" parent="."]
