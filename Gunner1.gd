@@ -7,20 +7,22 @@ extends KinematicBody2D
 
 var current_direction = Vector2()
 var screen_size
-export var speed = 1
+export var speed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = $Area2D.get_viewport_rect()
+	current_direction.y = -speed
 	
 func _physics_process(delta):
 	$Turn.set_frame(0)
+	current_direction.x = 0
 	if Input.is_action_pressed("ui_right"):
 			$Turn.set_animation("Right")
 			$Turn.play()
 			$Turn.set_frame(1)
 			print('current animation:' + $Turn.animation)
 			current_direction.x = speed
-			current_direction.y = 0
+#			current_direction.y = 0
 	
 	#Would like a cleaner way of doing this... 
 	else:
@@ -33,19 +35,11 @@ func _physics_process(delta):
 			$Turn.play()
 			$Turn.set_frame(1)
 			current_direction.x = -speed
-			current_direction.y = 0
+#			current_direction.y = 0
 	else:
 		if $Turn.animation == "Left":
 			$Turn.stop()
 			$Turn.set_frame(0)
-		
-	if Input.is_action_pressed("ui_down"):
-			current_direction.y = speed
-			current_direction.x = 0
-
-	if Input.is_action_pressed("ui_up"):
-			current_direction.y = -speed
-			current_direction.x = 0
 
 
 #	Figure out a way to limit the viewport for the player
