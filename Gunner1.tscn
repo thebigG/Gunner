@@ -44,7 +44,7 @@ animation = "Left"
 offset = Vector2( 320, -205 )
 current = true
 limit_left = 700
-limit_right = 700
+limit_right = 750
 smoothing_speed = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
