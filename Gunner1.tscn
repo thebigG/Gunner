@@ -23,12 +23,13 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 320, 352 )
+position = Vector2( 352, 608 )
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_vertical_guides_": [ 744.0 ]
 }
-speed = 20
+speed = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -40,10 +41,11 @@ frames = SubResource( 2 )
 animation = "Left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 0, -200 )
+offset = Vector2( 320, -205 )
 current = true
-zoom = Vector2( 0.5, 1 )
+limit_left = 700
 limit_right = 700
+smoothing_speed = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
