@@ -14,6 +14,11 @@ func _ready():
 	current_direction.y = -speed
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		var new_bullet = $Bullet.Bullet.new()
+		new_bullet.shoot()
+		
+	return
 	$Turn.set_frame(0)
 	current_direction.x = 0
 	if Input.is_action_pressed("ui_right"):
