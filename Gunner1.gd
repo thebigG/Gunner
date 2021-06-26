@@ -5,6 +5,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+export(PackedScene) var bullet_scene
+
 var current_direction = Vector2()
 var screen_size
 export var speed = 0
@@ -15,10 +17,11 @@ func _ready():
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		var new_bullet = $Bullet.Bullet.new()
+		var new_bullet = bullet_scene.instance() 
+		add_child(new_bullet)
 		new_bullet.shoot()
 		
-	return
+#	return
 	$Turn.set_frame(0)
 	current_direction.x = 0
 	if Input.is_action_pressed("ui_right"):
