@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Gunner1.gd" type="Script" id=1]
 [ext_resource path="res://Jet-tilted-right.png" type="Texture" id=2]
 [ext_resource path="res://Jet.png" type="Texture" id=3]
 [ext_resource path="res://Jet_tilted_left.png" type="Texture" id=4]
-[ext_resource path="res://Bullet.png" type="Texture" id=5]
-[ext_resource path="res://Bullet.gd" type="Script" id=6]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -24,20 +23,13 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=3]
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 8.0
-height = 60.0
-
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 8.0
-height = 60.0
-
 [node name="Gunner1" type="KinematicBody2D"]
 position = Vector2( 336, 584 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ 744.0 ]
 }
+bullet_scene = ExtResource( 5 )
 speed = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -60,28 +52,3 @@ smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
-
-[node name="Bullet" type="RigidBody2D" parent="."]
-position = Vector2( 63, -15 )
-gravity_scale = 0.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
-velocity = Vector2( 0, -1000 )
-
-[node name="Sprite" type="Sprite" parent="Bullet"]
-position = Vector2( -62, -72 )
-scale = Vector2( 0.0117188, 0.0625 )
-texture = ExtResource( 5 )
-
-[node name="Area2D" type="Area2D" parent="Bullet"]
-position = Vector2( -1, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet/Area2D"]
-position = Vector2( -56, -80 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
-position = Vector2( -56, -80 )
-shape = SubResource( 5 )
