@@ -20,6 +20,7 @@ func _physics_process(delta):
 		var new_bullet = bullet_scene.instance() 
 		add_child(new_bullet)
 		new_bullet.shoot()
+		$Shoot.play()
 		
 #	return
 	$Turn.set_frame(0)
