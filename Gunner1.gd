@@ -22,7 +22,7 @@ func _physics_process(delta):
 		new_bullet.shoot()
 		$Shoot.play()
 		
-#	return
+	return
 	$Turn.set_frame(0)
 	current_direction.x = 0
 	if Input.is_action_pressed("ui_right"):
