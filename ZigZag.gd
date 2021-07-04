@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends PathFollow2D
 
 
 # Declare member variables here. Examples:
@@ -8,14 +8,9 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	linear_velocity.x = 100
-#	linear_velocity.y = 100
-#	linear_velocity.x =  100
-	pass
+	pass # Replace with function body.
 
-#func destroy():
-#	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	offset += 100  * delta

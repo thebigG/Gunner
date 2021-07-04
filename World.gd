@@ -16,12 +16,13 @@ func _physics_process(delta):
 #	add_child(new_enemy)
 #		new_bullet.shoot()
 #		$Shoot.play()
+#		$EnenyPaths/ZigZag.
 		pass
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var new_enemy = enemy_scene.instance()
+#	var new_enemy = enemy_scene.instance()
 	$Gunner1.position.y 
 #	print('position:' + str(new_enemy.transform.origin))
 #	new_enemy.transform.origin.y = $Gunner1.position.y - 700
