@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://EasyStage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Gunner1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World.gd" type="Script" id=4]
+[ext_resource path="res://ZigZag.gd" type="Script" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 176, -64, 0, 0, 0, 0, 360.608, -73.0667, 0, 0, 0, 0, 392, -64, 0, 0, 0, 0, 328, -64, 0, 0, 0, 0, 433.415, -40.0263, 0, 0, 0, 0, 606, 11.1656, 0, 0, 0, 0, 552, 0, 0, 0, 0, 0, 120, 72, 0, 0, 0, 0, 176, -64 )
+"points": PoolVector2Array( 0, 0, 0, 0, 280, 184, 0, 0, 0, 0, 360, 248, 0, 0, 0, 0, 296, 304, 0, 0, 0, 0, 400, 352, 0, 0, 0, 0, 320, 440, 0, 0, 0, 0, 728, 688 )
 }
 
 [node name="Game" type="Node2D"]
@@ -22,27 +23,19 @@ position = Vector2( 232, 432 )
 
 [node name="EasyStage" parent="." instance=ExtResource( 1 )]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 80.0
-margin_top = 32.0
-margin_right = 744.0
-margin_bottom = 728.0
-color = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -80, 208 )
-scale = Vector2( 1.18519, 1.70956 )
+[node name="EnenyPaths" type="Path2D" parent="EasyStage"]
+position = Vector2( -64, -160 )
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 353.68, -57.0566 )
-rotation = 0.26407
-offset = 300.0
+[node name="ZigZag" type="PathFollow2D" parent="EasyStage/EnenyPaths"]
+position = Vector2( 280, 184 )
+rotation = 0.674739
+rotate = false
+loop = false
+script = ExtResource( 5 )
 
-[node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource( 3 )]
-position = Vector2( 4.39029, 0.823471 )
-scale = Vector2( 0.84375, 0.584946 )
+[node name="Enemy" parent="EasyStage/EnenyPaths/ZigZag" instance=ExtResource( 3 )]
+position = Vector2( -10.8517, -1.11476 )
+rotation = -0.0707237
+scale = Vector2( 1.0013, 0.999375 )
 gravity_scale = 0.0
