@@ -9,7 +9,7 @@
 "Enemy",
 ]]
 position = Vector2( 216, -432 )
-gravity_scale = 9.8
+gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
