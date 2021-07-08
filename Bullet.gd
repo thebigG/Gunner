@@ -31,7 +31,7 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	return
+#	return
 	print('bullet signal')
 	if body.is_in_group("Enemy"):
 		print("boom!")
@@ -42,3 +42,13 @@ func _on_Area2D_body_entered(body):
 		
 		
 	
+
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
+	#	return
+	print('bullet signal')
+	if area_shape.is_in_group("Enemy"):
+		print("boom!")
+#		Play some cool animation
+		area_shape.call("destroy")
+		queue_free()

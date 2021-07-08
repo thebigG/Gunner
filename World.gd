@@ -21,7 +21,7 @@ func _ready():
 		 
 		
 func simple_enemy_line(wave):
-	var left_bound = wave[0].transform.origin.x
+	var left_bound = wave[0].transform.origin.x + 25
 	for enemy in wave:
 		enemy.transform.origin.y = $Gunner1.position.y - 200
 		enemy.transform.origin.x = left_bound
