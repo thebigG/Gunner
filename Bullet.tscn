@@ -5,11 +5,11 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
-height = 43.908
+height = 16.5587
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.0
-height = 43.3815
+height = 15.1429
 
 [node name="Bullet" type="RigidBody2D"]
 position = Vector2( 63, -15 )
