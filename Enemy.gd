@@ -14,7 +14,9 @@ func _ready():
 	pass
 
 func destroy():
-	$Boom.play()
+	queue_free()
+	var boom = get_tree().get_nodes_in_group("World")[0].get_node("Boom")
+	boom.play()
 #	$Boom.
 #	while($Boom.playing):
 #		pass
@@ -25,5 +27,4 @@ func destroy():
 
 
 func _on_Boom_finished():
-	queue_free()
 	pass

@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Boom.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 15.125, 19.5 )
 
-[node name="Enemy" type="RigidBody2D" groups=[
+[node name="EasyEnemy" type="RigidBody2D" groups=[
 "Enemy",
 ]]
 position = Vector2( 216, -432 )
@@ -26,12 +25,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.375, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="Boom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
-
-[connection signal="finished" from="Boom" to="." method="_on_Boom_finished"]
