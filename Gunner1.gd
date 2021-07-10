@@ -16,7 +16,7 @@ func _ready():
 	current_direction.y = -speed
 	
 func _physics_process(delta):
-	print('camera:' + str($Camera2D.get_camera_position()))
+#	print('camera:' + str($Camera2D.get_camera_position()))
 	if Input.is_action_just_pressed("ui_accept"):
 		var new_bullet = bullet_scene.instance() 
 		add_child(new_bullet)

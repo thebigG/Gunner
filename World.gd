@@ -4,31 +4,35 @@ export(PackedScene) var easy_enemy_scene
 enum ENEMY_TYPE{EASY}
 export(int) var wave_size = 5
 var current_wave = 0
+var counter = 0
 
 func is_in_camera_view(node):
-	return node.position.y < $Gunner1/Camera2D.get_camera_position().y 
+	return node.position.y > $Gunner1/Camera2D.get_camera_position().y + 300
 
 func is_wave_alive(current_wave):
-	var is_alive = true
+	var is_alive = false
 	for enemy in current_wave:
 		if(not(is_in_camera_view(enemy))):
-			is_alive = false
-			print('false')
+			is_alive = true
 			break		
 	return is_alive
 
 func destroy_wave(wave):
+	print('destroy_wave')
 	for enemy in wave:
-		enemy.queue_free()
+		enemy.call('destroy')
 
 func _physics_process(delta):
-	if is_wave_alive(current_wave) == false:
-		destroy_wave(current_wave)
-		print('new eave')
-		var new_enemies = new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-		for enemy in new_enemies:
-			add_child(enemy)
-		current_wave = new_enemies
+	if counter==0:
+		if is_wave_alive(current_wave) == false:
+			destroy_wave(current_wave)
+#			counter += 1
+			print('new wave')
+			var new_enemies = new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
+			simple_enemy_line(new_enemies)
+			for enemy in new_enemies:
+				add_child(enemy)
+			current_wave = new_enemies 
 		 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,9 +46,9 @@ func _ready():
 	print("current_wave" + str(current_wave))
 		
 func simple_enemy_line(wave):
-	var left_bound = wave[0].transform.origin.x + 25
+	var left_bound = wave[0].transform.origin.x + 100
 	for enemy in wave:
-		enemy.transform.origin.y = $Gunner1.position.y - 200
+		enemy.transform.origin.y = $Gunner1.position.y - 500
 		enemy.transform.origin.x = left_bound
 		left_bound += 100
 		enemy.linear_velocity.y = 100
