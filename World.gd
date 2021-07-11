@@ -6,13 +6,10 @@ export(int) var wave_size = 5
 var current_wave = 0
 var counter = 0
 
-func is_in_camera_view(node):
-	return node.position.y > $Gunner1/Camera2D.get_camera_position().y + 300
-
 func is_wave_alive(current_wave):
 	var is_alive = false
 	for enemy in current_wave:
-		if(not(is_in_camera_view(enemy))):
+		if(is_instance_valid(enemy)):
 			is_alive = true
 			break		
 	return is_alive
@@ -25,9 +22,8 @@ func destroy_wave(wave):
 func _physics_process(delta):
 	if counter==0:
 		if is_wave_alive(current_wave) == false:
-			destroy_wave(current_wave)
 #			counter += 1
-			print('new wave')
+#			print('new wave')
 			var new_enemies = new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 			simple_enemy_line(new_enemies)
 			for enemy in new_enemies:

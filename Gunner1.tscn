@@ -49,9 +49,9 @@ limit_left = 700
 limit_right = 750
 smoothing_speed = 10.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Body" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource( 3 )
 
 [node name="Shoot" type="AudioStreamPlayer" parent="."]
