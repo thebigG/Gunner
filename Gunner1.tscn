@@ -7,22 +7,22 @@
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shoot.wav" type="AudioStream" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "Right",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
 
 [node name="Gunner1" type="KinematicBody2D"]
 position = Vector2( 336, 584 )
@@ -33,13 +33,10 @@ __meta__ = {
 bullet_scene = ExtResource( 5 )
 speed = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="Turn" type="AnimatedSprite" parent="."]
 position = Vector2( 16, 0 )
 scale = Vector2( 0.263672, 0.298828 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "Left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -52,7 +49,10 @@ smoothing_speed = 10.0
 [node name="Body" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
