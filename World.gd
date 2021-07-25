@@ -42,12 +42,13 @@ func _ready():
 	print("current_wave" + str(current_wave))
 		
 func simple_enemy_line(wave):
-	var left_bound = wave[0].transform.origin.x + 100
-	for enemy in wave:
-		enemy.transform.origin.y = $Gunner1.position.y - 500
-		enemy.transform.origin.x = left_bound
-		left_bound += 100
-		enemy.linear_velocity.y = 100
+	if !wave.empty():
+		var left_bound = wave[0].transform.origin.x + 100
+		for enemy in wave:
+			enemy.transform.origin.y = $Gunner1.position.y - 500
+			enemy.transform.origin.x = left_bound
+			left_bound += 100
+			enemy.linear_velocity.y = 10
 
 func new_enemy_wave(number_of_enemies, type):
 	var out_enemies = []
