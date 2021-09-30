@@ -20,6 +20,8 @@ func destroy_wave(wave):
 		enemy.call('destroy')
 
 func _physics_process(delta):
+	$Path2D/EnemyPath.offset += 1
+	$Path2D.position.y += 0.3
 	if counter==0:
 		if is_wave_alive(current_wave) == false:
 #			counter += 1
