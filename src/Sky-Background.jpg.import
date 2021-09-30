@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jet-flat.png-cb831f6bba15bb440a3a8f0b9f59209b.stex"
+path="res://.import/Sky-Background.jpg-ef411aa422c22115344dc2ec4229be6a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jet-flat.png"
-dest_files=[ "res://.import/Jet-flat.png-cb831f6bba15bb440a3a8f0b9f59209b.stex" ]
+source_file="res://src/Sky-Background.jpg"
+dest_files=[ "res://.import/Sky-Background.jpg-ef411aa422c22115344dc2ec4229be6a.stex" ]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Gunner1.gd" type="Script" id=1]
-[ext_resource path="res://Jet-tilted-right.png" type="Texture" id=2]
-[ext_resource path="res://Jet.png" type="Texture" id=3]
-[ext_resource path="res://Jet_tilted_left.png" type="Texture" id=4]
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Shoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://src/Gunner1.gd" type="Script" id=1]
+[ext_resource path="res://src/Jet-tilted-right.png" type="Texture" id=2]
+[ext_resource path="res://src/Jet.png" type="Texture" id=3]
+[ext_resource path="res://src/Jet_tilted_left.png" type="Texture" id=4]
+[ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Shoot.wav" type="AudioStream" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
