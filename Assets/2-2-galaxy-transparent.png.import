@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jet_tilted_left.png-9caaebde46d55fc1d433c5654d33394d.stex"
+path="res://.import/2-2-galaxy-transparent.png-75d7d8b0adf9bf05c4d28d71fda68ee1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jet_tilted_left.png"
-dest_files=[ "res://.import/Jet_tilted_left.png-9caaebde46d55fc1d433c5654d33394d.stex" ]
+source_file="res://Assets/2-2-galaxy-transparent.png"
+dest_files=[ "res://.import/2-2-galaxy-transparent.png-75d7d8b0adf9bf05c4d28d71fda68ee1.stex" ]
 
 [params]
 

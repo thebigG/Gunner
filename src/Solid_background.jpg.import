@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Solid_background.jpg-2586638017c1071d10eb4494a717708d.stex"
+path="res://.import/Solid_background.jpg-8d20669236f1053f94ce076f20ca8a87.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Solid_background.jpg"
-dest_files=[ "res://.import/Solid_background.jpg-2586638017c1071d10eb4494a717708d.stex" ]
+source_file="res://src/Solid_background.jpg"
+dest_files=[ "res://.import/Solid_background.jpg-8d20669236f1053f94ce076f20ca8a87.stex" ]
 
 [params]
 

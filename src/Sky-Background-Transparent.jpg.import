@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/best-fighter-jets-f22-aerotime-1.jpg-b20bfbdbb9c2cc97cdce580ab45fca23.stex"
+path="res://.import/Sky-Background-Transparent.jpg-71c6dc423bfe938633a499a11ea71295.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://best-fighter-jets-f22-aerotime-1.jpg"
-dest_files=[ "res://.import/best-fighter-jets-f22-aerotime-1.jpg-b20bfbdbb9c2cc97cdce580ab45fca23.stex" ]
+source_file="res://src/Sky-Background-Transparent.jpg"
+dest_files=[ "res://.import/Sky-Background-Transparent.jpg-71c6dc423bfe938633a499a11ea71295.stex" ]
 
 [params]
 
