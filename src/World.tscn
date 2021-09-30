@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -2, -5, 0, 0, 0, 0, 182, 91, 0, 0, 0, 0, 788.579, -106.123 )
+"points": PoolVector2Array( 0, 0, 0, 0, 249.286, 69.558, 0, 0, 0, 0, 427.477, 69.558, 0, 0, 0, 0, 551.928, 68.1438, 0, 0, 0, 0, 556.745, 71.0524, 0, 0, 0, 0, 428.478, 68.2312, 0, 0, 0, 0, 251.792, 79.8672, 0, 0, 0, 0, 258.091, 69.7878 )
 }
 
 [node name="Game" type="Node2D" groups=[
@@ -19,11 +19,11 @@ __meta__ = {
 "_edit_vertical_guides_": [ 80.0 ]
 }
 easy_enemy_scene = ExtResource( 1 )
-wave_size = 2
+wave_size = 0
 
 [node name="Gunner1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 232, 432 )
-speed = 4
+speed = 0
 
 [node name="EasyStage" parent="." instance=ExtResource( 4 )]
 
@@ -31,13 +31,14 @@ speed = 4
 stream = ExtResource( 2 )
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2( 150, 0 )
 curve = SubResource( 1 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -2, -5 )
-rotation = 0.480887
-lookahead = 10.0
+[node name="EnemyPath" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 249.286, 69.558 )
+rotate = false
 
-[node name="EasyEnemy" parent="Path2D/PathFollow2D" instance=ExtResource( 1 )]
-linear_velocity = Vector2( 60, 60 )
+[node name="EasyEnemy" parent="Path2D/EnemyPath" instance=ExtResource( 1 )]
+position = Vector2( 1.49815, -0.436005 )
+
+[node name="EasyEnemy2" parent="Path2D/EnemyPath" instance=ExtResource( 1 )]
+position = Vector2( 10, -0.436 )
