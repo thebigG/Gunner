@@ -20,8 +20,8 @@ func destroy_wave(wave):
 		enemy.call('destroy')
 
 func _physics_process(delta):
-	$Path2D/EnemyPath.offset += 1
-	$Path2D.position.y += 0.3
+#	$Path2D/EnemyPath.offset += 1
+#	$Path2D.position.y += 0.3
 	if counter==0:
 		if is_wave_alive(current_wave) == false:
 #			counter += 1
@@ -56,6 +56,9 @@ func new_enemy_wave(number_of_enemies, type):
 	var out_enemies = []
 	match type:
 		ENEMY_TYPE.EASY:		
+#			wave = enemy_wave.instance()
+#			wave.configure(wave_speed, number_of_enemies)
+#			out_enemies = wave
 			for i in range(number_of_enemies):
 				out_enemies.append(easy_enemy_scene.instance())
 	
