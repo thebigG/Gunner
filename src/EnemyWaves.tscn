@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 249.286, 69.558, 0, 0, 0, 0, 427.477, 69.558, 0, 0, 0, 0, 551.928, 68.1438, 0, 0, 0, 0, 556.745, 71.0524, 0, 0, 0, 0, 428.478, 68.2312, 0, 0, 0, 0, 251.792, 79.8672, 0, 0, 0, 0, 258.091, 69.7878 )
+"points": PoolVector2Array(  )
 }
 
 [node name="Enemy_StraightLine" type="Path2D"]
