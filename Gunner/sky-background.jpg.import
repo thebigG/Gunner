@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sky-Background-Transparent.jpg-71c6dc423bfe938633a499a11ea71295.stex"
+path="res://.import/sky-background.jpg-0f71bc97344d338b7c533707df2ed47a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sky-Background-Transparent.jpg"
-dest_files=[ "res://.import/Sky-Background-Transparent.jpg-71c6dc423bfe938633a499a11ea71295.stex" ]
+source_file="res://Gunner/sky-background.jpg"
+dest_files=[ "res://.import/sky-background.jpg-0f71bc97344d338b7c533707df2ed47a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Solid_background.jpg-8d20669236f1053f94ce076f20ca8a87.stex"
+path="res://.import/Enemy.png-a1743368256e28d73342036147f7e243.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Solid_background.jpg"
-dest_files=[ "res://.import/Solid_background.jpg-8d20669236f1053f94ce076f20ca8a87.stex" ]
+source_file="res://Gunner/Enemy.png"
+dest_files=[ "res://.import/Enemy.png-a1743368256e28d73342036147f7e243.stex" ]
 
 [params]
 

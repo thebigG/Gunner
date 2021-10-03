@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jet.png-7793a89446aed2a4b7ebcf9a196fd7ea.stex"
+path="res://.import/Solid_background.jpg-3f9303bd02d8217d152789d0a38c7fd9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Jet.png"
-dest_files=[ "res://.import/Jet.png-7793a89446aed2a4b7ebcf9a196fd7ea.stex" ]
+source_file="res://Gunner/Solid_background.jpg"
+dest_files=[ "res://.import/Solid_background.jpg-3f9303bd02d8217d152789d0a38c7fd9.stex" ]
 
 [params]
 

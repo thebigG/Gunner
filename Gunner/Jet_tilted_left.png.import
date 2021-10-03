@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sky-Background.jpg-ef411aa422c22115344dc2ec4229be6a.stex"
+path="res://.import/Jet_tilted_left.png-12e26ce999bbe7b584da8dd4e8eb0f68.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sky-Background.jpg"
-dest_files=[ "res://.import/Sky-Background.jpg-ef411aa422c22115344dc2ec4229be6a.stex" ]
+source_file="res://Gunner/Jet_tilted_left.png"
+dest_files=[ "res://.import/Jet_tilted_left.png-12e26ce999bbe7b584da8dd4e8eb0f68.stex" ]
 
 [params]
 

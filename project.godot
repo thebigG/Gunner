@@ -11,8 +11,8 @@ config_version=4
 [application]
 
 config/name="Gunner"
-run/main_scene="res://src/World.tscn"
-config/icon="res://src/icon.png"
+run/main_scene="res://Gunner/World.tscn"
+config/icon="res://Gunner/icon.png"
 
 [display]
 
