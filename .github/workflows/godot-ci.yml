@@ -34,8 +34,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/windows/Gunner.x86_64
-          asset_name: Gunner-continuous-release-windows.x86_64
+          file: build/windows/Gunner.exe
+          asset_name: Gunner-continuous-release-windows.exe
           tag: ${{ github.ref }}
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
@@ -105,8 +105,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
-          file: build/web/Gunner.x86_64
-          asset_name: Gunner-continuous-release-web.x86_64
+          file: build/web/index.html
+          asset_name: index-continuous-release-web.html
           tag: ${{ github.ref }}
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
@@ -150,8 +150,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
-          file: build/mac/Gunner.x86_64
-          asset_name: Gunner-continuous-release-mac.x86_64
+          file: build/mac/Gunner.zip
+          asset_name: Gunner-continuous-release-mac.zip
           tag: ${{ github.ref }}
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
