@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jet-tilted-right.png-b3d8934f900074abab2e2c4bf0581ecb.stex"
+path="res://.import/Jet-tilted-right.png-d5722e6ca9bd25447e6bfeda09930b2f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gunner/Jet-tilted-right.png"
-dest_files=[ "res://.import/Jet-tilted-right.png-b3d8934f900074abab2e2c4bf0581ecb.stex" ]
+source_file="res://Jet-tilted-right.png"
+dest_files=[ "res://.import/Jet-tilted-right.png-d5722e6ca9bd25447e6bfeda09930b2f.stex" ]
 
 [params]
 
