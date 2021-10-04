@@ -36,7 +36,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/windows/Gunner.exe
           asset_name: Gunner-continuous-release-windows.exe
-          tag: ${{ github.ref }}
+          tag: Gunner-continuous-release
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
 
@@ -72,7 +72,7 @@ jobs:
           #Cannot use $EXPORT_NAME sadly
           file: build/linux/Gunner.x86_64
           asset_name: Gunner-continuous-release-linux.x86_64
-          tag: ${{ github.ref }}
+          tag: Gunner-continuous-release
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
 
@@ -106,8 +106,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
           file: build/web/index.html
-          asset_name: index-continuous-release-web.html
-          tag: ${{ github.ref }}
+          asset_name: Gunner-index-continuous-release-web.html
+          tag: Gunner-continuous-release
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
@@ -152,6 +152,6 @@ jobs:
           #Cannot use $EXPORT_NAME sadly
           file: build/mac/Gunner.zip
           asset_name: Gunner-continuous-release-mac.zip
-          tag: ${{ github.ref }}
+          tag: Gunner-continuous-release
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
