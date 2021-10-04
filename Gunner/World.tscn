@@ -14,7 +14,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 80.0 ]
 }
 easy_enemy_scene = ExtResource( 1 )
-wave_size = 0
+wave_size = 4
 
 [node name="Gunner1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 232, 432 )
