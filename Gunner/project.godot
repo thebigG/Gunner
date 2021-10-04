@@ -11,8 +11,8 @@ config_version=4
 [application]
 
 config/name="Gunner"
-run/main_scene="res://Gunner/World.tscn"
-config/icon="res://Gunner/icon.png"
+run/main_scene="res://World.tscn"
+config/icon="res://icon.png"
 
 [display]
 
@@ -21,7 +21,3 @@ window/size/height=800
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
