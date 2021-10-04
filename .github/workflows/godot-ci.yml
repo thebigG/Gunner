@@ -30,6 +30,16 @@ jobs:
         with:
           name: windows
           path: build/windows
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/windows/Gunner.x86_64
+          asset_name: Gunner-continuous-release-windows.x86_64
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Bleeding edge release for those who like to live on the edge :)"
+
 
   export-linux:
     name: Linux Export
@@ -59,8 +69,9 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          #Cannot use $EXPORT_NAME sadly
           file: build/linux/Gunner.x86_64
-          asset_name: Gunner-continuous-release-${{ github.head_ref }}.${{ github.sha }}.x86_64
+          asset_name: Gunner-continuous-release-linux.x86_64
           tag: ${{ github.ref }}
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
@@ -89,6 +100,16 @@ jobs:
         with:
           name: web
           path: build/web
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          #Cannot use $EXPORT_NAME sadly
+          file: build/web/Gunner.x86_64
+          asset_name: Gunner-continuous-release-web.x86_64
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Bleeding edge release for those who like to live on the edge :)"
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
       - name: Install rsync 📚
         run: |
@@ -124,3 +145,13 @@ jobs:
         with:
           name: mac
           path: build/mac
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          #Cannot use $EXPORT_NAME sadly
+          file: build/mac/Gunner.x86_64
+          asset_name: Gunner-continuous-release-mac.x86_64
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Bleeding edge release for those who like to live on the edge :)"
