@@ -6,9 +6,16 @@ export(int) var wave_size = 5
 var current_wave = 0
 var counter = 0
 
-func is_wave_alive(current_wave):
+var is_ready: bool = false
+
+var enemy_wave_scene: PackedScene = preload('res://EnemyWaves.tscn')
+var enemy_wave_scene_instance: Path2D = null
+
+#I think is_wave_alive should be moved to Enemy_Waves script
+func is_wave_alive(current_wave:  Path2D):
 	var is_alive = false
-	for enemy in current_wave:
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+#		print('is enemy alive??')
 		if(is_instance_valid(enemy)):
 			is_alive = true
 			break		
@@ -20,47 +27,39 @@ func destroy_wave(wave):
 		enemy.call('destroy')
 
 func _physics_process(delta):
-#	$Path2D/EnemyPath.offset += 1
-#	$Path2D.position.y += 0.3
-	if counter==0:
-		if is_wave_alive(current_wave) == false:
-#			counter += 1
-#			print('new wave')
-			var new_enemies = new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-			simple_enemy_line(new_enemies)
-			for enemy in new_enemies:
-				add_child(enemy)
-			current_wave = new_enemies 
-		 
+	if enemy_wave_scene_instance != null:
+		if is_wave_alive(enemy_wave_scene_instance) == false:
+#			Move the queue_free code to Enemy_Waves script
+			enemy_wave_scene_instance.queue_free()
+			new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
+			add_child(enemy_wave_scene_instance)
+			
+	 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready")
-	var new_enemies = new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-	simple_enemy_line(new_enemies)
-	for enemy in new_enemies:
-		add_child(enemy)
-	current_wave = new_enemies 
-	print("current_wave" + str(current_wave))
+	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
+	add_child(enemy_wave_scene_instance)
+	
 		
 func simple_enemy_line(wave):
-	if !wave.empty():
-		var left_bound = wave[0].transform.origin.x + 100
-		for enemy in wave:
-			enemy.transform.origin.y = $Gunner1.position.y - 500
-			enemy.transform.origin.x = left_bound
-			left_bound += 100
-			enemy.linear_velocity.y = 10
+	pass
+#	if !wave.empty():
+#		var left_bound = wave[0].transform.origin.x + 100
+#		for enemy in wave:
+#			enemy.transform.origin.y = $Gunner1.position.y - 500
+#			enemy.transform.origin.x = left_bound
+#			left_bound += 100
+#			enemy.linear_velocity.y = 10
 
-func new_enemy_wave(number_of_enemies, type):
-	var out_enemies = []
+func new_enemy_wave(number_of_enemies, type) -> void:
 	match type:
-		ENEMY_TYPE.EASY:		
-#			wave = enemy_wave.instance()
-#			wave.configure(wave_speed, number_of_enemies)
-#			out_enemies = wave
-			for i in range(number_of_enemies):
-				out_enemies.append(easy_enemy_scene.instance())
+		ENEMY_TYPE.EASY:
+			enemy_wave_scene_instance = enemy_wave_scene.instance()
+			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 500
+			enemy_wave_scene_instance.transform.origin.x = $Gunner1.position.x +50
+			
+			enemy_wave_scene_instance.configure(Vector2(0,20), number_of_enemies)			
+			enemy_wave_scene_instance.spawn()
 	
-	return out_enemies
 		
