@@ -19,20 +19,20 @@ func spawn():
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)	
 		enemy_instance.transform.origin.x = left_bound
-#		enemy_instance.linear_velocity = wave_vecolity
 		left_bound += 75
-#		enemy.linear_velocity.y = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	Straight Path
 	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(800,0))
 	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(600,0))
-	self.position = ORIGIN
-	print('point count'  + str(self.curve.get_point_count()))
+#	self.position = ORIGIN
+#	var visibility_filter =  VisibilityNotifier2D.new()
+#	visibility_filter.rect = Rect2(0,0, 1000, 20)
+#	add_child(visibility_filter)
+
 	#Not sure if this is the best way of doing this...
-	configure(Vector2(50,0), 3)
-	spawn()
+#	spawn()
 
 func is_wave_alive():
 	pass
@@ -40,6 +40,8 @@ func is_wave_alive():
 func _physics_process(delta):
 	$EnemyPath.offset += 1
 	self.position.y += 0.5
+
+func visible_filter():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
