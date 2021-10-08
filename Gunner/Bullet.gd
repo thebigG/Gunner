@@ -1,12 +1,5 @@
 extends RigidBody2D
-
-
 export var velocity = Vector2(0,-100)
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var shape
 
 class Bullet:
 	var position = Vector2()
@@ -20,7 +13,6 @@ class Bullet:
 
 func shoot():
 	linear_velocity = velocity
-# Called when the node enters the scene tree for the first time.
 
 func _ready():
 		pass
@@ -31,19 +23,14 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	print('bullet signal')
 	if body.is_in_group("Enemy"):
-		print("boom!")
 #		Play some cool animation
 		body.call("destroy")
 		queue_free()
 				
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
-	#	return
-	print('bullet signal')
 	if area_shape.is_in_group("Enemy"):
-		print("boom!")
 #		Play some cool animation
 		area_shape.call("destroy")
 		queue_free()
