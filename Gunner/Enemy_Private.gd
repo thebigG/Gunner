@@ -4,6 +4,9 @@ extends RigidBody2D
 func _ready():
 	pass
 
+#TODO:Abstract out the damage(destroy) and shoot functions in an interface.
+#This way the Bullet code(or any other Node) can call these 
+#functions without having to guess the type of Enemy.
 func destroy():
 	queue_free()
 	var boom = get_tree().get_nodes_in_group("World")[0].get_node("Boom")
@@ -16,5 +19,4 @@ func _on_Boom_finished():
 	pass
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	print('delete enemy')
 	queue_free()
