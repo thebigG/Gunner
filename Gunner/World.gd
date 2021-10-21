@@ -8,6 +8,10 @@ var counter = 0
 
 var is_ready: bool = false
 
+var sum = null
+var anim = null
+var node = null
+
 var enemy_wave_scene: PackedScene = preload('res://EnemyWaves.tscn')
 var enemy_wave_scene_instance: Path2D = null
 
@@ -32,8 +36,7 @@ func _physics_process(delta):
 			enemy_wave_scene_instance.queue_free()
 			new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 			add_child(enemy_wave_scene_instance)
-			
-	 
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
