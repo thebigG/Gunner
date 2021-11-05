@@ -43,40 +43,6 @@ jobs:
           body: "Bleeding edge release for those who like to live on the edge :)"
 
 
-  export-linux:
-    name: Linux Export
-    runs-on: ubuntu-latest
-    container:
-      image: thebigg1/godot-ci:latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.beta ~/.local/share/godot/templates/${GODOT_VERSION}.beta
-      - name: Linux Build
-        run: |
-          mkdir -v -p build/linux
-          cd $EXPORT_NAME
-          godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux
-          path: build/linux
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          #Cannot use $EXPORT_NAME sadly
-          file: build/linux/Gunner.x86_64
-          asset_name: Gunner-continuous-release-linux.x86_64
-          tag: Gunner-continuous-release
-          overwrite: true
-          body: "Bleeding edge release for those who like to live on the edge :)"
 
 # The web build does not work at the moment.
 #  export-web:
@@ -123,38 +89,3 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #          BRANCH: gh-pages # The branch the action should deploy to.
 #          FOLDER: build/web # The folder the action should deploy.
-
-  export-mac:
-    name: Mac Export
-    runs-on: ubuntu-latest
-    container:
-      image: thebigg1/godot-ci:latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.beta ~/.local/share/godot/templates/${GODOT_VERSION}.beta
-      - name: Mac Build
-        run: |
-          mkdir -v -p build/mac
-          cd $EXPORT_NAME
-          godot -v --export "Mac OSX" ../build/mac/$EXPORT_NAME.zip
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: mac
-          path: build/mac
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          #Cannot use $EXPORT_NAME sadly
-          file: build/mac/Gunner.zip
-          asset_name: Gunner-continuous-release-mac.zip
-          tag: Gunner-continuous-release
-          overwrite: true
-          body: "Bleeding edge release for those who like to live on the edge :)"
