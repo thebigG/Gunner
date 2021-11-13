@@ -9,6 +9,11 @@ func _ready():
 #This way the Bullet code(or any other Node) can call these 
 #functions without having to guess the type of Enemy.
 func destroy():
+	print(self.health)
+	match self.state:
+		BaseEnemy2D.ALIVE:
+			print("Alive")
+			
 	queue_free()
 	var boom = get_tree().get_nodes_in_group("World")[0].get_node("Boom")
 	boom.play()
