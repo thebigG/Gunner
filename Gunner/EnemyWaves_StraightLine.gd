@@ -8,6 +8,7 @@ var wave_vecolity = 0
 var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250,70)
 
+
 func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
@@ -20,6 +21,8 @@ func spawn():
 		$EnemyPath.add_child(enemy_instance)	
 		enemy_instance.transform.origin.x = left_bound
 		left_bound += 75
+		get_viewport_rect()
+#		position.x = clamp(position.x, 100, screen_size.size.x-24)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
