@@ -45,11 +45,13 @@ func _ready():
 	
 
 func new_enemy_wave(number_of_enemies, type) -> void:
+	print('SPAWN:' + str(counter))
+	counter += 1
 	match type:
 		ENEMY_TYPE.EASY:
 			enemy_wave_scene_instance = enemy_wave_scene.instance()
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 500
-			enemy_wave_scene_instance.transform.origin.x = $Gunner1.position.x +50
+			enemy_wave_scene_instance.transform.origin.x = clamp(enemy_wave_scene_instance.transform.origin.x, $Gunner1.position.y, .get_viewport_rect().size.x-375)
 			
 			enemy_wave_scene_instance.configure(Vector2(0,20), number_of_enemies)			
 			enemy_wave_scene_instance.spawn()
