@@ -19,5 +19,5 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemy"):
 #		Play some cool animation
-		body.call("destroy")
+		body.call("damage")
 		queue_free()

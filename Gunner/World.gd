@@ -25,9 +25,9 @@ func is_wave_alive(current_wave:  Path2D):
 			break		
 	return is_alive
 
-func destroy_wave(wave):
-	for enemy in wave:
-		enemy.call('destroy')
+#func destroy_wave(wave):
+#	for enemy in wave:
+#		enemy.call('destroy')
 
 func _physics_process(delta):
 	if enemy_wave_scene_instance != null:
