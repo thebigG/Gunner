@@ -7,7 +7,7 @@ var screen_size
 export var speed = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = $Body.get_viewport_rect()
+	screen_size = get_viewport_rect()
 	current_direction.y = -speed
 	
 func _physics_process(delta):
@@ -43,12 +43,12 @@ func _physics_process(delta):
 
 
 #	Figure out a way to limit the viewport for the player
+	position.x = clamp(position.x, 0, screen_size.size.x-24)
 	move_and_collide(current_direction)
 	
-#	TODO: Figure out a cleaner way of clamping
-	position.x = clamp(position.x, 100, screen_size.size.x-24)
-
-
+	print(position)
+	print("screen size"+str(screen_size.size.x))
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
