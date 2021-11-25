@@ -12,23 +12,22 @@ radius = 8.0
 height = 15.1429
 
 [node name="Bullet" type="RigidBody2D"]
-position = Vector2( 63, -15 )
+position = Vector2( 0, -25 )
 gravity_scale = 0.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 velocity = Vector2( 0, -1000 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -62, -72 )
-scale = Vector2( 0.0117188, 0.0625 )
+scale = Vector2( 0.0117188, 0.0343607 )
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( -1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -56, -80 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -56, -80 )
 shape = SubResource( 2 )

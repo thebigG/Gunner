@@ -1,6 +1,6 @@
 extends Node2D
 
-export(PackedScene) var easy_enemy_scene
+#export(PackedScene) var easy_enemy_scene
 enum ENEMY_TYPE{EASY}
 export(int) var wave_size = 5
 var current_wave = 0
@@ -51,7 +51,7 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 		ENEMY_TYPE.EASY:
 			enemy_wave_scene_instance = enemy_wave_scene.instance()
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 500
-			enemy_wave_scene_instance.transform.origin.x = clamp(enemy_wave_scene_instance.transform.origin.x, $Gunner1.position.y, .get_viewport_rect().size.x-375)
+			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x/2
 			
 			enemy_wave_scene_instance.configure(Vector2(0,20), number_of_enemies)			
 			enemy_wave_scene_instance.spawn()

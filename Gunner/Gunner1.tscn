@@ -25,7 +25,6 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=3]
 
 [node name="Gunner1" type="KinematicBody2D"]
-position = Vector2( 336, 584 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ 744.0 ]
@@ -34,13 +33,12 @@ bullet_scene = ExtResource( 5 )
 speed = 10
 
 [node name="Turn" type="AnimatedSprite" parent="."]
-position = Vector2( 16, 0 )
-scale = Vector2( 0.263672, 0.298828 )
+scale = Vector2( 0.137614, 0.189213 )
 frames = SubResource( 1 )
 animation = "Left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 320, -205 )
+offset = Vector2( -200, -205 )
 current = true
 limit_left = 700
 limit_right = 750

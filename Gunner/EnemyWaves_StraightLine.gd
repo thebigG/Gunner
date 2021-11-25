@@ -8,8 +8,9 @@ var wave_vecolity = 0
 var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250,70)
 
+var X_GAP = 75
 
-func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int):
+func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int ):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
 
@@ -20,8 +21,7 @@ func spawn():
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)	
 		enemy_instance.transform.origin.x = left_bound
-		left_bound += 75
-		get_viewport_rect()
+		left_bound += X_GAP
 #		position.x = clamp(position.x, 100, screen_size.size.x-24)
 
 # Called when the node enters the scene tree for the first time.
@@ -29,13 +29,6 @@ func _ready():
 #	Straight Path
 	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(800,0))
 	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(600,0))
-#	self.position = ORIGIN
-#	var visibility_filter =  VisibilityNotifier2D.new()
-#	visibility_filter.rect = Rect2(0,0, 1000, 20)
-#	add_child(visibility_filter)
-
-	#Not sure if this is the best way of doing this...
-#	spawn()
 
 func is_wave_alive():
 	pass
