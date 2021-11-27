@@ -49,12 +49,20 @@ func _physics_process(delta):
 			$Turn.set_frame(0)
 
 #	Figure out a way to limit the viewport for the player
-	position.x = clamp(position.x, 0, screen_size.size.x-24)
 	move_and_collide(current_direction)
+	position.x = clamp(position.x, 0, screen_size.size.x-24)
 	
-	print(position)
-	print("screen size"+str(screen_size.size.x))
+#	TODO:This does not work properly for now. Gunner starts "fading"....
+#	position.y = clamp(position.y, 
+#					   get_parent().get_node("EasyStageScene/ParallaxDriver").position.y,
+#						 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y -
+#						100)
 	
+	print("y from Gunner"+str(position.y))
+	
+	print("y size from driver:" + str(get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
+	
+	position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
