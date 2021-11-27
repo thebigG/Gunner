@@ -9,14 +9,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Left",
 "speed": 5.0
 } ]
 
@@ -30,19 +30,11 @@ __meta__ = {
 "_edit_vertical_guides_": [ 744.0 ]
 }
 bullet_scene = ExtResource( 5 )
-speed = 10
 
 [node name="Turn" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.137614, 0.189213 )
 frames = SubResource( 1 )
 animation = "Left"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( -200, -205 )
-current = true
-limit_left = 700
-limit_right = 750
-smoothing_speed = 10.0
 
 [node name="Body" type="Area2D" parent="."]
 
