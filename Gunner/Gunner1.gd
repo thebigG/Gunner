@@ -21,10 +21,10 @@ func _physics_process(delta):
 	current_direction.x = 0
 	current_direction.y = 0
 	if Input.is_action_pressed("ui_up"):
-#			$Turn.set_animation("Right")
-#			$Turn.play()
-#			$Turn.set_frame(1)
 			current_direction.y = -speed
+			
+	if Input.is_action_pressed("ui_down"):
+			current_direction.y = speed
 			
 	if Input.is_action_pressed("ui_right"):
 			$Turn.set_animation("Right")
@@ -53,16 +53,15 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 0, screen_size.size.x-24)
 	
 #	TODO:This does not work properly for now. Gunner starts "fading"....
-#	position.y = clamp(position.y, 
-#					   get_parent().get_node("EasyStageScene/ParallaxDriver").position.y,
-#						 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y -
-#						100)
+	position.y = clamp(position.y, 
+				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y )
 	
-	print("y from Gunner"+str(position.y))
+	print("y Gunner"+str(position.y))
 	
-	print("y size from driver:" + str(get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
+	print("y driver:" + str(get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
 	
-	position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+#	position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
