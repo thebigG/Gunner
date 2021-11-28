@@ -32,6 +32,7 @@ __meta__ = {
 bullet_scene = ExtResource( 5 )
 
 [node name="Turn" type="AnimatedSprite" parent="."]
+position = Vector2( 8.40897, 0.840897 )
 scale = Vector2( 0.137614, 0.189213 )
 frames = SubResource( 1 )
 animation = "Left"
