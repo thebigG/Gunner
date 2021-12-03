@@ -14,8 +14,7 @@ __meta__ = {
 wave_size = 1
 
 [node name="Gunner1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 232, 432 )
-speed = 15
+position = Vector2( 232, 0 )
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
