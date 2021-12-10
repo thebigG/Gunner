@@ -42,10 +42,10 @@ func _physics_process(delta):
 func _ready():
 	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 	add_child(enemy_wave_scene_instance)
+	$EasyStageScene/SoundTrack.play()
 	
 
 func new_enemy_wave(number_of_enemies, type) -> void:
-	print('SPAWN:' + str(counter))
 	counter += 1
 	match type:
 		ENEMY_TYPE.EASY:

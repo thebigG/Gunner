@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Assets/Gunner_SoundTrack_V0.1.wav" type="AudioStream" id=1]
 [ext_resource path="res://EasyStage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ParallaxDriverScene.tscn" type="PackedScene" id=3]
 
@@ -8,3 +9,6 @@
 [node name="EasyStage" parent="." instance=ExtResource( 2 )]
 
 [node name="ParallaxDriver" parent="." instance=ExtResource( 3 )]
+
+[node name="SoundTrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
