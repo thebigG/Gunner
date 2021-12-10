@@ -4,4 +4,8 @@ Fighter Jet Game; clone of [Strike Gunner S.T.G.](https://en.wikipedia.org/wiki/
 ## Sound Credits
 "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
 
+## Building
+
+To build the game from source(or "export" it from godot), you must use my own [custom version of godot](https://github.com/thebigG/godot-3.x-modules).
+
 
