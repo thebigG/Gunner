@@ -14,6 +14,8 @@ var node = null
 
 var enemy_wave_scene: PackedScene = preload('res://EnemyWaves.tscn')
 var enemy_wave_scene_instance: Path2D = null
+var game_started = false
+signal start_game_signal
 
 #I think is_wave_alive should be moved to Enemy_Waves script
 func is_wave_alive(current_wave:  Path2D):
@@ -36,15 +38,22 @@ func _physics_process(delta):
 			enemy_wave_scene_instance.queue_free()
 			new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 			add_child(enemy_wave_scene_instance)
-		
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var help_label = Label.new()
+	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
+	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
 	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 	add_child(enemy_wave_scene_instance)
 	$EasyStageScene/SoundTrack.play()
-	
+	$EasyStageScene.add_child(help_label)
 
+func _unhandled_input(input: InputEvent):
+	if input.is_action("ui_accept") and not(game_started):
+		self.emit_signal("start_game_signal")
+		game_started = true
+	
 func new_enemy_wave(number_of_enemies, type) -> void:
 	counter += 1
 	match type:
@@ -55,5 +64,3 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 			
 			enemy_wave_scene_instance.configure(Vector2(0,20), number_of_enemies)			
 			enemy_wave_scene_instance.spawn()
-	
-		

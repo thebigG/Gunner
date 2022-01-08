@@ -5,7 +5,9 @@
 [ext_resource path="res://World.gd" type="Script" id=3]
 [ext_resource path="res://Gunner1.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Node2D" groups=["World"]]
+[node name="Game" type="Node2D" groups=[
+"World",
+]]
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true,
