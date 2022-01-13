@@ -8,6 +8,7 @@
 [node name="Game" type="Node2D" groups=[
 "World",
 ]]
+pause_mode = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true,

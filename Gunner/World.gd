@@ -41,19 +41,25 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
 	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 	add_child(enemy_wave_scene_instance)
-	$EasyStageScene/SoundTrack.play()
+#	$EasyStageScene/SoundTrack.play()
 	$EasyStageScene.add_child(help_label)
+	for child in get_children():
+		child.pause_mode = Node.PAUSE_MODE_STOP
 
 func _unhandled_input(input: InputEvent):
 	if input.is_action("ui_accept") and not(game_started):
 		self.emit_signal("start_game_signal")
 		game_started = true
-	
+	if input.is_action("ui_pause"):
+
+		get_tree().paused = false if get_tree().paused else true
+
 func new_enemy_wave(number_of_enemies, type) -> void:
 	counter += 1
 	match type:
