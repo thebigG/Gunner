@@ -13,8 +13,6 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_pause"):
-		get_tree().paused = false if get_tree().paused else true
 	
 	if Input.is_action_just_pressed("ui_shoot"):
 		var new_bullet = bullet_scene.instance() 
