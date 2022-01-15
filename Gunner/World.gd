@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
+#	pause_mode = Node.PAUSE_MODE_PROCESS
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
