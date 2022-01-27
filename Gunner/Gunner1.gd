@@ -5,6 +5,8 @@ export(PackedScene) var bullet_scene
 var current_velocity = Vector2()
 var screen_size
 var speed = 0
+var health = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect()

@@ -1,4 +1,4 @@
-extends BaseEnemy2D
+extends HealthBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -6,7 +6,7 @@ func _ready():
 
 func _physics_process(delta):
 	match self.state:			
-		BaseEnemy2D.DEAD:
+		HealthBody2D.DEAD:
 			queue_free()
 			var boom = get_tree().get_nodes_in_group("World")[0].get_node("Boom")
 			boom.play()
