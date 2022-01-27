@@ -57,7 +57,6 @@ func _unhandled_input(input: InputEvent):
 		self.emit_signal("start_game_signal")
 		game_started = true
 	if input.is_action("ui_pause"):
-
 		get_tree().paused = false if get_tree().paused else true
 
 func new_enemy_wave(number_of_enemies, type) -> void:
