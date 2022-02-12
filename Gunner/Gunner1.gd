@@ -8,12 +8,16 @@ var speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.damage_interval = 0.33
 	screen_size = get_viewport_rect()
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
 	
 	
 func _physics_process(delta):
+	match self.state:			
+		HealthBody2D.DEAD:
+			print("Gunner is dead")
 	
 	if Input.is_action_just_pressed("ui_shoot"):
 		var new_bullet = bullet_scene.instance() 
@@ -30,7 +34,6 @@ func _physics_process(delta):
 
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
-#
 	if Input.is_action_pressed("ui_down"):
 			current_velocity.y = speed/2
 #
@@ -60,16 +63,9 @@ func _physics_process(delta):
 	move_and_collide(current_velocity)
 	position.x = clamp(position.x, 0, screen_size.size.x-100)
 	
-#	TODO:This does not work properly for now. Gunner starts "fading"....
 	position.y = clamp(position.y, 
 				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y )
-	
-#	print("y Gunner"+str(position.y))
-#
-#	print("y driver:" + str(get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
-	
-#	position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
