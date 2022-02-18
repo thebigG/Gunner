@@ -5,14 +5,24 @@ export(PackedScene) var bullet_scene
 var current_velocity = Vector2()
 var screen_size
 var speed = 0
+var health_bar = ProgressBar.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.damage_interval = 0.33
+	health_bar.rect_position = Vector2(0,0)
 	screen_size = get_viewport_rect()
+	health_bar.rect_position = Vector2(screen_size.size.x-600, get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 800)
+	health_bar.rect_size = Vector2(100,25)
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
+#	load()
+	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
+	health_bar.value = 50
 	
+#	health_bar
+#	health_bar.font_colo
+	get_parent().get_node("EasyStageScene").add_child(health_bar)
 	
 func _physics_process(delta):
 	match self.state:			
