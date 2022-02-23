@@ -18,6 +18,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
+      - name: Tag Repo
+        uses: richardsimko/update-tag@v1
+        with:
+          tag_name: continuous-build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/templates
