@@ -13,7 +13,7 @@ func _physics_process(delta):
 
 func damage_gunner(gunner: HealthBody2D):
 	if(is_instance_valid(gunner) and gunner.is_in_group("Gunner")):
-#		print("damage")
+		Input.start_joy_vibration(0, 0.5, 0, 1)
 		gunner.damage()
 
 func _exit_tree():
