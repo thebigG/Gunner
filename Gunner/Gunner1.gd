@@ -16,7 +16,9 @@ func _ready():
 	
 	health_bar.rect_position = Vector2(0,0)
 	screen_size = get_viewport_rect()
-	health_bar.rect_position = Vector2(screen_size.size.x-600, get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 800)
+	health_bar.rect_position = Vector2(screen_size.size.x-600, clamp(position.y, 
+				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y ))
 	health_bar.rect_size = Vector2(100,25)
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
@@ -29,6 +31,9 @@ func _ready():
 	get_parent().get_node("EasyStageScene").add_child(health_bar)
 	
 func _physics_process(delta):
+	health_bar.rect_position = Vector2(screen_size.size.x-600, clamp(health_bar.rect_position.y, 
+			 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+			 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y ))
 	health_bar.value = self.health
 	match self.state:			
 		HealthBody2D.DEAD:
