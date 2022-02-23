@@ -12,7 +12,7 @@ func _physics_process(delta):
 			boom.play()
 
 func damage_gunner(gunner: HealthBody2D):
-	if(gunner.is_in_group("Gunner")):
+	if(is_instance_valid(gunner) and gunner.is_in_group("Gunner")):
 #		print("damage")
 		gunner.damage()
 
