@@ -6,9 +6,13 @@ var current_velocity = Vector2()
 var screen_size
 var speed = 0
 var health_bar = ProgressBar.new()
+var hurt_animation = Tween.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.visible = true
+	add_child(hurt_animation)
+	hurt_animation.interpolate_property(self, "visible", false, true, 0.3, 0, 0)
 	self.damage_interval = 0.33
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
@@ -25,9 +29,6 @@ func _ready():
 #	load()
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
-	
-#	health_bar
-#	health_bar.font_colo
 	get_parent().get_node("EasyStageScene").add_child(health_bar)
 	
 func _physics_process(delta):
