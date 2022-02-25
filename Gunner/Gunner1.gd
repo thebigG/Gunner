@@ -12,7 +12,7 @@ var hurt_animation = Tween.new()
 func _ready():
 	self.visible = true
 	add_child(hurt_animation)
-	hurt_animation.interpolate_property(self, "visible", false, true, 0.3, 0, 0)
+	hurt_animation.interpolate_property(self, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	self.damage_interval = 0.33
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
@@ -26,7 +26,7 @@ func _ready():
 	health_bar.rect_size = Vector2(100,25)
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
-#	load()
+
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
 	get_parent().get_node("EasyStageScene").add_child(health_bar)
@@ -36,9 +36,9 @@ func _physics_process(delta):
 			 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 			 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y ))
 	health_bar.value = self.health
-	match self.state:			
-		HealthBody2D.DEAD:
-			print("Gunner is dead")
+#	match self.state:			
+#		HealthBody2D.DEAD:
+#			print("Gunner is dead")
 	
 	if Input.is_action_just_pressed("ui_shoot"):
 		var new_bullet = bullet_scene.instance() 
