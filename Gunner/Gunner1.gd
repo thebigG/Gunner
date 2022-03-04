@@ -13,7 +13,7 @@ func _ready():
 	self.visible = true
 	add_child(hurt_animation)
 	hurt_animation.interpolate_property(self, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	self.damage_interval = 0.33
+	self.damage_interval = 0.10
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
 	health_bar.step = self.damage_interval
