@@ -16,4 +16,3 @@ func _physics_process(delta):
 
 func start_game():
 	game_started = true
-	print('start parallax background')

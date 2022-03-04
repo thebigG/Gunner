@@ -19,6 +19,8 @@ signal start_game_signal
 
 #I think is_wave_alive should be moved to Enemy_Waves script
 func is_wave_alive(current_wave:  Path2D):
+	if enemy_wave_scene_instance == null:
+		return false
 	var is_alive = false
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 #		print('is enemy alive??')
@@ -32,8 +34,7 @@ func is_wave_alive(current_wave:  Path2D):
 #		enemy.call('destroy')
 
 func _physics_process(delta):
-	if enemy_wave_scene_instance != null:
-		if is_wave_alive(enemy_wave_scene_instance) == false:
+		if is_wave_alive(enemy_wave_scene_instance) == false and game_started:
 #			Move the queue_free code to Enemy_Waves script
 			enemy_wave_scene_instance.queue_free()
 			new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
@@ -45,9 +46,10 @@ func _ready():
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
+	enemy_wave_scene_instance = enemy_wave_scene.instance()
 	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 	add_child(enemy_wave_scene_instance)
-#	$EasyStageScene/SoundTrack.play()
+	$EasyStageScene/SoundTrack.play()
 	$EasyStageScene.add_child(help_label)
 	for child in get_children():
 		child.pause_mode = Node.PAUSE_MODE_STOP
@@ -64,8 +66,8 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 	match type:
 		ENEMY_TYPE.EASY:
 			enemy_wave_scene_instance = enemy_wave_scene.instance()
-			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 500
+			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x/2
 			
-			enemy_wave_scene_instance.configure(Vector2(0,20), number_of_enemies)			
+			enemy_wave_scene_instance.configure(Vector2(0,5), number_of_enemies)			
 			enemy_wave_scene_instance.spawn()
