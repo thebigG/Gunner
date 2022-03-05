@@ -49,7 +49,7 @@ func _ready():
 	enemy_wave_scene_instance = enemy_wave_scene.instance()
 	new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 	add_child(enemy_wave_scene_instance)
-	$EasyStageScene/SoundTrack.play()
+#	$EasyStageScene/SoundTrack.play()
 	$EasyStageScene.add_child(help_label)
 	for child in get_children():
 		child.pause_mode = Node.PAUSE_MODE_STOP
@@ -69,5 +69,5 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x/2
 			
-			enemy_wave_scene_instance.configure(Vector2(0,5), number_of_enemies)			
+			enemy_wave_scene_instance.configure(Vector2(5,1), number_of_enemies, 5)			
 			enemy_wave_scene_instance.spawn()
