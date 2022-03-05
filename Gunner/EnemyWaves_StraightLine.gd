@@ -5,10 +5,12 @@ var wave_vecolity: Vector2 = Vector2.ZERO
 var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250,70)
 var X_GAP = 75
+var offset = 5
 
-func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int ):
+func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
+	offset = path_offset
 
 func spawn():
 	var left_bound = 0
@@ -29,7 +31,7 @@ func is_wave_alive():
 	pass
 
 func _physics_process(delta):
-	$EnemyPath.offset += 1
+	$EnemyPath.offset += offset
 	self.position.y += wave_vecolity.y
 
 func visible_filter():
