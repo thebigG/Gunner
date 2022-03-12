@@ -7,6 +7,7 @@ var ORIGIN: Vector2 = Vector2(250,70)
 var X_GAP = 75
 var offset = 5
 
+# The smaller the path, the faster the enemies traverse the path
 func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
@@ -24,8 +25,12 @@ func spawn():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	Straight Path
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(800,0))
-	self.curve.add_point(Vector2(0,0), Vector2(0,10), Vector2(0,0))
+# Still learning how the points actually work.
+	self.curve.clear_points()
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 80))
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0), self.curve.get_point_count()-2)
+#	$EnemyPath.position = Vector2(249.286, 69.558)
+	
 
 func is_wave_alive():
 	pass
