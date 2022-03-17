@@ -9,6 +9,7 @@ var game_started = false
 func _ready():
 	screen_size = get_viewport_rect()
 	current_direction.y = -speed
+
 	
 func _physics_process(delta):
 	if game_started:
