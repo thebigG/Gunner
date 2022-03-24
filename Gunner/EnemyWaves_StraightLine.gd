@@ -23,19 +23,34 @@ func spawn():
 		left_bound += X_GAP
 
 func circle_pattern():
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(300, 0))
+	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
 	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))	
 
-func line_pattern():
+func h_line_pattern():
 	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(300, 0))
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))	
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
 	
+func v_line_pattern():
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 300))
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
+	
+func rectangle_pattern():
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(300, 0))
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
+		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	Straight Path
 # Still learning how the points actually work.
 	self.curve.clear_points()
-	circle_pattern()
+#	circle_pattern()
+	v_line_pattern()
+	h_line_pattern()
+	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 300))
+	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 0))
+	# The following is not quie right. WIP.	
+#	self.curve.add_point(Vector2(0, 300), Vector2(0,0), Vector2(300, 0))
+#	self.curve.add_point(Vector2(0,300), Vector2(0,0), Vector2(0, 0))
 	
 
 func is_wave_alive():
