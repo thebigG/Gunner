@@ -48,9 +48,14 @@ func _ready():
 	h_line_pattern()
 	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 300))
 	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 0))
+	
+	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
+	self.curve.add_point(Vector2(0,150), Vector2(0,0), Vector2(0, 0))
+	self.curve.add_point(Vector2(300,150), Vector2(0,0), Vector2(0, 0))
+#	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
 	# The following is not quie right. WIP.	
-#	self.curve.add_point(Vector2(0, 300), Vector2(0,0), Vector2(300, 0))
-#	self.curve.add_point(Vector2(0,300), Vector2(0,0), Vector2(0, 0))
+#	self.curve.add_point(Vector2(350, 0), Vector2(300,0), Vector2(300, 0))
+#	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
 	
 
 func is_wave_alive():
