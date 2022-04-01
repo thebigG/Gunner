@@ -1,6 +1,6 @@
 #Workflow based on  https://github.com/abarichello/godot-ci/blob/master/.github/workflows/godot-ci.yml
 
-name: "godot-ci export"
+name: "windows build"
 on: push
 
 env:
