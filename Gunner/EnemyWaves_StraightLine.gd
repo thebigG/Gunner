@@ -40,23 +40,15 @@ func rectangle_pattern():
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	Straight Path
 # Still learning how the points actually work.
 	self.curve.clear_points()
-#	circle_pattern()
-	v_line_pattern()
-	h_line_pattern()
-	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 300))
-	self.curve.add_point(Vector2(300,0), Vector2(0,0), Vector2(0, 0))
 	
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
-	self.curve.add_point(Vector2(0,150), Vector2(0,0), Vector2(0, 0))
-	self.curve.add_point(Vector2(300,150), Vector2(0,0), Vector2(0, 0))
-#	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
-	# The following is not quie right. WIP.	
-#	self.curve.add_point(Vector2(350, 0), Vector2(300,0), Vector2(300, 0))
-#	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
-	
+#	The following creates a rectangle
+	self.curve.add_point(Vector2(75, 83), Vector2(0,0), Vector2(0,0))
+	self.curve.add_point(Vector2(243, 83), Vector2(0,0), Vector2(0, 0))
+	self.curve.add_point(Vector2(243, 169), Vector2(0,0), Vector2(0,0))
+	self.curve.add_point(Vector2(75, 169), Vector2(0,0), Vector2(0,0))
+	self.curve.add_point(Vector2(75, 83), Vector2(0,0), Vector2(0,0))
 
 func is_wave_alive():
 	pass
