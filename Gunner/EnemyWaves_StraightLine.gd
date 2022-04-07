@@ -26,34 +26,31 @@ func circle_pattern():
 	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
 	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))	
 
-func h_line_pattern():
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(300, 0))
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
-	
-func v_line_pattern():
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 300))
-	self.curve.add_point(Vector2(0,0), Vector2(0,0), Vector2(0, 0))
-	
-func rectangle_pattern(origin: Vector2, width: int, height: int):
+func h_line_pattern(origin: Vector2, length: int):
 	self.curve.add_point(origin, Vector2(0,0), Vector2(0,0))
-	self.curve.add_point(Vector2(origin.x + width, origin.y), 
+	self.curve.add_point(Vector2(origin.x + length, origin.y), 
 						Vector2(0,0), 
 						Vector2(0, 0))
-	self.curve.add_point(Vector2(origin.x+width, origin.y + height), 
-						Vector2(0,0), 
-						Vector2(0,0))
-	self.curve.add_point(Vector2(origin.x, origin.y + height), 
-						Vector2(0,0), 
-						Vector2(0,0))
+	
+func v_line_pattern(origin: Vector2, length):
 	self.curve.add_point(origin, 
-						 Vector2(0,0), 
-						 Vector2(0,0))
+					Vector2(0,0), 
+					Vector2(0, 0))
+	self.curve.add_point(Vector2(origin.x, origin.y + length), 
+						Vector2(0,0), 
+						Vector2(0,0))
+	
+func rectangle_pattern(origin: Vector2, width: int, height: int):
+	h_line_pattern(origin, width)
+	v_line_pattern(Vector2(origin.x+width, origin.y), height)
+	h_line_pattern(Vector2(origin.x + width, origin.y + height), -width)
+	v_line_pattern(Vector2(origin.x, origin.y + height), -height)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.
 	self.curve.clear_points()	
-	rectangle_pattern(Vector2(75, 83), 50, 50)
+	rectangle_pattern(Vector2(75, 83), 50, 100)
 
 func is_wave_alive():
 	pass
