@@ -26,25 +26,30 @@ func circle_pattern():
 	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
 	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))	
 
-func h_line_pattern(origin: Vector2, length: int):
-	self.curve.add_point(origin, Vector2(0,0), Vector2(0,0))
-	self.curve.add_point(Vector2(origin.x + length, origin.y), 
+func h_line_pattern(origin: Vector2, length: int) -> Vector2:
+	var target:Vector2 = Vector2(origin.x + length, origin.y)
+	self.curve.add_point(origin, 
+						 Vector2(0,0), 
+						Vector2(0,0))
+	self.curve.add_point(target, 
 						Vector2(0,0), 
 						Vector2(0, 0))
+	return target
 	
-func v_line_pattern(origin: Vector2, length):
+	
+func v_line_pattern(origin: Vector2, length) -> Vector2:
+	var target: Vector2 = Vector2(origin.x, origin.y + length)
 	self.curve.add_point(origin, 
 					Vector2(0,0), 
 					Vector2(0, 0))
-	self.curve.add_point(Vector2(origin.x, origin.y + length), 
+	self.curve.add_point(target, 
 						Vector2(0,0), 
 						Vector2(0,0))
 	
+	return target
+	
 func rectangle_pattern(origin: Vector2, width: int, height: int):
-	h_line_pattern(origin, width)
-	v_line_pattern(Vector2(origin.x+width, origin.y), height)
-	h_line_pattern(Vector2(origin.x + width, origin.y + height), -width)
-	v_line_pattern(Vector2(origin.x, origin.y + height), -height)
+	v_line_pattern(h_line_pattern(v_line_pattern(h_line_pattern(origin, width), height), -width), -height)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
