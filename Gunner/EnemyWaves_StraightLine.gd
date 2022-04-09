@@ -50,12 +50,22 @@ func v_line_pattern(origin: Vector2, length) -> Vector2:
 	
 func rectangle_pattern(origin: Vector2, width: int, height: int):
 	v_line_pattern(h_line_pattern(v_line_pattern(h_line_pattern(origin, width), height), -width), -height)
-		
+
+func zig_zag_pattern(origin: Vector2, length: int, zigs: int):
+	var last_origin: Vector2 = origin
+	for zig in zigs:
+		if zig % 2 == 0:
+			last_origin = v_line_pattern(last_origin, length)
+		else:
+			last_origin = h_line_pattern(last_origin, length)
+			
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.
 	self.curve.clear_points()	
 	rectangle_pattern(Vector2(75, 83), 50, 100)
+	zig_zag_pattern(Vector2(75, 83), 50, 5)
 
 func is_wave_alive():
 	pass
