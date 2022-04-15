@@ -6,6 +6,7 @@ var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250,70)
 var X_GAP = 75
 var offset = 5
+enum HZ_MODE{UP, DOWN}
 
 # The smaller the path, the faster the enemies traverse the path
 func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int):
@@ -47,6 +48,23 @@ func v_line_pattern(origin: Vector2, length) -> Vector2:
 						Vector2(0,0))
 	
 	return target
+
+func hz_line_pattern(origin: Vector2, length, mode) -> Vector2:
+	var target: Vector2 = Vector2(origin.x + length, origin.y + length)
+	match mode:
+		HZ_MODE.DOWN:
+			target = Vector2(origin.x + length, origin.y + length)
+		HZ_MODE.UP:
+			target = Vector2(origin.x + length, origin.y - length)
+	self.curve.add_point(origin, 
+					Vector2(0,0), 
+					Vector2(0, 0))
+	self.curve.add_point(target, 
+						Vector2(0,0), 
+						Vector2(0,0))
+	
+	return target
+
 	
 func rectangle_pattern(origin: Vector2, width: int, height: int):
 	v_line_pattern(h_line_pattern(v_line_pattern(h_line_pattern(origin, width), height), -width), -height)
@@ -64,8 +82,10 @@ func zig_zag_pattern(origin: Vector2, length: int, zigs: int):
 func _ready():
 # Still learning how the points actually work.
 	self.curve.clear_points()	
-	rectangle_pattern(Vector2(75, 83), 50, 100)
-	zig_zag_pattern(Vector2(75, 83), 50, 5)
+#	rectangle_pattern(Vector2(75, 83), 50, 100)
+#	zig_zag_pattern(Vector2(75, 83), 50, 5)
+	hz_line_pattern(hz_line_pattern(Vector2(75, 83), 50, HZ_MODE.DOWN), 50, HZ_MODE.UP)
+	
 
 func is_wave_alive():
 	pass
