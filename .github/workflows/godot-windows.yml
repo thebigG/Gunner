@@ -43,8 +43,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/windows/Gunner.exe
-          asset_name: Gunner-continuous-release-windows.exe
-          tag: Gunner-continuous-release
+          asset_name: Gunner-continuous-build-windows.exe
+          tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
 

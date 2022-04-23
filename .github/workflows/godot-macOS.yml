@@ -36,7 +36,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
           file: build/mac/Gunner.zip
-          asset_name: Gunner-continuous-release-mac.zip
-          tag: Gunner-continuous-release
+          asset_name: Gunner-continuous-build-mac.zip
+          tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
