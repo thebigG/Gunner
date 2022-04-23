@@ -36,7 +36,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
           file: build/linux/Gunner.x86_64
-          asset_name: Gunner-continuous-release-linux.x86_64
-          tag: Gunner-continuous-release
+          asset_name: Gunner-continuous-build-linux.x86_64
+          tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
