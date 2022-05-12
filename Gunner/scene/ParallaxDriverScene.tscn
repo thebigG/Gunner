@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ParallaxDriver.gd" type="Script" id=5]
+[ext_resource path="res://src/ParallaxDriver.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=2]
 

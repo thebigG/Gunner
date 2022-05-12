@@ -87,7 +87,3 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 
 				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 				 get_parent().get_node("EasyStageScene/ParallaxDriver").position.y )
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
