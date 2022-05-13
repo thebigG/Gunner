@@ -16,6 +16,10 @@ func _ready():
 	self.damage_interval = 0.10
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
+	
+	
+	
+	
 	health_bar.step = self.damage_interval
 	
 	health_bar.rect_position = Vector2(0,0)

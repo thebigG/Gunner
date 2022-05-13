@@ -18,7 +18,7 @@ jobs:
           lfs: true
       - name: Coding Style
         run: |
-          gdformat Gunner/src
+          gdformat -c Gunner/src
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/templates
