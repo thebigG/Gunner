@@ -6,6 +6,7 @@ var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250, 70)
 var X_GAP = 75
 var offset = 5
+var anim_utils = AnimationUtils.new()
 
 
 # The smaller the path, the faster the enemies traverse the path
@@ -38,7 +39,9 @@ func _ready():
 #	AnimationUtils.new().h_line_pattern(self.curve, Vector2(75, 83), 50)
 #	AnimationUtils.new().rectangle_pattern(self.curve, Vector2(75, 83), 50, 100)
 #	zig_zag_pattern(Vector2(75, 83), 50, 5)
-	AnimationUtils.new().zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5)
+	anim_utils.zig_zag_pattern(
+		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), 50, 5
+	)
 
 
 func is_wave_alive():
