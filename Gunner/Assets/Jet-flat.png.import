@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sky-background.jpg-80ad180268c82b7ba234e6cb54b2da58.stex"
+path="res://.import/Jet-flat.png-2d8940a82f9d382c7e3374b9ff3f73c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sky-background.jpg"
-dest_files=[ "res://.import/sky-background.jpg-80ad180268c82b7ba234e6cb54b2da58.stex" ]
+source_file="res://Assets/Jet-flat.png"
+dest_files=[ "res://.import/Jet-flat.png-2d8940a82f9d382c7e3374b9ff3f73c1.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
