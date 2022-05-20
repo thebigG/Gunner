@@ -12,7 +12,6 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_vertical_guides_": [ 80.0 ]
 }
-wave_size = 2
 
 [node name="Gunner1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 232, 0 )

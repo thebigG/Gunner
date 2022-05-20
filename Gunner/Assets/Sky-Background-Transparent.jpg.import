@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jet_tilted_left.png-9caaebde46d55fc1d433c5654d33394d.stex"
+path="res://.import/Sky-Background-Transparent.jpg-21e81b09075e4064ca84f3d9a5fb7f8b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jet_tilted_left.png"
-dest_files=[ "res://.import/Jet_tilted_left.png-9caaebde46d55fc1d433c5654d33394d.stex" ]
+source_file="res://Assets/Sky-Background-Transparent.jpg"
+dest_files=[ "res://.import/Sky-Background-Transparent.jpg-21e81b09075e4064ca84f3d9a5fb7f8b.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

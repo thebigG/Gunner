@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Solid_background.jpg-2586638017c1071d10eb4494a717708d.stex"
+path="res://.import/Solid_background.jpg-ffce2dd0131fcd45f12caa98780e8557.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Solid_background.jpg"
-dest_files=[ "res://.import/Solid_background.jpg-2586638017c1071d10eb4494a717708d.stex" ]
+source_file="res://Assets/Solid_background.jpg"
+dest_files=[ "res://.import/Solid_background.jpg-ffce2dd0131fcd45f12caa98780e8557.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
