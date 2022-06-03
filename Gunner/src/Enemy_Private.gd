@@ -1,9 +1,22 @@
 extends HealthBody2D
 
+export(PackedScene) var bullet_scene
 
+var shoot_bullet_timer: Timer = Timer.new()
+
+
+#var bullet: RigidBody2D = bullet_scene.instance()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", self, "damage_gunner")
+	print("enemy ready")
+	shoot_bullet_timer.wait_time = 1
+	shoot_bullet_timer.connect("timeout", self, "shoot_gunner")
+	shoot_bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+	shoot_bullet_timer.start(1)
+	shoot_bullet_timer.autostart = true
+	shoot_bullet_timer.paused = false
+	add_child(shoot_bullet_timer)
 
 
 func _physics_process(delta):
@@ -28,6 +41,12 @@ func damage_gunner(gunner: HealthBody2D):
 
 func _exit_tree():
 	pass
+
+
+func shoot_gunner():
+	var bullet = bullet_scene.instance()
+	add_child(bullet)
+	bullet.shoot(Vector2(0, 500))
 
 
 func _on_Boom_finished():
