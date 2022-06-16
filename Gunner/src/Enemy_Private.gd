@@ -13,7 +13,7 @@ func _ready():
 	shoot_bullet_timer.wait_time = 1
 	shoot_bullet_timer.connect("timeout", self, "shoot_gunner")
 	shoot_bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
-	shoot_bullet_timer.start(1)
+	shoot_bullet_timer.start(2)
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	add_child(shoot_bullet_timer)
@@ -55,3 +55,4 @@ func _on_Boom_finished():
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	queue_free()
+	shoot_bullet_timer.queue_free()
