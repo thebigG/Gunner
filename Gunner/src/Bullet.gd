@@ -2,6 +2,8 @@ extends RigidBody2D
 export var velocity = Vector2(0, -100)
 var target_group: String = ""
 
+signal hit_signal
+
 
 func shoot():
 	linear_velocity = velocity
@@ -24,4 +26,5 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemy"):
 #		Play some cool animation
 		body.call("damage")
+		emit_signal("hit_signal")
 		queue_free()

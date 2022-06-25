@@ -7,6 +7,7 @@ var screen_size
 var speed = 0
 var health_bar = ProgressBar.new()
 var hurt_animation = Tween.new()
+var score = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,6 +58,9 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_shoot"):
 		var new_bullet = bullet_scene.instance()
+#		connect(signal: String, target: Object, method: String, binds: Array = [  ], flags: int = 0)
+
+		new_bullet.connect("hit_signal", self, "increment_score")
 		add_child(new_bullet)
 		$Shoot.play()
 		new_bullet.shoot()
@@ -104,3 +108,7 @@ func _physics_process(delta):
 		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
+
+
+func increment_score():
+	score += 1
