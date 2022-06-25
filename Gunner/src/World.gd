@@ -8,10 +8,6 @@ var counter = 0
 
 var is_ready: bool = false
 
-var sum = null
-var anim = null
-var node = null
-
 var enemy_wave_scene: PackedScene = preload("res://scene/EnemyWaves.tscn")
 var enemy_wave_scene_instance: Path2D = null
 var game_started = false
