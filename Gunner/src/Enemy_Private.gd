@@ -54,5 +54,6 @@ func _on_Boom_finished():
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	queue_free()
-	shoot_bullet_timer.queue_free()
+	pass
+#	queue_free()
+#	shoot_bullet_timer.queue_free()
