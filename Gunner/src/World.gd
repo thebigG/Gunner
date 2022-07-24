@@ -46,6 +46,7 @@ func _ready():
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
 #	$EasyStageScene/SoundTrack.play()
+	help_label.rect_position.y -= 50
 	$EasyStageScene.add_child(help_label)
 	for child in get_children():
 		child.pause_mode = Node.PAUSE_MODE_STOP

@@ -7,6 +7,8 @@ var screen_size
 var speed = 0
 var health_bar = ProgressBar.new()
 var hurt_animation = Tween.new()
+var hud_scene: PackedScene = preload("res://scene/HUD.tscn")
+var hud: GridContainer = null
 var score = 0
 
 
@@ -23,9 +25,20 @@ func _ready():
 
 	health_bar.step = self.damage_interval
 
-	health_bar.rect_position = Vector2(0, 0)
 	screen_size = get_viewport_rect()
-	health_bar.rect_position = Vector2(
+
+	print(health_bar.anchor_right)
+	print(health_bar.anchor_bottom)
+	health_bar.rect_size = Vector2(100, 25)
+
+	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
+	current_velocity.y = -speed
+
+	hud = hud_scene.instance()
+
+	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	hud.rect_position = Vector2(
 		screen_size.size.x - 600,
 		clamp(
 			position.y,
@@ -33,24 +46,25 @@ func _ready():
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		)
 	)
-	health_bar.rect_size = Vector2(100, 25)
-	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
-	current_velocity.y = -speed
 
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
-	get_parent().get_node("EasyStageScene").add_child(health_bar)
+
+	hud.add_child(health_bar)
+
+	get_parent().get_node("EasyStageScene").add_child(hud)
 
 
 func _physics_process(delta):
-	health_bar.rect_position = Vector2(
+	hud.rect_position = Vector2(
 		screen_size.size.x - 600,
 		clamp(
-			health_bar.rect_position.y,
+			hud.rect_position.y,
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		)
 	)
+
 	health_bar.value = self.health
 #	match self.state:
 #		HealthBody2D.DEAD:
