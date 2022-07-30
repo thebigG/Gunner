@@ -8,7 +8,9 @@ var speed = 0
 var health_bar = ProgressBar.new()
 var hurt_animation = Tween.new()
 var hud_scene: PackedScene = preload("res://scene/HUD.tscn")
-var hud: GridContainer = null
+var hud: PanelContainer = null
+var hud_grid: GridContainer = null
+var hud_theme = preload("res://Assets/Themes/hud_theme.tres")
 var score = 0
 
 
@@ -35,6 +37,7 @@ func _ready():
 	current_velocity.y = -speed
 
 	hud = hud_scene.instance()
+	hud_grid = hud.get_child(0)
 
 	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
@@ -50,7 +53,8 @@ func _ready():
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
 
-	hud.add_child(health_bar)
+	hud.theme = hud_theme
+	hud_grid.add_child(health_bar)
 
 	get_parent().get_node("EasyStageScene").add_child(hud)
 
