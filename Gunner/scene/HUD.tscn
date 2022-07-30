@@ -1,9 +1,15 @@
 [gd_scene format=2]
 
-[node name="HUD" type="GridContainer"]
+[node name="HUD" type="PanelContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 33.0
+margin_bottom = 33.0
