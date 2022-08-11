@@ -11,6 +11,7 @@ var hud_scene: PackedScene = preload("res://scene/HUD.tscn")
 var hud: PanelContainer = null
 var hud_grid: GridContainer = null
 var hud_theme = preload("res://Assets/Themes/hud_theme.tres")
+var score_label: Label = Label.new()
 var score = 0
 
 
@@ -37,6 +38,7 @@ func _ready():
 	current_velocity.y = -speed
 
 	hud = hud_scene.instance()
+	hud.rect_size.x = screen_size.size.x - 300
 	hud_grid = hud.get_child(0)
 
 	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -54,7 +56,9 @@ func _ready():
 	health_bar.value = self.health
 
 	hud.theme = hud_theme
+	score_label.text = "Score:\n" + str(score)
 	hud_grid.add_child(health_bar)
+	hud_grid.add_child(score_label)
 
 	get_parent().get_node("EasyStageScene").add_child(hud)
 
@@ -130,3 +134,4 @@ func _physics_process(delta):
 
 func increment_score():
 	score += 1
+	score_label.text = "Score:\n" + str(score)
