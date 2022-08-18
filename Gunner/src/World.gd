@@ -33,8 +33,8 @@ func _physics_process(delta):
 			destroy_enemy_wave(enemy_wave_scene_instance)
 	if is_wave_alive(enemy_wave_scene_instance) == false and game_started:
 #			Move the queue_free code to Enemy_Waves script
-#		if enemy_wave_scene_instance != null:
-#			enemy_wave_scene_instance.queue_free()
+		if enemy_wave_scene_instance != null:
+			enemy_wave_scene_instance.queue_free()
 		new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
 		add_child(enemy_wave_scene_instance)
 
