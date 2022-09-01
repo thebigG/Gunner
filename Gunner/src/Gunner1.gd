@@ -5,7 +5,7 @@ export(PackedScene) var bullet_scene
 var current_velocity = Vector2()
 var screen_size
 var speed = 0
-var health_bar = ProgressBar.new()
+var health_bar = AlignedProgressBar.new()
 var hurt_animation = Tween.new()
 var hud_scene: PackedScene = preload("res://scene/HUD.tscn")
 var hud: PanelContainer = null
@@ -26,13 +26,17 @@ func _ready():
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
 
+	health_bar.alignment = HALIGN_RIGHT
+
 	health_bar.step = self.damage_interval
 
 	screen_size = get_viewport_rect()
 
 	print(health_bar.anchor_right)
 	print(health_bar.anchor_bottom)
-	health_bar.rect_size = Vector2(100, 25)
+#	health_bar.rect_size = Vector2(25, 25)
+
+	health_bar.set_size(Vector2(25, 25))
 
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
