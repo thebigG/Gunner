@@ -1,0 +1,48 @@
+name: "HTML5 build"
+on: push
+
+env:
+  GODOT_VERSION: 3.4.2
+  EXPORT_NAME: Gunner
+
+jobs:
+  export-HTML5:
+    name: HTML5 Export
+    runs-on: ubuntu-latest
+    container:
+      image: thebigg1/godot-ci:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Coding Style
+        run: |
+          gdformat -c Gunner/src
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: HTML5 Build
+        run: |
+          mkdir -v -p build/HTML5
+          cd $EXPORT_NAME
+          godot -v --export "HTML5" ../build/HTML5/$EXPORT_NAME.html
+      - name: zip html build
+        run: |
+          zip build/HTML5/$EXPORT_NAME.zip build/HTML5/*
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: HTML5
+          path: build/HTML5
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          #Cannot use $EXPORT_NAME sadly
+          file: build/HTML5/Gunner.zip
+          asset_name: Gunner-continuous-build-HTML5.zip
+          tag: continuous-build
+          overwrite: true
+          body: "Bleeding edge release for those who like to live on the edge :)"
