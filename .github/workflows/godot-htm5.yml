@@ -46,3 +46,16 @@ jobs:
           tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Configure git to trust the workspace despite the different owner
+        run:
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build/HTML5 # The folder the action should deploy.
+
