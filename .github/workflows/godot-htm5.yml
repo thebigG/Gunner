@@ -31,6 +31,12 @@ jobs:
       - name: zip html build
         run: |
           zip build/HTML5/$EXPORT_NAME.zip build/HTML5/*
+      - name: Wrap inside redbean
+        run: |
+          apt-get install wget
+          wget https://redbean.dev/redbean-demo-2.0.18.com -O redbean.com
+          chmod +x redbean.com
+          zip redbean.com build/HTML5/*
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -43,6 +49,16 @@ jobs:
           #Cannot use $EXPORT_NAME sadly
           file: build/HTML5/Gunner.zip
           asset_name: Gunner-continuous-build-HTML5.zip
+          tag: continuous-build
+          overwrite: true
+          body: "Bleeding edge release for those who like to live on the edge :)"
+      - name: Upload redbean binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          #Cannot use $EXPORT_NAME sadly
+          file: redbean.com
+          asset_name: Gunner-continuous-build-redbean-HTML5.com
           tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
