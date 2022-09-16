@@ -29,13 +29,6 @@ func _physics_process(delta):
 
 func damage_gunner(gunner: HealthBody2D):
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
-		Input.start_joy_vibration(0, 0.5, 0, 1)
-		if gunner.get("hurt_animation").is_active():
-			gunner.get("hurt_animation").stop_all()
-		gunner.get("hurt_animation").interpolate_property(
-			gunner, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
-		)
-		gunner.get("hurt_animation").start()
 		gunner.damage()
 
 
