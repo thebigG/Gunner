@@ -140,6 +140,7 @@ func increment_score():
 	score += 1
 	score_label.text = "Score:\n" + str(score)
 
+
 func damage():
 	Input.start_joy_vibration(0, 0.5, 0, 1)
 	if hurt_animation.is_active():
