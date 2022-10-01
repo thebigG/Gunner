@@ -15,8 +15,7 @@ var score_label: Label = Label.new()
 var score = 0
 var hurt_sprite_frames = SpriteFrames.new()
 var hurt_jet_sprites = AnimatedSprite.new()
-var damaged_jet_texture = load("res://Assets/DamagedJet.png")  # main will contain a PackedScene resource.
-
+var damaged_jet_texture = load("res://Assets/DamagedJet.png") \
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
