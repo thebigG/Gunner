@@ -13,10 +13,17 @@ var hud_grid: GridContainer = null
 var hud_theme = preload("res://Assets/Themes/hud_theme.tres")
 var score_label: Label = Label.new()
 var score = 0
+var hurt_sprite_frames = SpriteFrames.new()
+var hurt_jet_sprites = AnimatedSprite.new()
+var damaged_jet_texture = load("res://Assets/DamagedJet.png")  # main will contain a PackedScene resource.
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hurt_sprite_frames.add_animation("Left")
+	hurt_sprite_frames.add_animation("Right")
+	hurt_sprite_frames.add_frame("Left", damaged_jet_texture, 0)
+	hurt_sprite_frames.add_frame("Right", damaged_jet_texture, 0)
 	self.visible = true
 	add_child(hurt_animation)
 	hurt_animation.interpolate_property(
@@ -31,10 +38,6 @@ func _ready():
 	health_bar.step = self.damage_interval
 
 	screen_size = get_viewport_rect()
-
-	print(health_bar.anchor_right)
-	print(health_bar.anchor_bottom)
-#	health_bar.rect_size = Vector2(25, 25)
 
 	health_bar.set_size(Vector2(25, 25))
 
@@ -78,9 +81,9 @@ func _physics_process(delta):
 	)
 
 	health_bar.value = self.health
-#	match self.state:
-#		HealthBody2D.DEAD:
-#			print("Gunner is dead")
+	match self.state:
+		HealthBody2D.DEAD:
+			print("Gunner is dead")
 
 	if Input.is_action_just_pressed("ui_shoot"):
 		var new_bullet = bullet_scene.instance()
@@ -91,6 +94,9 @@ func _physics_process(delta):
 		$Shoot.play()
 		new_bullet.shoot()
 	$Turn.set_frame(0)
+
+	if self.health <= 0.5:
+		$Turn.set_sprite_frames(hurt_sprite_frames)
 
 	current_velocity.x = 0
 	current_velocity.y = speed * -1
