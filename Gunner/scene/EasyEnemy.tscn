@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Enemy_Private.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy.png" type="Texture2D" id=2]
 [ext_resource path="res://scene/EnemyBullet.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -19,7 +19,7 @@ bullet_scene = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2( 0.121649, 0.187686 )
 texture = ExtResource( 2 )
 
@@ -28,8 +28,8 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2( -0.132432, 0.264865 )
 scale = Vector2( 1.45027, 2.01973 )
 
-[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="viewport_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

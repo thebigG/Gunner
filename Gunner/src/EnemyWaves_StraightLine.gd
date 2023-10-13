@@ -1,5 +1,5 @@
 extends Path2D
-export(PackedScene) var enemy
+@export var enemy: PackedScene
 
 var wave_vecolity: Vector2 = Vector2.ZERO
 var number_of_enemies = 0
@@ -19,7 +19,7 @@ func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offs
 func spawn():
 	var left_bound = 0
 	for i in range(number_of_enemies):
-		var enemy_instance: HealthBody2D = enemy.instance()
+		var enemy_instance: HealthBody2D = enemy.instantiate()
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)
 		enemy_instance.transform.origin.x = left_bound
@@ -38,7 +38,7 @@ func _ready():
 #	TODO: I should make AnimationUtils a singleton
 #	AnimationUtils.new().h_line_pattern(self.curve, Vector2(75, 83), 50)
 #	AnimationUtils.new().rectangle_pattern(self.curve, Vector2(75, 83), 50, 100)
-#	zig_zag_pattern(Vector2(75, 83), 50, 5)
+#	AnimationUtils.new().zig_zag_pattern(Vector2(75, 83), 50, 5)
 	anim_utils.zig_zag_pattern(
 		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
 	)
@@ -49,7 +49,7 @@ func is_wave_alive():
 
 
 func _physics_process(delta):
-	$EnemyPath.offset += offset
+	$EnemyPath.progress += offset
 	self.position.y += wave_vecolity.y
 
 

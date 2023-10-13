@@ -1,44 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://div53v6jh7mjn"]
 
-[ext_resource path="res://scene/EasyStageScene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Boom.wav" type="AudioStream" id=2]
-[ext_resource path="res://src/World.gd" type="Script" id=3]
-[ext_resource path="res://src/PuaseMenu.gd" type="Script" id=4]
-[ext_resource path="res://scene/Gunner1.tscn" type="PackedScene" id=5]
+[ext_resource type="PackedScene" uid="uid://7qk1iejmi8pk" path="res://scene/EasyStageScene.tscn" id="1"]
+[ext_resource type="AudioStream" uid="uid://bfyeri8yg4lsn" path="res://Assets/Boom.wav" id="2"]
+[ext_resource type="Script" path="res://src/World.gd" id="3"]
+[ext_resource type="Script" path="res://src/PuaseMenu.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://b0448q6b760c7" path="res://scene/Gunner1.tscn" id="5"]
 
-[node name="Game" type="Node2D" groups=["World"]]
-pause_mode = 1
-position = Vector2( 2, 4.68179 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_vertical_guides_": [ 80.0 ]
-}
+[node name="Game" type="Node2D" groups=["World3D"]]
+process_mode = 1
+position = Vector2(2, 4.68179)
+script = ExtResource("3")
 
-[node name="Gunner1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 232, 0 )
+[node name="Gunner1" parent="." instance=ExtResource("5")]
+position = Vector2(232, 0)
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource("2")
 
-[node name="EasyStageScene" parent="." instance=ExtResource( 1 )]
-pause_mode = 0
+[node name="EasyStageScene" parent="." instance=ExtResource("1")]
+process_mode = 0
 
-[node name="PauseMenu" type="PopupDialog" parent="."]
-pause_mode = 2
-margin_left = 200.0
-margin_right = 256.0
-margin_bottom = 40.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PauseMenu" type="Popup" parent="."]
+process_mode = 2
+script = ExtResource("4")
 
 [node name="ResumeButton" type="Button" parent="PauseMenu"]
-pause_mode = 2
-margin_right = 51.0
-margin_bottom = 20.0
+process_mode = 2
+offset_right = 51.0
+offset_bottom = 20.0
 text = "Pause"
-__meta__ = {
-"_edit_use_anchors_": false
-}

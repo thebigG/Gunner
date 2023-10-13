@@ -1,18 +1,18 @@
 extends HealthBody2D
 
-export(PackedScene) var bullet_scene
+@export var bullet_scene: PackedScene
 
 var shoot_bullet_timer: Timer = Timer.new()
 
 
-#var bullet: RigidBody2D = bullet_scene.instance()
+#var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Area2D.connect("body_entered", self, "damage_gunner")
+	$Area2D.connect("body_entered",Callable(self,"damage_gunner"))
 	print("enemy ready")
 	shoot_bullet_timer.wait_time = 1
-	shoot_bullet_timer.connect("timeout", self, "shoot_gunner")
-	shoot_bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+	shoot_bullet_timer.connect("timeout",Callable(self,"shoot_gunner"))
+	#shoot_bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
 	shoot_bullet_timer.start(2)
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
@@ -23,7 +23,7 @@ func _physics_process(delta):
 	match self.state:
 		HealthBody2D.DEAD:
 			queue_free()
-			var boom = get_tree().get_nodes_in_group("World")[0].get_node("Boom")
+			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
 			boom.play()
 
 
@@ -37,7 +37,7 @@ func _exit_tree():
 
 
 func shoot_gunner():
-	var bullet = bullet_scene.instance()
+	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.shoot(Vector2(0, 500))
 

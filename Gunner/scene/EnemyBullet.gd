@@ -7,7 +7,7 @@ func shoot(velocity):
 
 
 func _ready():
-	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	$Area2D.connect("body_entered",Callable(self,"_on_Area2D_body_entered"))
 
 
 func configure(new_target_group: String):
