@@ -1,17 +1,11 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://b8iw27i6bud7s"]
 
 [node name="HUD" type="PanelContainer"]
 offset_right = 80.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 73.0
-offset_bottom = 33.0
+layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
