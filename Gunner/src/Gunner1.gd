@@ -84,6 +84,7 @@ func _physics_process(delta):
 			print("Gunner is dead")
 
 	if Input.is_action_just_pressed("ui_shoot"):
+		print("Shoot");
 		var new_bullet = bullet_scene.instantiate()
 #		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccyebf2cnk4tk" path="res://Assets/Jet-tilted-right.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dnt4iivgp51s8" path="res://Assets/Jet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://b1o65piymuklw" path="res://Assets/Jet_tilted_left.png" id="4"]
-[ext_resource type="PackedScene" path="res://scene/Bullet.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://daowc4rxs6f0r" path="res://scene/Bullet.tscn" id="5"]
 [ext_resource type="AudioStream" uid="uid://cwxubnvu2h1jl" path="res://Assets/Shoot.wav" id="6"]
 
 [sub_resource type="SpriteFrames" id="1"]
