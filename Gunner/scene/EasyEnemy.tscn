@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/Enemy_Private.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b36rf0ukb4b67" path="res://Assets/Enemy.png" id="2"]
-[ext_resource type="PackedScene" path="res://scene/EnemyBullet.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cokvvlqerget" path="res://scene/EnemyBullet.tscn" id="3"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 

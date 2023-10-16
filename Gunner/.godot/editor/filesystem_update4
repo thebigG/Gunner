@@ -1,3 +1,4 @@
+res://scene/Bullet.tscn
 res://scene/World.tscn
 res://scene/Gunner1.tscn
 res://scene/EasyStageScene.tscn
@@ -5,5 +6,4 @@ res://scene/EasyStage.tscn
 res://scene/EnemyWaves.tscn
 res://scene/HUD.tscn
 res://scene/EasyEnemy.tscn
-res://scene/Bullet.tscn
-res://src/Gunner1.gd
+res://scene/EnemyBullet.tscn
