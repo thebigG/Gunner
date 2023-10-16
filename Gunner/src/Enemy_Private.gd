@@ -11,9 +11,10 @@ func _ready():
 	$Area2D.connect("body_entered",Callable(self,"damage_gunner"))
 	print("enemy ready")
 	shoot_bullet_timer.wait_time = 1
-	shoot_bullet_timer.connect("timeout",Callable(self,"shoot_gunner"))
-	#shoot_bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
-	shoot_bullet_timer.start(2)
+	shoot_bullet_timer.timeout.connect(Callable(self,"shoot_gunner"))
+#	shoot_bullet_timer.connect("timeout",Callable(self,"shoot_gunner"))
+#	shoot_bullet_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+#	shoot_bullet_timer.start(2)
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	add_child(shoot_bullet_timer)
@@ -37,6 +38,7 @@ func _exit_tree():
 
 
 func shoot_gunner():
+	print("Shoot Gunner")
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.shoot(Vector2(0, 500))
