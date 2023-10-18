@@ -99,16 +99,16 @@ func _physics_process(delta):
 
 	current_velocity.x = 0
 	current_velocity.y = speed * -1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		current_velocity.y = (speed + 10) * (-1)
 		print(current_velocity.y)
 
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		current_velocity.y = speed / 2
 #
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		$Turn.set_animation("Right")
 		$Turn.play()
 		$Turn.set_frame(1)
@@ -120,7 +120,8 @@ func _physics_process(delta):
 			$Turn.stop()
 			$Turn.set_frame(0)
 
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
+		print("ui_left")
 		$Turn.set_animation("Left")
 		$Turn.play()
 		$Turn.set_frame(1)
