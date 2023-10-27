@@ -56,6 +56,8 @@ func _ready():
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		)
 	)
+	
+	hud.position = self.position
 
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
@@ -69,8 +71,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	#TODO:Need to find a way to center(relative to window size) the hud and remove
+	#these hard-coded values
 	hud.position = Vector2(
-		screen_size.size.x - 600,
+		screen_size.size.x - 1200,
 		clamp(
 			hud.position.y,
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
