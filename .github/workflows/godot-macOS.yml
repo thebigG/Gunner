@@ -2,7 +2,7 @@ name: "macOS build"
 on: push
 
 env:
-  GODOT_VERSION: 3.4.2
+  GODOT_VERSION: 4.1
   EXPORT_NAME: Gunner
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
         run: |
           mkdir -v -p build/mac
           cd $EXPORT_NAME
-          godot -v --export "Mac OSX" ../build/mac/$EXPORT_NAME.zip
+          godot --headless -v --export-release "Mac OSX" ../build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
