@@ -10,7 +10,7 @@ jobs:
     name: Mac Export
     runs-on: ubuntu-latest
     container:
-      image: thebigg1/godot-ci:latest
+      image: thebigg1/godot-ci:v4.1.stable.official_970459615
     steps:
       - name: Checkout
         uses: actions/checkout@v2
