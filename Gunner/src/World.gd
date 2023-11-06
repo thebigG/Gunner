@@ -44,7 +44,7 @@ func _ready():
 #	process_mode = Node.PROCESS_MODE_ALWAYS
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
-	self.connect("start_game_signal",Callable($EasyStageScene/ParallaxDriver,"start_game"))
+	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
 #	$EasyStageScene/SoundTrack.play()
 	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)

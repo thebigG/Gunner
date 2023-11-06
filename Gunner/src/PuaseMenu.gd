@@ -5,7 +5,7 @@ extends Popup
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	$ResumeButton.process_mode = Node.PROCESS_MODE_ALWAYS
-	$ResumeButton.connect("pressed",Callable(self,"unpause"))
+	$ResumeButton.connect("pressed", Callable(self, "unpause"))
 
 
 func _unhandled_input(input: InputEvent):
@@ -13,7 +13,13 @@ func _unhandled_input(input: InputEvent):
 #		self.position.y = get_parent().get_node("Gunner1").position.y
 		var driver_pos = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		var middle_pos = (
-			get_parent().get_node("EasyStageScene/EasyStage/ParallaxLayer/Background").get_viewport_rect().size.y
+			(
+				get_parent()
+				. get_node("EasyStageScene/EasyStage/ParallaxLayer/Background")
+				. get_viewport_rect()
+				. size
+				. y
+			)
 			/ 2
 		)
 

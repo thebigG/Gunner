@@ -26,7 +26,7 @@ func _ready():
 	hurt_sprite_frames.add_frame("Right", damaged_jet_texture, 0)
 	self.visible = true
 #	add_child(hurt_animation)
- 
+
 	self.damage_interval = 0.10
 	health_bar.max_value = self.MAX_HEALTH
 	health_bar.min_value = self.ZERO_HEALTH
@@ -56,7 +56,7 @@ func _ready():
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		)
 	)
-	
+
 	hud.position = self.position
 
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
@@ -88,11 +88,11 @@ func _physics_process(delta):
 			print("Gunner is dead")
 
 	if Input.is_action_just_pressed("ui_shoot"):
-		print("Shoot");
+		print("Shoot")
 		var new_bullet = bullet_scene.instantiate()
 #		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
-		new_bullet.connect("hit_signal",Callable(self,"increment_score"))
+		new_bullet.connect("hit_signal", Callable(self, "increment_score"))
 		add_child(new_bullet)
 		$Shoot.play()
 		new_bullet.shoot()
@@ -149,7 +149,6 @@ func _physics_process(delta):
 func increment_score():
 	score += 1
 	score_label.text = "Score:\n" + str(score)
-
 
 #func damage():
 #	Input.start_joy_vibration(0, 0.5, 0, 1)
