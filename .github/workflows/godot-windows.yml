@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -v -p build/windows
           cd $EXPORT_NAME
-          godot --headless -v --export-release "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot --headless -v --export-debug "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
