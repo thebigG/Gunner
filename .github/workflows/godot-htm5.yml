@@ -2,7 +2,7 @@ name: "HTML5 build"
 on: push
 
 env:
-  GODOT_VERSION: 3.4.2
+  GODOT_VERSION: 4.1
   EXPORT_NAME: Gunner
 
 jobs:
