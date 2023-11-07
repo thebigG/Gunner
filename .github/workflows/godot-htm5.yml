@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -v -p build/HTML5
           cd $EXPORT_NAME
-          godot --headless -v --export-release "HTML5" ../build/HTML5/$EXPORT_NAME.html
+          godot --headless -v --export-debug "HTML5" ../build/HTML5/$EXPORT_NAME.html
       - name: zip html build
         run: |
           zip build/HTML5/$EXPORT_NAME.zip build/HTML5/*
