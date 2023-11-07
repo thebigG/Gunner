@@ -28,13 +28,13 @@ jobs:
           mkdir -v -p build/HTML5
           cd $EXPORT_NAME
           godot --headless -v --export-debug "HTML5" ../build/HTML5/$EXPORT_NAME.html
-      - name: zip html build
-        run: |
-          zip build/HTML5/$EXPORT_NAME.zip build/HTML5/*
-      - name: Wrap inside redbean
-        run: |
-          chmod a+x /root/redbean.com
-          zip /root/redbean.com build/HTML5/*
+      # - name: zip html build
+      #   run: |
+      #     zip build/HTML5/$EXPORT_NAME.zip build/HTML5/*
+      # - name: Wrap inside redbean
+      #   run: |
+      #     chmod a+x /root/redbean.com
+      #     zip /root/redbean.com build/HTML5/*
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -45,7 +45,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
-          file: build/HTML5/Gunner.zip
+          file: build/HTML5/libgdexample.javascript.template_debug.wasm32.wasm
           asset_name: Gunner-continuous-build-HTML5.zip
           tag: continuous-build
           overwrite: true
