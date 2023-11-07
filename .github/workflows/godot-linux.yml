@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -v -p build/linux
           cd $EXPORT_NAME
-          godot --headless -v --export-release "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+          godot --headless -v --export-debug "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
