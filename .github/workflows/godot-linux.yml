@@ -33,9 +33,9 @@ jobs:
         with:
           name: linux
           path: build/linux
-       - name: zip build
-         run: |
-          zip build/linux/$EXPORT_NAME.zip build/linux/*
+      - name: zip build
+        run: |
+        zip build/linux/$EXPORT_NAME.zip build/linux/*
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
