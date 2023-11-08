@@ -33,13 +33,16 @@ jobs:
         with:
           name: linux
           path: build/linux
+       - name: zip build
+         run: |
+         zip build/linux/$EXPORT_NAME.zip build/linux/*
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           #Cannot use $EXPORT_NAME sadly
-          file: build/linux/Gunner.x86_64
-          asset_name: Gunner-continuous-build-linux.x86_64
+          file: build/linux/Gunner.zip
+          asset_name: Gunner-continuous-build-linux.zip
           tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
