@@ -4,7 +4,7 @@ name: "windows build"
 on: push
 
 env:
-  GODOT_VERSION: 3.4.2
+  GODOT_VERSION: 4.1
   EXPORT_NAME: Gunner
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     name: Windows Export
     runs-on: ubuntu-latest
     container:
-      image: thebigg1/godot-ci:latest
+      image: thebigg1/godot-ci:v4.1.stable.official_970459615
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,13 +26,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup
         run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          mkdir -v -p ~/.local/share/godot/export_templates
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
           cd $EXPORT_NAME
-          godot -v --export "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot --headless -v --export-debug "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -55,7 +55,7 @@ jobs:
 #    name: Web Export
 #    runs-on: ubuntu-latest
 #    container:
-#      image: thebigg1/godot-ci:latest
+#      image: thebigg1/godot-ci:v4.1.stable.official_970459615
 #    steps:
 #      - name: Checkout
 #        uses: actions/checkout@v2
@@ -69,7 +69,7 @@ jobs:
 #        run: |
 #          mkdir -v -p build/web
 #          cd $EXPORT_NAME
-#          godot -v --export "HTML5" ../build/web/index.html
+#          godot --headless -v --export-release "HTML5" ../build/web/index.html
 #      - name: Upload Artifact
 #        uses: actions/upload-artifact@v1
 #        with:

@@ -1,5 +1,5 @@
 extends RigidBody2D
-export var velocity = Vector2(0, -100)
+@export var velocity = Vector2(0, -100)
 var target_group: String = ""
 
 signal hit_signal
@@ -10,7 +10,7 @@ func shoot():
 
 
 func _ready():
-	$Area2D.connect("body_entered", self, "_on_Area2D_body_entered")
+	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
 
 
 func configure(new_target_group: String):

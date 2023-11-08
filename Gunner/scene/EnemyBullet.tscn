@@ -1,35 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cokvvlqerget"]
 
-[ext_resource path="res://scene/EnemyBullet.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://scene/EnemyBullet.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://84gxrpxsbiy5" path="res://Assets/EnemyBullet.png" id="2_l1fbs"]
 
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/EnemyBullet.png-a1a037a48ec1c95215efe49254f0716c.stex"
-
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id="1"]
 radius = 3.2851
 height = 16.5587
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id="2"]
 radius = 3.5957
 height = 15.1429
 
 [node name="EnemyBullet" type="RigidBody2D"]
-position = Vector2( 34.6482, -23.2322 )
+position = Vector2(34.6482, -23.2322)
 gravity_scale = 0.0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 21.3721, -2.56384 )
-scale = Vector2( 0.0043493, 0.0138695 )
-texture = SubResource( 3 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21.3721, -2.56384)
+scale = Vector2(0.0043493, 0.0138695)
+texture = ExtResource("2_l1fbs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 21.5667, -3.53554 )
-shape = SubResource( 1 )
+position = Vector2(21.5667, -3.53554)
+shape = SubResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 20.5061, -6.01041 )
-shape = SubResource( 2 )
+position = Vector2(20.5061, -6.01041)
+shape = SubResource("2")

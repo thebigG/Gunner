@@ -1,8 +1,8 @@
 extends Node2D
 
-#export(PackedScene) var easy_enemy_scene
+#export var easy_enemy_scene: PackedScene
 enum ENEMY_TYPE { EASY }
-export(int) var wave_size = 5
+@export var wave_size: int = 5
 var current_wave = 0
 var counter = 0
 
@@ -41,15 +41,15 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	pause_mode = Node.PAUSE_MODE_PROCESS
+#	process_mode = Node.PROCESS_MODE_ALWAYS
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
-	self.connect("start_game_signal", $EasyStageScene/ParallaxDriver, "start_game")
+	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
 #	$EasyStageScene/SoundTrack.play()
-	help_label.rect_position.y -= 50
+	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)
 	for child in get_children():
-		child.pause_mode = Node.PAUSE_MODE_STOP
+		child.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 func _unhandled_input(input: InputEvent):
@@ -64,7 +64,7 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 	counter += 1
 	match type:
 		ENEMY_TYPE.EASY:
-			enemy_wave_scene_instance = enemy_wave_scene.instance()
+			enemy_wave_scene_instance = enemy_wave_scene.instantiate()
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x / 2
 
