@@ -84,7 +84,8 @@ func _physics_process(delta):
 
 	health_bar.value = self.health
 	match self.state:
-		HealthBody2D.DEAD:
+#		HealthBody2D.DEAD
+		2:
 			print("Gunner is dead")
 
 	if Input.is_action_just_pressed("ui_shoot"):

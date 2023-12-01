@@ -22,7 +22,8 @@ func _ready():
 
 func _physics_process(delta):
 	match self.state:
-		HealthBody2D.DEAD:
+#		HealthBody2D.DEAD
+		2:
 			queue_free()
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
 			boom.play()
