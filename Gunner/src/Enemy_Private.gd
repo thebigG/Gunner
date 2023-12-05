@@ -19,10 +19,14 @@ func _ready():
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	add_child(shoot_bullet_timer)
+
+
 #	print_func(self)
+
 
 func print_func(arg: Node):
 	print("Arg:" + str(arg))
+
 
 func _physics_process(delta):
 	match self.state:
@@ -32,13 +36,10 @@ func _physics_process(delta):
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
 			boom.play()
 
+
 # When using HealthBody2D as type hint, I get the following error:
 # Error calling from signal 'body_entered' to callable: 'HealthBody2D(Enemy_Private.gd)::damage_gunner': Cannot convert argument 1 from Object to Object.
-# at: emit_signalp (core/object/object.cpp:1082)
-#func damage_gunner(gunner: HealthBody2D):
-#	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
-#		gunner.damage()
-
+#That error is by design:https://github.com/thebigG/Gunner/issues/19
 func damage_gunner(gunner: Node2D):
 	print("damage_gunner")
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
