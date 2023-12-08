@@ -8,7 +8,6 @@ var shoot_bullet_timer: Timer = Timer.new()
 #var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
 	print("enemy ready")
 	shoot_bullet_timer.wait_time = 1
@@ -18,6 +17,7 @@ func _ready():
 #	shoot_bullet_timer.start(2)
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
+	self.damage_interval = 1.0
 	add_child(shoot_bullet_timer)
 
 
