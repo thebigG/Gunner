@@ -37,14 +37,16 @@ func _ready():
 
 	screen_size = get_viewport_rect()
 
-	health_bar.set_size(Vector2(25, 25))
+	health_bar.set_size(Vector2(10, 10))
 
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 	current_velocity.y = -speed
 
 	hud = hud_scene.instantiate()
 	hud.size.x = screen_size.size.x - 300
+	hud.size.x = 300
 	hud_grid = hud.get_child(0)
+	hud_grid.columns = 2
 
 	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
@@ -64,8 +66,8 @@ func _ready():
 
 	hud.theme = hud_theme
 	score_label.text = "Score:\n" + str(score)
-	hud_grid.add_child(health_bar)
 	hud_grid.add_child(score_label)
+	hud_grid.add_child(health_bar)
 
 	get_parent().get_node("EasyStageScene").add_child(hud)
 
