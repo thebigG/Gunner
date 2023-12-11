@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://b0yf2rk1x2yec" path="res://Assets/Gunner_SoundTrack_V0.1.wav" id="1"]
 [ext_resource type="PackedScene" uid="uid://hqirek2751fi" path="res://scene/EasyStage.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scene/ParallaxDriverScene.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dgw8fb26gnp0h" path="res://scene/ParallaxDriverScene.tscn" id="3"]
 
 [node name="EasyStageScene" type="Node"]
 process_mode = 2
