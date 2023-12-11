@@ -59,7 +59,7 @@ func _ready():
 		)
 	)
 
-	hud.position = self.position
+#	hud.position = self.position
 
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
@@ -73,6 +73,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	screen_size = get_viewport_rect()
+	print(screen_size)
 	#TODO:Need to find a way to center(relative to window size) the hud and remove
 	#these hard-coded values
 	hud.position = Vector2(
@@ -140,7 +142,16 @@ func _physics_process(delta):
 
 	#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_velocity)
-	position.x = clamp(position.x, 0, screen_size.size.x - 100)
+	print(
+		"size of frame:" + str($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.02)
+	)
+#	position.x = clamp(position.x, 0, screen_size.size.x - ($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.1))
+
+	position.x = clamp(position.x, 0, screen_size.size.x - 0)
+
+	print("screen_size.size.x:" + str(screen_size.size.x))
+
+	print("position.x:" + str(position.x))
 
 	position.y = clamp(
 		position.y,
