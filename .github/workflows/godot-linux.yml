@@ -2,7 +2,7 @@ name: "linux build"
 on: push
 
 env:
-  GODOT_VERSION: 4.1
+  GODOT_VERSION: 4.1.1
   EXPORT_NAME: Gunner
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-latest
     container:
-      image: thebigg1/godot-ci:v4.1.stable.official_970459615
+      image: thebigg1/godot-ci:v4.1.1.stable.official_bd6af8e0e
     steps:
       - name: Checkout
         uses: actions/checkout@v2

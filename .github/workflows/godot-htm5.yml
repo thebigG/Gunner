@@ -1,9 +1,9 @@
-# name: "HTML5 build"
-# on: push
+name: "HTML5 build"
+on: push
 
-# env:
-#   GODOT_VERSION: 4.1
-#   EXPORT_NAME: Gunner
+env:
+  GODOT_VERSION: 4.1.1
+  EXPORT_NAME: Gunner
 
 # jobs:
 #   export-HTML5:
