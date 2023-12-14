@@ -23,6 +23,7 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=500
 window/size/viewport_height=790
+window/size/resizable=false
 window/size/width=600
 window/size/height=850
 

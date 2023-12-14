@@ -59,13 +59,11 @@ func _ready():
 		)
 	)
 
-#	hud.position = self.position
-
 	health_bar.theme = load("res://Assets/Themes/health_bar_theme.tres")
 	health_bar.value = self.health
 
 	hud.theme = hud_theme
-	score_label.text = "Score:\n" + str(score)
+	score_label.text = "Score:" + str(score)
 	hud_grid.add_child(score_label)
 	hud_grid.add_child(health_bar)
 
@@ -164,7 +162,7 @@ func _physics_process(delta):
 
 func increment_score():
 	score += 1
-	score_label.text = "Score:\n" + str(score)
+	score_label.text = "Score:" + str(score)
 
 #func damage():
 #	Input.start_joy_vibration(0, 0.5, 0, 1)
