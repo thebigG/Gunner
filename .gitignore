@@ -3,3 +3,6 @@
 .mono/
 *Releases*
 *log*
+*build*
+*shader_cache*
+*editor*
