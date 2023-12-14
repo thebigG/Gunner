@@ -51,7 +51,7 @@ func _ready():
 	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	hud.position = Vector2(
-		screen_size.size.x - 600,
+		screen_size.size.x / 2 - (hud.get_size().x / 2),
 		clamp(
 			position.y,
 			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
@@ -77,14 +77,14 @@ func _physics_process(delta):
 	print(screen_size)
 	#TODO:Need to find a way to center(relative to window size) the hud and remove
 	#these hard-coded values
-	hud.position = Vector2(
-		screen_size.size.x - 1200,
-		clamp(
-			hud.position.y,
-			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
-		)
-	)
+#	hud.position = Vector2(
+#		screen_size.size.x - 1200,
+#		clamp(
+#			hud.position.y,
+#			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+#			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+#		)
+#	)
 
 	health_bar.value = self.health
 	match self.state:
@@ -149,7 +149,7 @@ func _physics_process(delta):
 
 	position.x = clamp(position.x, 0, screen_size.size.x - 0)
 
-	print("screen_size.size.x:" + str(screen_size.size.x))
+	print("screen_size.size.x:" + str(screen_size.size))
 
 	print("position.x:" + str(position.x))
 
@@ -158,6 +158,8 @@ func _physics_process(delta):
 		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
 		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
+
+	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
 
 
 func increment_score():
