@@ -16,6 +16,7 @@ var score = 0
 var hurt_sprite_frames = SpriteFrames.new()
 var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet.png")
+var time = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -72,17 +73,7 @@ func _ready():
 
 func _physics_process(delta):
 	screen_size = get_viewport_rect()
-	print(screen_size)
-	#TODO:Need to find a way to center(relative to window size) the hud and remove
-	#these hard-coded values
-#	hud.position = Vector2(
-#		screen_size.size.x - 1200,
-#		clamp(
-#			hud.position.y,
-#			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-#			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
-#		)
-#	)
+	time += fmod(delta, 0.0166666666667)
 
 	health_bar.value = self.health
 	match self.state:
@@ -90,15 +81,20 @@ func _physics_process(delta):
 		2:
 			print("Gunner is dead")
 
-	if Input.is_action_just_pressed("ui_shoot"):
-		print("Shoot")
-		var new_bullet = bullet_scene.instantiate()
-#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
+	if Input.is_action_pressed("ui_shoot"):
+		#Two bullets per second. Make this tunable.
+		#The intervals of time should be expressed as functions of fps, etc
+		if time >= 0.0166666666667 * 30:
+			time = 0
+			print("Shoot")
+			var new_bullet = bullet_scene.instantiate()
+			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
-		new_bullet.connect("hit_signal", Callable(self, "increment_score"))
-		add_child(new_bullet)
-		$Shoot.play()
-		new_bullet.shoot()
+			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
+			add_child(new_bullet)
+			$Shoot.play()
+			new_bullet.shoot()
+
 	$Turn.set_frame(0)
 
 	if self.health <= 0.5:
@@ -140,16 +136,16 @@ func _physics_process(delta):
 
 	#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_velocity)
-	print(
-		"size of frame:" + str($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.02)
-	)
+#	print(
+#		"size of frame:" + str($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.02)
+#	)
 #	position.x = clamp(position.x, 0, screen_size.size.x - ($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.1))
 
 	position.x = clamp(position.x, 0, screen_size.size.x - 0)
 
-	print("screen_size.size.x:" + str(screen_size.size))
-
-	print("position.x:" + str(position.x))
+#	print("screen_size.size.x:" + str(screen_size.size))
+#
+#	print("position.x:" + str(position.x))
 
 	position.y = clamp(
 		position.y,
@@ -158,6 +154,9 @@ func _physics_process(delta):
 	)
 
 	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
+
+
+#	print("delta:" + str(delta))
 
 
 func increment_score():
