@@ -39,6 +39,7 @@ animations = [{
 [node name="Gunner1" type="HealthBody2D" groups=["Gunner"]]
 script = ExtResource("1")
 bullet_scene = ExtResource("5")
+desired_shooting_rate = 7.0
 
 [node name="Turn" type="AnimatedSprite2D" parent="."]
 position = Vector2(8.40897, 0.840897)

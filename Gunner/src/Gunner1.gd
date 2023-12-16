@@ -2,6 +2,7 @@ extends HealthBody2D
 
 @export var bullet_scene: PackedScene
 
+@export var desired_shooting_rate = 10.00
 var current_velocity = Vector2()
 var screen_size
 var speed = 0
@@ -81,7 +82,6 @@ func _physics_process(delta):
 			print("Gunner is dead")
 
 	if Input.is_action_pressed("ui_shoot"):
-		var desired_shooting_rate = 10.00
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
 		if time >= delta * calculated_rate_k:
 			time = 0

@@ -42,22 +42,27 @@ func _physics_process(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	process_mode = Node.PROCESS_MODE_ALWAYS
+	self.get_viewport().transient = false
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
 #	$EasyStageScene/SoundTrack.play()
 	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)
-	for child in get_children():
-		child.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+
+#	for child in get_children():
+#		child.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 func _unhandled_input(input: InputEvent):
-	if input.is_action("ui_accept") and not (game_started):
+	if input.is_action("ui_shoot") and not (game_started):
 		self.emit_signal("start_game_signal")
 		game_started = true
-	if input.is_action("ui_pause"):
-		get_tree().paused = false if get_tree().paused else true
+
+
+#	if input.is_action_pressed("ui_pause"):
+#		$PauseMenu.popup_centered_ratio(0.5)
 
 
 func new_enemy_wave(number_of_enemies, type) -> void:
