@@ -20,12 +20,10 @@ stream = ExtResource("2")
 [node name="EasyStageScene" parent="." instance=ExtResource("1")]
 process_mode = 0
 
-[node name="PauseMenu" type="Popup" parent="."]
-process_mode = 2
+[node name="PauseMenu" type="PanelContainer" parent="."]
+process_mode = 3
 script = ExtResource("4")
 
 [node name="ResumeButton" type="Button" parent="PauseMenu"]
-process_mode = 2
-offset_right = 51.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Pause"
