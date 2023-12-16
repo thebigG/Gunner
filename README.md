@@ -12,6 +12,6 @@ Though the game will probably provide the best experience via the desktop native
 
 ## Building
 
-To build the game from source(or "export" it from godot), you must use my own [custom version of godot](https://github.com/thebigG/godot-3.x-modules).
+To build the game from source(or "export" it from godot), you must use my own [custom godot modules ](https://github.com/thebigG/rsty_physics).
 
 
