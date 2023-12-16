@@ -135,16 +135,8 @@ func _physics_process(delta):
 
 	#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_velocity)
-#	print(
-#		"size of frame:" + str($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.02)
-#	)
-#	position.x = clamp(position.x, 0, screen_size.size.x - ($Turn.sprite_frames.get_frame_texture("Left", 0).get_size().x * 0.1))
 
 	position.x = clamp(position.x, 0, screen_size.size.x - 0)
-
-#	print("screen_size.size.x:" + str(screen_size.size))
-#
-#	print("position.x:" + str(position.x))
 
 	position.y = clamp(
 		position.y,
@@ -153,9 +145,6 @@ func _physics_process(delta):
 	)
 
 	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
-
-
-#	print("delta:" + str(delta))
 
 
 func increment_score():
