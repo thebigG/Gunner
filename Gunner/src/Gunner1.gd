@@ -73,8 +73,7 @@ func _ready():
 
 func _physics_process(delta):
 	screen_size = get_viewport_rect()
-	time += fmod(delta, 0.0166666666667)
-
+	time += delta
 	health_bar.value = self.health
 	match self.state:
 #		HealthBody2D.DEAD
@@ -82,9 +81,9 @@ func _physics_process(delta):
 			print("Gunner is dead")
 
 	if Input.is_action_pressed("ui_shoot"):
-		#Two bullets per second. Make this tunable.
-		#The intervals of time should be expressed as functions of fps, etc
-		if time >= 0.0166666666667 * 30:
+		var desired_shooting_rate = 10.00
+		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
+		if time >= delta * calculated_rate_k:
 			time = 0
 			print("Shoot")
 			var new_bullet = bullet_scene.instantiate()
