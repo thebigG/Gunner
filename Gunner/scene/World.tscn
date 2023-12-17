@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://div53v6jh7mjn"]
+[gd_scene load_steps=7 format=3 uid="uid://div53v6jh7mjn"]
 
 [ext_resource type="PackedScene" uid="uid://7qk1iejmi8pk" path="res://scene/EasyStageScene.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://bfyeri8yg4lsn" path="res://Assets/Boom.wav" id="2"]
 [ext_resource type="Script" path="res://src/World.gd" id="3"]
 [ext_resource type="Script" path="res://src/PuaseMenu.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://b0448q6b760c7" path="res://scene/Gunner1.tscn" id="5"]
+[ext_resource type="Script" path="res://src/TryAgainMenu.gd" id="6_3ney2"]
 
 [node name="Game" type="Node2D" groups=["World3D"]]
 process_mode = 1
@@ -27,3 +28,12 @@ script = ExtResource("4")
 [node name="ResumeButton" type="Button" parent="PauseMenu"]
 layout_mode = 2
 text = "Pause"
+
+[node name="GameOver" type="PanelContainer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("6_3ney2")
+
+[node name="TryAGainButton" type="Button" parent="GameOver"]
+layout_mode = 2
+text = "Try Again"
