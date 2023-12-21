@@ -8,7 +8,6 @@ func _ready():
 
 
 func _unhandled_input(input: InputEvent):
-#	print()
 	if input.is_action_pressed("ui_pause"):
 		toggle_pause()
 

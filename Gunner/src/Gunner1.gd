@@ -146,6 +146,12 @@ func _physics_process(delta):
 		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
 
+	position.y = clamp(
+		position.y,
+		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - screen_size.size.y,
+		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+	)
+
 	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
 
 
