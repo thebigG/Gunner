@@ -33,6 +33,9 @@ jobs:
           mkdir -v -p build/windows
           cd $EXPORT_NAME
           godot --headless -v --export-debug "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+      - name: zip build
+        run: |
+         zip build/windows/$EXPORT_NAME.zip build/windows/*
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -42,8 +45,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/windows/Gunner.exe
-          asset_name: Gunner-continuous-build-windows.exe
+          file: build/windows/Gunner.zip
+          asset_name: Gunner-continuous-build-windows.zip
           tag: continuous-build
           overwrite: true
           body: "Bleeding edge release for those who like to live on the edge :)"
