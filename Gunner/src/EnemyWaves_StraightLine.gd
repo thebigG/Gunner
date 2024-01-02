@@ -22,6 +22,7 @@ func spawn():
 		var enemy_instance: HealthBody2D = enemy.instantiate()
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)
+		enemy_instance.configure(10.0)
 		enemy_instance.transform.origin.x = left_bound
 		left_bound += X_GAP
 

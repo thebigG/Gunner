@@ -62,10 +62,6 @@ func _unhandled_input(input: InputEvent):
 		game_started = true
 
 
-#	if input.is_action_pressed("ui_pause"):
-#		$PauseMenu.popup_centered_ratio(0.5)
-
-
 func new_enemy_wave(number_of_enemies, type) -> void:
 	counter += 1
 	match type:
