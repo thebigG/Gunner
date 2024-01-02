@@ -3,6 +3,7 @@ extends HealthBody2D
 @export var bullet_scene: PackedScene
 
 var shoot_bullet_timer: Timer = Timer.new()
+var shooting_rate = 1  # Hertz
 
 
 #var bullet: RigidBody2D = bullet_scene.instantiate()
@@ -10,18 +11,12 @@ var shoot_bullet_timer: Timer = Timer.new()
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
 	print("enemy ready")
-	shoot_bullet_timer.wait_time = 1
+	shoot_bullet_timer.wait_time = 1 / shooting_rate
 	shoot_bullet_timer.timeout.connect(Callable(self, "shoot_gunner"))
-#	shoot_bullet_timer.connect("timeout",Callable(self,"shoot_gunner"))
-#	shoot_bullet_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
-#	shoot_bullet_timer.start(2)
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	self.damage_interval = 1.0
 	add_child(shoot_bullet_timer)
-
-
-#	print_func(self)
 
 
 func print_func(arg: Node):
@@ -59,6 +54,12 @@ func shoot_gunner():
 
 func _on_Boom_finished():
 	pass
+
+
+func configure(new_shooting_rate):
+#	shoot_bullet_timer.wait_time = 1.00/new_shooting_rate
+	shoot_bullet_timer.wait_time = 0.2
+	shooting_rate = new_shooting_rate
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
