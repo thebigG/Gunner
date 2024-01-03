@@ -57,8 +57,6 @@ func _on_Boom_finished():
 
 
 func configure(new_shooting_rate):
-#	shoot_bullet_timer.wait_time = 1.00/new_shooting_rate
-	shoot_bullet_timer.wait_time = 0.2
 	shooting_rate = new_shooting_rate
 
 
