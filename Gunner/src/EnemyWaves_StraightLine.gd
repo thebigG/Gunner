@@ -7,13 +7,15 @@ var ORIGIN: Vector2 = Vector2(250, 70)
 var X_GAP = 75
 var offset = 5
 var anim_utils = AnimationUtils.new()
+var shooting_rate = 1
 
 
 # The smaller the path, the faster the enemies traverse the path
-func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int):
+func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int, new_shooting_rate: float):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
 	offset = path_offset
+	shooting_rate = new_shooting_rate
 
 
 func spawn():
@@ -22,7 +24,7 @@ func spawn():
 		var enemy_instance: HealthBody2D = enemy.instantiate()
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)
-		enemy_instance.configure(10.0)
+		enemy_instance.configure(shooting_rate)
 		enemy_instance.transform.origin.x = left_bound
 		left_bound += X_GAP
 
