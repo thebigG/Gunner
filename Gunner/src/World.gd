@@ -70,7 +70,7 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave_scene_instance.configure(Vector2(50, 10), number_of_enemies, 5)
+			enemy_wave_scene_instance.configure(Vector2(50, 10), number_of_enemies, 5, 10)
 			enemy_wave_scene_instance.spawn()
 
 
