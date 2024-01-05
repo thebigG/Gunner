@@ -11,7 +11,12 @@ var shooting_rate = 1
 
 
 # The smaller the path, the faster the enemies traverse the path
-func configure(new_wave_vecolity: Vector2, new_number_of_enemies: int, path_offset: int, new_shooting_rate: float):
+func configure(
+	new_wave_vecolity: Vector2,
+	new_number_of_enemies: int,
+	path_offset: int,
+	new_shooting_rate: float
+):
 	number_of_enemies = new_number_of_enemies
 	wave_vecolity = new_wave_vecolity
 	offset = path_offset

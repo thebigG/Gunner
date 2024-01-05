@@ -24,3 +24,6 @@ func _on_Area2D_body_entered(body):
 #		Play some cool animation
 		body.call("damage")
 		queue_free()
+	elif body.is_in_group("Gunner_Bullet"):
+		body.call("queue_free")
+		queue_free()
