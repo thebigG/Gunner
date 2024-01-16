@@ -8,7 +8,7 @@ var counter = 0
 
 var is_ready: bool = false
 
-var enemy_wave_scene: PackedScene = preload("res://scene/EnemyWaves.tscn")
+var enemy_wave_scene_zig_zag: PackedScene = preload("res://scene/EnemyWaves_ZigZag.tscn")
 var enemy_wave_scene_instance: Path2D = null
 var game_started = false
 signal start_game_signal
@@ -28,7 +28,7 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
-	if enemy_wave_scene_instance != null and is_instance_valid(enemy_wave_scene):
+	if enemy_wave_scene_instance != null and is_instance_valid(enemy_wave_scene_zig_zag):
 		if enemy_wave_scene_instance.position.y > enemy_y_threshold:
 			destroy_enemy_wave(enemy_wave_scene_instance)
 	if is_wave_alive(enemy_wave_scene_instance) == false and game_started:
@@ -66,7 +66,7 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 	counter += 1
 	match type:
 		ENEMY_TYPE.EASY:
-			enemy_wave_scene_instance = enemy_wave_scene.instantiate()
+			enemy_wave_scene_instance = enemy_wave_scene_zig_zag.instantiate()
 			enemy_wave_scene_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_instance.transform.origin.x = get_viewport_rect().position.x / 2
 
