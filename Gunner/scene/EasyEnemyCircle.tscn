@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4ibjyt8woqrj"]
+
+[ext_resource type="Script" path="res://src/Enemy_Private.gd" id="1_1ggpv"]
+[ext_resource type="PackedScene" uid="uid://cokvvlqerget" path="res://scene/EnemyBullet.tscn" id="2_rra00"]
+[ext_resource type="Texture2D" uid="uid://b36rf0ukb4b67" path="res://Assets/Enemy.png" id="3_q5tp8"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(30.25, 39)
+
+[node name="EasyEnemyCircle" type="HealthBody2D" groups=["Enemy"]]
+script = ExtResource("1_1ggpv")
+bullet_scene = ExtResource("2_rra00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.121649, 0.187686)
+texture = ExtResource("3_q5tp8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.132432, 0.264865)
+scale = Vector2(1.45027, 2.01973)
