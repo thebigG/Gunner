@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://q4trypkcs57b"]
+[gd_scene load_steps=4 format=3 uid="uid://ba7o7my0r8dpj"]
 
-[ext_resource type="Script" path="res://src/EnemyWaves_ZigZagLine.gd" id="1_1467r"]
-[ext_resource type="PackedScene" uid="uid://b3ys05bod5o0o" path="res://scene/EasyEnemy.tscn" id="2_s4bkq"]
+[ext_resource type="Script" path="res://src/EnemyWaves_Circle.gd" id="1_ucilq"]
+[ext_resource type="PackedScene" uid="uid://c4ibjyt8woqrj" path="res://scene/EasyEnemy_Circle.tscn" id="2_a12ii"]
 
 [sub_resource type="Curve2D" id="1"]
 _data = {
@@ -9,10 +9,10 @@ _data = {
 }
 point_count = 5
 
-[node name="Enemy_ZigZagLine" type="Path2D"]
+[node name="Enemy_Circle" type="Path2D"]
 curve = SubResource("1")
-script = ExtResource("1_1467r")
-enemy = ExtResource("2_s4bkq")
+script = ExtResource("1_ucilq")
+enemy = ExtResource("2_a12ii")
 
 [node name="EnemyPath" type="PathFollow2D" parent="."]
 position = Vector2(257.319, 82.1228)
