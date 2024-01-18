@@ -32,7 +32,10 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
-	if enemy_wave_scene_zig_zag_instance != null and is_instance_valid(enemy_wave_scene_zig_zag):
+	if (
+		enemy_wave_scene_zig_zag_instance != null
+		and is_instance_valid(enemy_wave_scene_zig_zag_instance)
+	):
 		if enemy_wave_scene_zig_zag_instance.position.y > enemy_y_threshold:
 			destroy_enemy_wave(enemy_wave_scene_zig_zag_instance)
 	if is_wave_alive(enemy_wave_scene_zig_zag_instance) == false and game_started:
@@ -40,10 +43,30 @@ func _physics_process(delta):
 		if enemy_wave_scene_zig_zag_instance != null:
 			enemy_wave_scene_zig_zag_instance.queue_free()
 		new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-		new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE)
+#		new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE)
 		add_child(enemy_wave_scene_zig_zag_instance)
-		add_child(enemy_wave_scene_circle_instance)
 
+
+#		enemy_wave_scene_circle_instance.position = Vector2(75, 83)
+#		add_child(enemy_wave_scene_circle_instance)
+
+
+func manage_node(node):
+	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
+	if node != null and is_instance_valid(node):
+		if node.position.y > enemy_y_threshold:
+			destroy_enemy_wave(node)
+	if is_wave_alive(node) == false and game_started:
+#			Move the queue_free code to Enemy_Waves script
+		if node != null:
+			node.queue_free()
+		new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
+#		new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE)
+		add_child(node)
+
+
+#		enemy_wave_scene_circle_instance.position = Vector2(75, 83)
+#		add_child(enemy_wave_scene_circle_instance)
 
 #	if enemy_wave_scene_circle_instance != null and is_instance_valid(enemy_wave_scene_circle_instance):
 #		print(enemy_wave_scene_circle_instance.position)
@@ -90,7 +113,7 @@ func new_enemy_wave(number_of_enemies, type) -> void:
 			enemy_wave_scene_circle_instance.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave_scene_circle_instance.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave_scene_circle_instance.configure(Vector2(5, 1), 1, 5, 5)
+			enemy_wave_scene_circle_instance.configure(Vector2(5, 0.5), 1, 5, 5)
 			enemy_wave_scene_circle_instance.spawn()
 
 
