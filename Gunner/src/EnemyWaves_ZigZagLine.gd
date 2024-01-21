@@ -48,7 +48,7 @@ func _ready():
 #	AnimationUtils.new().rectangle_pattern(self.curve, Vector2(75, 83), 50, 100)
 #	AnimationUtils.new().zig_zag_pattern(Vector2(75, 83), 50, 5)
 	anim_utils.zig_zag_pattern(
-		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(0, 83), 50, 5), -50, 5
+		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
 	)
 
 
