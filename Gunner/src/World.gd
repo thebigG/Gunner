@@ -9,13 +9,29 @@ var counter = 0
 var is_ready: bool = false
 
 var enemy_wave_scene_zig_zag: PackedScene = preload("res://scene/EnemyWaves_ZigZag.tscn")
-var enemy_wave_scene_zig_zag_instance: Path2D = null
 
 var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circle.tscn")
 var enemy_wave_scene_circle_instance: Path2D = null
+var enemy_waves = []
 
 var game_started = false
 signal start_game_signal
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+#	process_mode = Node.PROCESS_MODE_ALWAYS
+	self.get_viewport().transient = false
+	var help_label = Label.new()
+	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
+	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
+#	$EasyStageScene/SoundTrack.play()
+	help_label.position.y -= 50
+	$EasyStageScene.add_child(help_label)
+	get_tree().paused = false
+
+	enemy_waves.append(new_enemy_wave(wave_size, ENEMY_TYPE.EASY))
+	add_child(enemy_waves[0])
 
 
 #I think is_wave_alive should be moved to Enemy_Waves script
@@ -31,62 +47,50 @@ func is_wave_alive(current_wave: Path2D):
 
 
 func _physics_process(delta):
+	#TODO:Need to start thinking about the "progression" in this game.
+	var new_waves = []
+	var i = 0
+	var max_waves = 1  # Could be part of the progression of the game
+	while i < (max_waves):
+		var temp = []
+		if len(enemy_waves) > 0:
+			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
+			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.CIRCLE))
+		else:
+			temp.append(manage_node(null, ENEMY_TYPE.EASY))
+			temp.append(manage_node(null, ENEMY_TYPE.CIRCLE))
+		new_waves.append_array(temp)
+		i += 1
+	i = 0
+	var enemy_waves_len = len(enemy_waves)
+	if len(enemy_waves) > 0:
+		while i < enemy_waves_len:
+			if not (is_instance_valid(enemy_waves[i])):
+				enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
+				enemy_waves_len = len(enemy_waves)
+			i += 1
+	if len(new_waves) > 0 and len(enemy_waves) < max_waves:
+		enemy_waves.append_array(new_waves)
+		for e in enemy_waves:
+			add_child(e)
+
+
+func manage_node(node, enemy_type):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
-	if (
-		enemy_wave_scene_zig_zag_instance != null
-		and is_instance_valid(enemy_wave_scene_zig_zag_instance)
-	):
-		if enemy_wave_scene_zig_zag_instance.position.y > enemy_y_threshold:
-			destroy_enemy_wave(enemy_wave_scene_zig_zag_instance)
-	if is_wave_alive(enemy_wave_scene_zig_zag_instance) == false and game_started:
-#			Move the queue_free code to Enemy_Waves script
-		if enemy_wave_scene_zig_zag_instance != null:
-			enemy_wave_scene_zig_zag_instance.queue_free()
-		new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-#		new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE)
-		add_child(enemy_wave_scene_zig_zag_instance)
+	var new_node = null
 
-
-#		enemy_wave_scene_circle_instance.position = Vector2(75, 83)
-#		add_child(enemy_wave_scene_circle_instance)
-
-
-func manage_node(node):
-	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 	if node != null and is_instance_valid(node):
 		if node.position.y > enemy_y_threshold:
 			destroy_enemy_wave(node)
-	if is_wave_alive(node) == false and game_started:
-#			Move the queue_free code to Enemy_Waves script
-		if node != null:
-			node.queue_free()
-		new_enemy_wave(wave_size, ENEMY_TYPE.EASY)
-#		new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE)
-		add_child(node)
+			if node != null:
+				node.queue_free()
+#	if is_wave_alive(node) == false and game_started:
+##			Move the queue_free code to Enemy_Waves script
+#		if node != null:
+#			node.queue_free()
 
-
-#		enemy_wave_scene_circle_instance.position = Vector2(75, 83)
-#		add_child(enemy_wave_scene_circle_instance)
-
-#	if enemy_wave_scene_circle_instance != null and is_instance_valid(enemy_wave_scene_circle_instance):
-#		print(enemy_wave_scene_circle_instance.position)
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-#	process_mode = Node.PROCESS_MODE_ALWAYS
-	self.get_viewport().transient = false
-	var help_label = Label.new()
-	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
-	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
-#	$EasyStageScene/SoundTrack.play()
-	help_label.position.y -= 50
-	$EasyStageScene.add_child(help_label)
-	get_tree().paused = false
-
-
-#	for child in get_children():
-#		child.process_mode = Node.PROCESS_MODE_PAUSABLE
+	new_node = new_enemy_wave(wave_size, enemy_type)
+	return new_node
 
 
 func _unhandled_input(input: InputEvent):
@@ -95,26 +99,26 @@ func _unhandled_input(input: InputEvent):
 		game_started = true
 
 
-func new_enemy_wave(number_of_enemies, type) -> void:
+func new_enemy_wave(number_of_enemies, type) -> Node:
 	counter += 1
+	var enemy_wave = null
 	match type:
 		ENEMY_TYPE.EASY:
-			enemy_wave_scene_zig_zag_instance = enemy_wave_scene_zig_zag.instantiate()
-			enemy_wave_scene_zig_zag_instance.transform.origin.y = $Gunner1.position.y - 1000
-			enemy_wave_scene_zig_zag_instance.transform.origin.x = (
-				get_viewport_rect().position.x / 2
-			)
+			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
+			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
+			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
 
-			enemy_wave_scene_zig_zag_instance.configure(Vector2(5, 1), number_of_enemies, 5, 5)
-			enemy_wave_scene_zig_zag_instance.spawn()
+			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 5, 5)
+			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:
-			enemy_wave_scene_circle_instance = enemy_wave_scene_circle.instantiate()
-			enemy_wave_scene_circle_instance.transform.origin.y = $Gunner1.position.y - 1000
-			enemy_wave_scene_circle_instance.transform.origin.x = get_viewport_rect().position.x / 2
+			enemy_wave = enemy_wave_scene_circle.instantiate()
+			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
+			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave_scene_circle_instance.configure(Vector2(5, 0.5), 1, 5, 5)
-			enemy_wave_scene_circle_instance.spawn()
+			enemy_wave.configure(Vector2(5, 0.5), 1, 5, 5)
+			enemy_wave.spawn()
+	return enemy_wave
 
 
 func destroy_enemy_wave(wave: Path2D):
