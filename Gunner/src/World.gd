@@ -11,7 +11,6 @@ var is_ready: bool = false
 var enemy_wave_scene_zig_zag: PackedScene = preload("res://scene/EnemyWaves_ZigZag.tscn")
 
 var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circle.tscn")
-var enemy_wave_scene_circle_instance: Path2D = null
 var enemy_waves = []
 
 var game_started = false
@@ -30,8 +29,9 @@ func _ready():
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
 
-	enemy_waves.append(new_enemy_wave(wave_size, ENEMY_TYPE.EASY))
-	add_child(enemy_waves[0])
+
+#	enemy_waves.append(new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE))
+#	add_child(enemy_waves[0])
 
 
 #I think is_wave_alive should be moved to Enemy_Waves script
@@ -48,35 +48,37 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	#TODO:Need to start thinking about the "progression" in this game.
-	var new_waves = []
-	var i = 0
-	var max_waves = 1  # Could be part of the progression of the game
-	while i < (max_waves):
-		var temp = []
-		if len(enemy_waves) > 0:
-			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
-			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.CIRCLE))
-		else:
-			temp.append(manage_node(null, ENEMY_TYPE.EASY))
-			temp.append(manage_node(null, ENEMY_TYPE.CIRCLE))
-		new_waves.append_array(temp)
-		i += 1
-	i = 0
-	var enemy_waves_len = len(enemy_waves)
-	if len(enemy_waves) > 0:
-		while i < enemy_waves_len:
-			if not (is_instance_valid(enemy_waves[i])):
-				enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
-				enemy_waves_len = len(enemy_waves)
+	if game_started:
+		var new_waves = []
+		var i = 0
+		var max_waves = 1  # Could be part of the progression of the game
+		while i < (max_waves):
+			var temp = []
+			if len(enemy_waves) > 0:
+				#			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
+				temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.CIRCLE))
+			else:
+				#			temp.append(manage_node(null, ENEMY_TYPE.EASY))
+				temp.append(manage_node(null, ENEMY_TYPE.CIRCLE))
+			new_waves.append_array(temp)
 			i += 1
-	if len(new_waves) > 0 and len(enemy_waves) < max_waves:
-		enemy_waves.append_array(new_waves)
-		for e in enemy_waves:
-			add_child(e)
+		i = 0
+		var enemy_waves_len = len(enemy_waves)
+		if len(enemy_waves) > 0:
+			while i < enemy_waves_len:
+				if not (is_instance_valid(enemy_waves[i])):
+					enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
+					enemy_waves_len = len(enemy_waves)
+				i += 1
+		if len(new_waves) > 0 and len(enemy_waves) < max_waves:
+			enemy_waves.append_array(new_waves)
+			for e in enemy_waves:
+				add_child(e)
 
 
 func manage_node(node, enemy_type):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
+
 	var new_node = null
 
 	if node != null and is_instance_valid(node):
@@ -116,7 +118,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 0.5), 1, 5, 5)
+			enemy_wave.configure(Vector2(5, 0.5), 2, 5, 5)
 			enemy_wave.spawn()
 	return enemy_wave
 
