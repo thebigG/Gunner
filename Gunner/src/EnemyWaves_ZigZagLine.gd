@@ -30,7 +30,7 @@ func spawn():
 		enemy_instance.position = Vector2.ZERO
 		$EnemyPath.add_child(enemy_instance)
 		enemy_instance.configure(shooting_rate)
-		enemy_instance.transform.origin.x = left_bound
+#		enemy_instance.transform.origin.x = left_bound
 		left_bound += X_GAP
 
 
@@ -39,7 +39,7 @@ func spawn():
 #	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))
 
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters1 the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.
 	self.curve.clear_points()
@@ -47,10 +47,12 @@ func _ready():
 #	AnimationUtils.new().h_line_pattern(self.curve, Vector2(75, 83), 50)
 #	AnimationUtils.new().rectangle_pattern(self.curve, Vector2(75, 83), 50, 100)
 #	AnimationUtils.new().zig_zag_pattern(Vector2(75, 83), 50, 5)
-	anim_utils.zig_zag_pattern(
-		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
-	)
-
+#	anim_utils.zig_zag_pattern(
+#		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
+#	)
+	anim_utils.h_line_pattern(self.curve, Vector2(75, 83), 100)
+	spawn()
+ 
 
 #	anim_utils.zig_zag_pattern(self.curve, Vector2(25, 83), 50, 5), -50, 5
 #	anim_utils.zig_zag_pattern(self.curve, Vector2(25, 83), 50, 5)

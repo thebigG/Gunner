@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="1"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(30.25, 39)
+size = Vector2(8.125, 17.5)
 
 [node name="EasyEnemy" type="HealthBody2D" groups=["Enemy"]]
 script = ExtResource("1")
@@ -17,14 +17,16 @@ bullet_scene = ExtResource("3")
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.121649, 0.187686)
+position = Vector2(0.304689, 0)
+scale = Vector2(0.123169, 0.187686)
 texture = ExtResource("2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
 shape = SubResource("2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-0.132432, 0.264865)
-scale = Vector2(1.45027, 2.01973)
+position = Vector2(-1, -2)
+scale = Vector2(0.781757, 1.39662)

@@ -2,7 +2,7 @@ extends Node2D
 
 #export var easy_enemy_scene: PackedScene
 enum ENEMY_TYPE { EASY, CIRCLE }
-@export var wave_size: int = 5
+@export var wave_size: int = 1
 var current_wave = 0
 var counter = 0
 
@@ -11,6 +11,8 @@ var is_ready: bool = false
 var enemy_wave_scene_zig_zag: PackedScene = preload("res://scene/EnemyWaves_ZigZag.tscn")
 
 var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circle.tscn")
+
+@export var enemy: PackedScene = preload("res://scene/EasyEnemy.tscn")
 var enemy_waves = []
 
 var game_started = false
@@ -56,10 +58,10 @@ func _physics_process(delta):
 			var temp = []
 			if len(enemy_waves) > 0:
 				#			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
-				temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.CIRCLE))
+				temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
 			else:
 				#			temp.append(manage_node(null, ENEMY_TYPE.EASY))
-				temp.append(manage_node(null, ENEMY_TYPE.CIRCLE))
+				temp.append(manage_node(null, ENEMY_TYPE.EASY))
 			new_waves.append_array(temp)
 			i += 1
 		i = 0
@@ -83,9 +85,10 @@ func manage_node(node, enemy_type):
 
 	if node != null and is_instance_valid(node):
 		if node.position.y > enemy_y_threshold:
-			destroy_enemy_wave(node)
-			if node != null:
-				node.queue_free()
+#			destroy_enemy_wave(node)
+#			if node != null:
+#				node.queue_free()
+			pass
 #	if is_wave_alive(node) == false and game_started:
 ##			Move the queue_free code to Enemy_Waves script
 #		if node != null:
@@ -106,12 +109,19 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 	var enemy_wave = null
 	match type:
 		ENEMY_TYPE.EASY:
-			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
-			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
-			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
-
-			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 5, 5)
-			enemy_wave.spawn()
+#			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
+#			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
+#			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
+#
+#			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 1, 3)
+			
+			enemy_wave = enemy.instantiate()
+			enemy_wave.position = Vector2((get_viewport_rect().size.x / 2), $Gunner1.position.y - 1000)
+#			$EnemyPath.add_child(enemy_instance)
+			enemy_wave.configure(4)
+	#		enemy_instance.transform.origin.x = left_bound
+#			left_bound += X_GAP
+#			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:
 			enemy_wave = enemy_wave_scene_circle.instantiate()
@@ -119,7 +129,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
 			enemy_wave.configure(Vector2(5, 0.5), 2, 5, 5)
-			enemy_wave.spawn()
+#			enemy_wave.spawn()
 	return enemy_wave
 
 

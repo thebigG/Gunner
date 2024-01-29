@@ -8,6 +8,9 @@ func shoot(velocity):
 
 func _ready():
 	$Area2D.connect("body_entered",Callable(self,"_on_Area2D_body_entered"))
+	#TODO:Use ratios instead of hard-coded values here...
+	position.x = -20
+	position.y = 20
 
 
 func configure(new_target_group: String):
@@ -16,6 +19,7 @@ func configure(new_target_group: String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	print("Enemy Bullet position:" + str(position))
 	pass
 
 
