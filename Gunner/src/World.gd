@@ -2,7 +2,8 @@ extends Node2D
 
 #export var easy_enemy_scene: PackedScene
 enum ENEMY_TYPE { EASY, CIRCLE }
-@export var wave_size: int = 5
+var enemy_types = [ENEMY_TYPE.EASY, ENEMY_TYPE.CIRCLE]
+@export var wave_size: int = 2
 var current_wave = 0
 var counter = 0
 
@@ -28,6 +29,7 @@ func _ready():
 	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
+	randomize()
 
 
 #	enemy_waves.append(new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE))
@@ -55,11 +57,9 @@ func _physics_process(delta):
 		while i < (max_waves):
 			var temp = []
 			if len(enemy_waves) > 0:
-				#			temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.EASY))
-				temp.append(manage_node(enemy_waves[i], ENEMY_TYPE.CIRCLE))
+				temp.append(manage_node(enemy_waves[i], get_enemy_type()))
 			else:
-				#			temp.append(manage_node(null, ENEMY_TYPE.EASY))
-				temp.append(manage_node(null, ENEMY_TYPE.CIRCLE))
+				temp.append(manage_node(null, get_enemy_type()))
 			new_waves.append_array(temp)
 			i += 1
 		i = 0
@@ -74,6 +74,11 @@ func _physics_process(delta):
 			enemy_waves.append_array(new_waves)
 			for e in enemy_waves:
 				add_child(e)
+
+
+func get_enemy_type():
+	var random_enemy_type = enemy_types[randi() % enemy_types.size()]
+	return random_enemy_type
 
 
 func manage_node(node, enemy_type):
@@ -110,7 +115,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
 
-			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 5, 5)
+			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:
@@ -118,7 +123,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 0.5), 2, 5, 5)
+			enemy_wave.configure(Vector2(5, 0.5), 2, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
 

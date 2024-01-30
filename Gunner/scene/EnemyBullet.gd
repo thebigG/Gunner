@@ -8,6 +8,10 @@ func shoot(velocity):
 
 func _ready():
 	$Area2D.connect("body_entered",Callable(self,"_on_Area2D_body_entered"))
+#	position.x = -20
+#	position.y = 20
+#	position.x = 0
+#	position.y = 0
 
 
 func configure(new_target_group: String):

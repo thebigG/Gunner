@@ -12,21 +12,17 @@ radius = 3.5957
 height = 15.1429
 
 [node name="EnemyBullet" type="RigidBody2D"]
-position = Vector2(34.6482, -23.2322)
 gravity_scale = 0.0
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(21.3721, -2.56384)
 scale = Vector2(0.0043493, 0.0138695)
 texture = ExtResource("2_l1fbs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(21.5667, -3.53554)
 shape = SubResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20.5061, -6.01041)
 shape = SubResource("2")
