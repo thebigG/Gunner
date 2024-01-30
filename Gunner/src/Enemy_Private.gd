@@ -49,6 +49,7 @@ func shoot_gunner():
 	print("Shoot Gunner")
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
+	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
 	bullet.shoot(Vector2(0, 500))
 
 
