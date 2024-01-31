@@ -18,6 +18,7 @@ var hurt_sprite_frames = SpriteFrames.new()
 var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet.png")
 var time = 0
+var horizontal_speed = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -109,14 +110,23 @@ func _physics_process(delta):
 
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
+
+#I think the best way to dash is to give Gunner acceleration for short period of time and wind down
 	if Input.is_action_pressed("move_down"):
 		current_velocity.y = speed / 2
-#
+	if Input.is_action_just_pressed("dash_left"):
+		horizontal_speed = speed * 1.5
+		current_velocity.x = -horizontal_speed
+	elif Input.is_action_just_pressed("dash_right"):
+		horizontal_speed = speed * 5
+		current_velocity.x = horizontal_speed
+	else:
+		horizontal_speed = speed
 	if Input.is_action_pressed("move_right"):
 		$Turn.set_animation("Right")
 		$Turn.play()
 		$Turn.set_frame(1)
-		current_velocity.x = speed
+		current_velocity.x = horizontal_speed
 
 	#Would like a cleaner way of doing this...
 	else:
@@ -129,7 +139,7 @@ func _physics_process(delta):
 		$Turn.set_animation("Left")
 		$Turn.play()
 		$Turn.set_frame(1)
-		current_velocity.x = -speed
+		current_velocity.x = -horizontal_speed
 	else:
 		if $Turn.animation == "Left":
 			$Turn.stop()
