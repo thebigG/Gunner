@@ -20,6 +20,13 @@ var damaged_jet_texture = load("res://Assets/DamagedJet.png")
 var time = 0
 var horizontal_speed = 0
 
+var dash_timer = Timer.new()
+var dash_time = 3.0 # Seconds to dash for
+var dashing  = false
+
+var current_dash_time = 0 # Current/stateful time since the beginning of a dash 
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -71,6 +78,8 @@ func _ready():
 	hud_grid.add_child(health_bar)
 
 	get_parent().get_node("EasyStageScene").add_child(hud)
+	
+#	dash_timer.timeout = dash_time
 
 
 func _physics_process(delta):
@@ -93,7 +102,8 @@ func _physics_process(delta):
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
-			add_child(new_bullet)
+			new_bullet.position.y -=10
+			add_child(new_bullet) 
 			$Shoot.play()
 			new_bullet.shoot()
 
@@ -111,17 +121,28 @@ func _physics_process(delta):
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
 
+	if current_dash_time >= dash_time:
+		dashing  = false
+		current_dash_time = 0
+	
+	if dashing:
+		current_dash_time += delta
+
 #I think the best way to dash is to give Gunner acceleration for short period of time and wind down
 	if Input.is_action_pressed("move_down"):
 		current_velocity.y = speed / 2
-	if Input.is_action_just_pressed("dash_left"):
-		horizontal_speed = speed * 1.5
-		current_velocity.x = -horizontal_speed
-	elif Input.is_action_just_pressed("dash_right"):
-		horizontal_speed = speed * 5
-		current_velocity.x = horizontal_speed
-	else:
-		horizontal_speed = speed
+	if not(dashing):
+		if Input.is_action_just_pressed("dash_left"):
+			horizontal_speed = speed * 4
+			current_velocity.x = -horizontal_speed
+			dashing = true
+		elif Input.is_action_just_pressed("dash_right"):
+			horizontal_speed = speed * 4
+			current_velocity.x = horizontal_speed
+			dashing = true
+			
+		else:
+			horizontal_speed = speed
 	if Input.is_action_pressed("move_right"):
 		$Turn.set_animation("Right")
 		$Turn.play()
