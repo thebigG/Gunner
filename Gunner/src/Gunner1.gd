@@ -92,6 +92,8 @@ func _physics_process(delta):
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
+			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
+			new_bullet.position.y -= 10
 			add_child(new_bullet)
 			$Shoot.play()
 			new_bullet.shoot()
