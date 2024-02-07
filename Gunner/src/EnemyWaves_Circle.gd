@@ -58,7 +58,7 @@ func get_full_circle_shape_2dvectors_1phase(
 	x_radius: float, y_radius: float, origin: Vector2
 ) -> Array:
 #	TODO:I think it's a matter of getting the all the points while the radius has not been covered?? Or going from o to 360n degrees.
-	var points = []
+	var points = [origin]
 	var i = 0
 	var current_sin_input_val = 0
 	var current_cos_input_val = 0

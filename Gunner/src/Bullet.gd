@@ -5,7 +5,7 @@ var target_group: String = ""
 signal hit_signal
 
 
-func shoot():
+func shoot(velocity: Vector2):
 	linear_velocity = velocity
 
 
