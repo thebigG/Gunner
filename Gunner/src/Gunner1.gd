@@ -2,7 +2,7 @@ extends HealthBody2D
 
 @export var bullet_scene: PackedScene
 
-@export var desired_shooting_rate = 10.00
+var desired_shooting_rate = 12.00
 var current_velocity = Vector2()
 var screen_size
 var speed = 0
@@ -96,7 +96,8 @@ func _physics_process(delta):
 			new_bullet.position.y -= 10
 			add_child(new_bullet)
 			$Shoot.play()
-			new_bullet.shoot()
+
+			new_bullet.shoot(get_bullet_velocity())
 
 	$Turn.set_frame(0)
 
@@ -155,6 +156,10 @@ func _physics_process(delta):
 	)
 
 	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
+
+
+func get_bullet_velocity():
+	return Vector2(0, desired_shooting_rate * -100)
 
 
 func increment_score():
