@@ -7,7 +7,9 @@ func shoot(velocity):
 
 
 func _ready():
-	$Area2D.connect("body_entered",Callable(self,"_on_Area2D_body_entered"))
+	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+
+
 #	position.x = -20
 #	position.y = 20
 #	position.x = 0
