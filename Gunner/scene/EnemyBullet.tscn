@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cokvvlqerget"]
 
-[ext_resource type="Script" path="res://scene/EnemyBullet.gd" id="2"]
+[ext_resource type="Script" path="res://src/EnemyBullet.gd" id="1_iybns"]
 [ext_resource type="Texture2D" uid="uid://84gxrpxsbiy5" path="res://Assets/EnemyBullet.png" id="2_l1fbs"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
@@ -13,7 +13,7 @@ height = 15.1429
 
 [node name="EnemyBullet" type="RigidBody2D"]
 gravity_scale = 0.0
-script = ExtResource("2")
+script = ExtResource("1_iybns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0043493, 0.0138695)

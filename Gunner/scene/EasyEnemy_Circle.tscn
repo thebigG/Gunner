@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4ibjyt8woqrj"]
 
-[ext_resource type="Script" path="res://scene/EasyEnemyCircle.gd" id="1_8nb4w"]
+[ext_resource type="Script" path="res://src/EasyEnemyCircle.gd" id="1_4btpp"]
 [ext_resource type="PackedScene" uid="uid://cokvvlqerget" path="res://scene/EnemyBullet.tscn" id="2_brt6y"]
 [ext_resource type="Texture2D" uid="uid://b36rf0ukb4b67" path="res://Assets/Enemy.png" id="2_pxdex"]
 
@@ -11,7 +11,7 @@ size = Vector2(30.25, 39)
 
 [node name="EasyEnemyCircle" type="HealthBody2D" groups=["Enemy"]]
 position = Vector2(1, 0)
-script = ExtResource("1_8nb4w")
+script = ExtResource("1_4btpp")
 bullet_scene = ExtResource("2_brt6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
