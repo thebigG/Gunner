@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://scaj2f0aftdk"]
+
+[ext_resource type="Script" path="res://src/Missile.gd" id="1_v2l5k"]
+[ext_resource type="Texture2D" uid="uid://b5taxdedxomoe" path="res://Assets/Bullet.png" id="2_c8q0w"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 8.0
+height = 16.5587
+
+[sub_resource type="CapsuleShape2D" id="2"]
+radius = 7.57145
+height = 15.1429
+
+[node name="Missile" type="RigidBody2D"]
+position = Vector2(0, -25)
+gravity_scale = 0.0
+script = ExtResource("1_v2l5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0117188, 0.0343607)
+texture = ExtResource("2_c8q0w")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("2")
