@@ -2,6 +2,8 @@ extends HealthBody2D
 
 @export var bullet_scene: PackedScene
 
+@export var bullet_missile_scene: PackedScene
+
 var desired_shooting_rate = 12.00
 var current_velocity = Vector2()
 var screen_size
@@ -89,6 +91,22 @@ func _physics_process(delta):
 			time = 0
 			print("Shoot")
 			var new_bullet = bullet_scene.instantiate()
+			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
+
+			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
+			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
+			new_bullet.position.y -= 10
+			add_child(new_bullet)
+			$Shoot.play()
+
+			new_bullet.shoot(get_bullet_velocity())
+
+	if Input.is_action_pressed("special_weapon"):
+		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
+		if time >= delta * calculated_rate_k:
+			time = 0
+			print("Shoot Missile")
+			var new_bullet = bullet_missile_scene.instantiate()
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))

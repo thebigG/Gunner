@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0448q6b760c7"]
+[gd_scene load_steps=11 format=3 uid="uid://b0448q6b760c7"]
 
 [ext_resource type="Script" path="res://src/Gunner1.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ccyebf2cnk4tk" path="res://Assets/Jet-tilted-right.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dnt4iivgp51s8" path="res://Assets/Jet.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://scaj2f0aftdk" path="res://scene/Missile.tscn" id="3_nirlv"]
 [ext_resource type="Texture2D" uid="uid://b1o65piymuklw" path="res://Assets/Jet_tilted_left.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://daowc4rxs6f0r" path="res://scene/Bullet.tscn" id="5"]
 [ext_resource type="AudioStream" uid="uid://cwxubnvu2h1jl" path="res://Assets/Shoot.wav" id="6"]
@@ -39,6 +40,7 @@ animations = [{
 [node name="Gunner1" type="HealthBody2D" groups=["Gunner"]]
 script = ExtResource("1")
 bullet_scene = ExtResource("5")
+bullet_missile_scene = ExtResource("3_nirlv")
 
 [node name="Turn" type="AnimatedSprite2D" parent="."]
 position = Vector2(8.40897, 0.840897)

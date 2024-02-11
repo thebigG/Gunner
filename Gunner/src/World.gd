@@ -96,8 +96,9 @@ func manage_node(node, enemy_type):
 #		if node != null:
 #			node.queue_free(
 
-	wave_size = randi() % 10
+	wave_size = randi() % 20
 	new_node = new_enemy_wave(wave_size, enemy_type)
+	print(wave_size)
 	return new_node
 
 
