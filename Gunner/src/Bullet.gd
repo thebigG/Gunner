@@ -10,7 +10,10 @@ func shoot(velocity: Vector2):
 
 
 func _ready():
-	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+	self.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+#I case we want collisions triggered from RigidBody2D, the following fields need to be set
+#	self.contact_monitor = true
+#	self.max_contacts_reported = 8
 	self.add_to_group("Gunner_Bullet")
 
 
@@ -24,6 +27,7 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
+	print("_on_Area2D_body_entered")
 	if body.is_in_group("Enemy"):
 #		Play some cool animation
 		body.call("damage")

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b5taxdedxomoe" path="res://Assets/Bullet.png" id="2_c8q0w"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
-radius = 8.0
-height = 16.5587
+radius = 39.0
+height = 84.0
 
 [sub_resource type="CapsuleShape2D" id="2"]
 radius = 7.57145
