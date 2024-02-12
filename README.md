@@ -4,7 +4,13 @@
 [![HTML5 build](https://github.com/thebigG/Gunner/actions/workflows/godot-htm5.yml/badge.svg)](https://github.com/thebigG/Gunner/actions/workflows/godot-htm5.yml)
 # Gunner 
 Fighter Jet Game; clone of [Strike Gunner S.T.G.](https://en.wikipedia.org/wiki/Strike_Gunner_S.T.G.). You can always get the nightly build [here](https://github.com/thebigG/Gunner/releases/tag/continuous-build).  
-Though the game will probably provide the best experience via the desktop native builds, you can always play it on the [web](https://thebigg.github.io/Gunner/Gunner.html).  
+Though the game will probably provide the best experience via the desktop native builds, you can always play it on the [web](https://thebigg.github.io/Gunner/Gunner.html).
+
+# Other sources related to this repo
+- https://github.com/thebigG/Flames
+- https://github.com/thebigG/rsty_physics
+
+
 
 
 ## Sound Credits
