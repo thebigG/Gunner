@@ -78,7 +78,8 @@ func _physics_process(delta):
 
 func get_enemy_type():
 	var random_enemy_type = enemy_types[randi() % enemy_types.size()]
-	return random_enemy_type
+#	return random_enemy_type
+	return 0
 
 
 func manage_node(node, enemy_type):
