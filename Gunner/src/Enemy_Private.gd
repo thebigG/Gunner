@@ -5,6 +5,11 @@ extends HealthBody2D
 var shoot_bullet_timer: Timer = Timer.new()
 var shooting_rate = 1  # Hertz
 
+var explosion_particles: PackedScene = preload("res://scene/Explosion.tscn")
+var explosion: Node2D
+
+var lifetime
+
 
 #var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +21,17 @@ func _ready():
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	self.damage_interval = 1.0
+	explosion = explosion_particles.instantiate()
+	var particles: GPUParticles2D = explosion.get_node("ExplosionParticles")
+	explosion.position = self.position
+	particles.emitting = false
+	particles.one_shot = true
+#	paritcles.finished.connect(self, queue_free)
+
+#	explosion.get_node("ExplosionParticles").one
+	add_child(explosion)
 	add_child(shoot_bullet_timer)
+	lifetime = particles.lifetime
 
 
 func print_func(arg: Node):
@@ -24,12 +39,17 @@ func print_func(arg: Node):
 
 
 func _physics_process(delta):
+	explosion.get_node("ExplosionParticles").position = self.position
+	if explosion.get_node("ExplosionParticles").emitting:
+		lifetime -= delta
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
-			queue_free()
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-			boom.play()
+#			boom.play()
+			explosion.get_node("ExplosionParticles").emitting = true
+			if lifetime < 0:
+				queue_free()
 
 
 # When using HealthBody2D as type hint, I get the following error:

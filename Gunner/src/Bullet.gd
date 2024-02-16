@@ -10,7 +10,8 @@ func shoot(velocity: Vector2):
 
 
 func _ready():
-	self.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+#	self.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
 #I case we want collisions triggered from RigidBody2D, the following fields need to be set
 #	self.contact_monitor = true
 #	self.max_contacts_reported = 8
