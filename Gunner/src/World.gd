@@ -97,7 +97,7 @@ func manage_node(node, enemy_type):
 #		if node != null:
 #			node.queue_free(
 
-	wave_size = randi() % 20
+	wave_size = randi() % 10
 	new_node = new_enemy_wave(wave_size, enemy_type)
 	print(wave_size)
 	return new_node
@@ -118,7 +118,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
 
-			enemy_wave.configure(Vector2(5, 1), number_of_enemies, 5, 2)
+			enemy_wave.configure(Vector2(5, 5), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:

@@ -5,9 +5,7 @@
 [node name="Explosion" type="Node2D"]
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
-position = Vector2(185, 538)
 amount = 100
 process_material = ExtResource("1_4g8ke")
-lifetime = 0.15
 explosiveness = 1.0
 trail_lifetime = 1.3

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var current_direction = Vector2()
 var screen_size
-var speed = 5
+var speed = 3
 var game_started = false
 
 
