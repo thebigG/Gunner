@@ -44,7 +44,7 @@ func _ready():
 	health_bar.set_size(Vector2(10, 10))
 
 	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
-	current_velocity.y = -speed
+#	current_velocity.y = -speed
 
 	hud = hud_scene.instantiate()
 	hud.size.x = screen_size.size.x - 300
@@ -83,7 +83,7 @@ func _physics_process(delta):
 		2:
 			print("Gunner is dead")
 #TODO: Need to avoid walking to the parent...
-			get_parent().get_node("GameOver").restart_game()
+#			get_parent().get_node("GameOver").restart_game()
 
 	if Input.is_action_pressed("ui_shoot"):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate

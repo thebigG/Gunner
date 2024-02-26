@@ -23,7 +23,7 @@ func _ready():
 	self.damage_interval = 1.0
 	explosion = explosion_particles.instantiate()
 	var particles: GPUParticles2D = explosion.get_node("ExplosionParticles")
-	explosion.position = self.position
+#	explosion.position = Vector2.ZERO
 	particles.emitting = false
 	particles.one_shot = true
 #	paritcles.finished.connect(self, queue_free)
@@ -39,7 +39,6 @@ func print_func(arg: Node):
 
 
 func _physics_process(delta):
-	explosion.get_node("ExplosionParticles").position = self.position
 	if explosion.get_node("ExplosionParticles").emitting:
 		lifetime -= delta
 	match self.state:
@@ -47,7 +46,10 @@ func _physics_process(delta):
 		2:
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
 #			boom.play()
-			explosion.get_node("ExplosionParticles").emitting = true
+			if not (explosion.get_node("ExplosionParticles").emitting):
+				explosion.position = self.global_position
+				print(self.global_position)
+				explosion.get_node("ExplosionParticles").emitting = true
 			if lifetime < 0:
 				queue_free()
 

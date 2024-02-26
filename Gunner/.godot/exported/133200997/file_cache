@@ -1,0 +1,13 @@
+res://Assets/Themes/Styles/hud_border.tres::d6d9a22269c788ae675ef39ee7a9445b::1669433633::res://.godot/exported/133200997/export-ddbe590028807920ee10172d1c06f0e3-hud_border.res
+res://Assets/Themes/health_bar_theme.tres::bc77a6ef2dec7aeedb39b56b47ece7fd::1669433633::res://.godot/exported/133200997/export-494d484fe3cd62a453e7382453ad5ab0-health_bar_theme.res
+res://Assets/Themes/hud_theme.tres::f272d18e29448c5d45b6d5a8c6ca2743::1669433633::res://.godot/exported/133200997/export-853c744c52d385dc4fc5e96734945b12-hud_theme.res
+res://scene/Bullet.tscn::32b2493fb5806a475c3dac080a8d20a7::1698812602::res://.godot/exported/133200997/export-53f5ad9680a1678ab1912c04396775f7-Bullet.scn
+res://scene/EasyEnemy.tscn::0db427172fda82a34b8e684233eff1ea::1698812602::res://.godot/exported/133200997/export-669b0a0d65267500bc9e84ae4175134a-EasyEnemy.scn
+res://scene/EasyStage.tscn::1f1d3c40bf0a8f4884d83ea985748adb::1698812602::res://.godot/exported/133200997/export-b464cdfad713114eb1d13ded17095607-EasyStage.scn
+res://scene/EasyStageScene.tscn::c0c1f830fc9b4d6d9847605702fbfa71::1698812602::res://.godot/exported/133200997/export-90b5ed00563a4d37fd3c977d7b6cb33a-EasyStageScene.scn
+res://scene/EnemyBullet.tscn::e791b567569b957671375465d8af3c75::1698812602::res://.godot/exported/133200997/export-fcc0106204a65247606cd886e97eafcc-EnemyBullet.scn
+res://scene/EnemyWaves.tscn::663a6db9bea5d5c924434b6ae23c1da8::1698812602::res://.godot/exported/133200997/export-783d593a5173d3d74f3b1cae74db64a6-EnemyWaves.scn
+res://scene/Gunner1.tscn::4fe7fcce5c4294e7dabf39c2fa2f2fe2::1698812602::res://.godot/exported/133200997/export-ffd8be9e84490f10bb551df6734b9ccc-Gunner1.scn
+res://scene/HUD.tscn::094f403c763f0044908374b7ce922e36::1698812602::res://.godot/exported/133200997/export-9bb98e6dd158bb4631d656050ebc5198-HUD.scn
+res://scene/ParallaxDriverScene.tscn::7aae7653f0a3334e9f25b0b1da3abc42::1698809725::res://.godot/exported/133200997/export-ed48aa9c8ecd27679ba77162bd87b16a-ParallaxDriverScene.scn
+res://scene/World.tscn::6cbb1d24320c2aa6d89ba82baf67c2d4::1698812602::res://.godot/exported/133200997/export-7cc0a5845a1248297d5a8997f4333767-World.scn

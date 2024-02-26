@@ -34,6 +34,9 @@ func spawn():
 		left_bound += X_GAP
 
 
+#	for i in range(self.curve.point_count):
+#		print(self.curve.get_point_position(i))
+
 #func circle_pattern():
 #	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
 #	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))
