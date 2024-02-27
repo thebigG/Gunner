@@ -132,7 +132,7 @@ func _physics_process(delta):
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
 	if Input.is_action_pressed("move_down"):
-		current_velocity.y = (cruising_speed + thrust) / 2
+		current_velocity.y = (cruising_speed + thrust)
 #
 	if Input.is_action_pressed("move_right"):
 		$Turn.set_animation("Right")
