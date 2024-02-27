@@ -5,7 +5,7 @@ var wave_vecolity: Vector2 = Vector2.ZERO
 var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250, 70)
 var X_GAP = 75
-var offset = 5
+var offset = 100
 var anim_utils = AnimationUtils.new()
 var shooting_rate = 1
 
@@ -26,14 +26,14 @@ func configure(
 func spawn():
 	self.position.x += 100
 	var left_bound = 0
-#	for i in range(number_of_enemies):
-#		var enemy_instance: HealthBody2D = enemy.instantiate()
-#		enemy_instance.position = Vector2.ZERO
-#		$EnemyPath.add_child(enemy_instance)
-#		enemy_instance.configure(shooting_rate)
-#		enemy_instance.position.x = left_bound
-#		enemy_instance.position.y = left_bound
-#		left_bound += X_GAP
+	for i in range(number_of_enemies):
+		var enemy_instance: HealthBody2D = enemy.instantiate()
+		enemy_instance.position = Vector2.ZERO
+		$EnemyPath.add_child(enemy_instance)
+		enemy_instance.configure(shooting_rate)
+		enemy_instance.position.x = left_bound
+		enemy_instance.position.y = left_bound
+		left_bound += X_GAP
 #	print("count:" + str(self.curve.point_count))
 
 #	for i in range(self.curve.point_count):
@@ -49,21 +49,22 @@ func spawn():
 
 	var pos_interval = 20
 	var current_pos = Vector2.ZERO
-	for i in range(0, self.curve.point_count, 18):
-		var enemy_instance: HealthBody2D = enemy.instantiate()
-#		enemy_instance.position = Vector2.ZERO
-		$EnemyPath.add_child(enemy_instance)
-		enemy_instance.configure(shooting_rate)
-#		enemy_instance.transform.origin.x = left_bound
-#		enemy_instance.transform.origin = self.curve.get_point_position(i)
-#		enemy_instance.position = current_pos
-		var new_pos = self.curve.get_point_position(i)
-		enemy_instance.position = Vector2(
-			self.curve.get_point_position(i).x - 75.0, self.curve.get_point_position(i).y
-		)
-		current_pos.x += pos_interval
-		current_pos.y += pos_interval
 
+
+#	for i in range(0, self.curve.point_count, 18):
+#		var enemy_instance: HealthBody2D = enemy.instantiate()
+##		enemy_instance.position = Vector2.ZERO
+#		$EnemyPath.add_child(enemy_instance)
+#		enemy_instance.configure(shooting_rate)
+##		enemy_instance.transform.origin.x = left_bound
+##		enemy_instance.transform.origin = self.curve.get_point_position(i)
+##		enemy_instance.position = current_pos
+#		var new_pos = self.curve.get_point_position(i)
+#		enemy_instance.position = Vector2(
+#			self.curve.get_point_position(i).x - 75.0, self.curve.get_point_position(i).y
+#		)
+#		current_pos.x += pos_interval
+#		current_pos.y += pos_interval
 
 #		print("x:" + str(self.curve.get_point_position(i).x -75.0))
 #
