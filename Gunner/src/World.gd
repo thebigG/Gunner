@@ -78,8 +78,10 @@ func _physics_process(delta):
 
 func get_enemy_type():
 	var random_enemy_type = enemy_types[randi() % enemy_types.size()]
-#	return random_enemy_type
-	return 0
+	return random_enemy_type
+
+
+#	return 0
 
 
 func manage_node(node, enemy_type):
@@ -112,6 +114,7 @@ func _unhandled_input(input: InputEvent):
 func new_enemy_wave(number_of_enemies, type) -> Node:
 	counter += 1
 	var enemy_wave = null
+#	number_of_enemies = 1
 	match type:
 		ENEMY_TYPE.EASY:
 			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
@@ -126,7 +129,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 0.5), number_of_enemies, 5, 2)
+			enemy_wave.configure(Vector2(5, 0.5), 1, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
 

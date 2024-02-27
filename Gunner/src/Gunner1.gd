@@ -7,7 +7,8 @@ extends HealthBody2D
 var desired_shooting_rate = 12.00
 var current_velocity = Vector2()
 var screen_size
-var speed = 0
+var cruising_speed = 0
+var thrust = 10  # Not sure if this is the best name...
 var health_bar = AlignedProgressBar.new()
 var hurt_animation = Tween.new()
 var hud_scene: PackedScene = preload("res://scene/HUD.tscn")
@@ -43,7 +44,7 @@ func _ready():
 
 	health_bar.set_size(Vector2(10, 10))
 
-	speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
+	cruising_speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
 #	current_velocity.y = -speed
 
 	hud = hud_scene.instantiate()
@@ -123,21 +124,21 @@ func _physics_process(delta):
 		$Turn.set_sprite_frames(hurt_sprite_frames)
 
 	current_velocity.x = 0
-	current_velocity.y = speed * -1
+	current_velocity.y = cruising_speed * -1
 	if Input.is_action_pressed("move_up"):
-		current_velocity.y = (speed + 10) * (-1)
+		current_velocity.y = (cruising_speed + thrust) * (-1)
 		print(current_velocity.y)
 
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
 	if Input.is_action_pressed("move_down"):
-		current_velocity.y = speed / 2
+		current_velocity.y = (cruising_speed + thrust) / 2
 #
 	if Input.is_action_pressed("move_right"):
 		$Turn.set_animation("Right")
 		$Turn.play()
 		$Turn.set_frame(1)
-		current_velocity.x = speed
+		current_velocity.x = cruising_speed + thrust
 
 	#Would like a cleaner way of doing this...
 	else:
@@ -150,7 +151,7 @@ func _physics_process(delta):
 		$Turn.set_animation("Left")
 		$Turn.play()
 		$Turn.set_frame(1)
-		current_velocity.x = -speed
+		current_velocity.x = (-1) * (cruising_speed + thrust)
 	else:
 		if $Turn.animation == "Left":
 			$Turn.stop()
