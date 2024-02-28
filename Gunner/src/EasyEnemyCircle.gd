@@ -46,7 +46,11 @@ func _exit_tree():
 
 
 func shoot_gunner():
-	print("Shoot Gunner")
+#	print(self.rotation_degrees)
+#	self.rotation_degrees = rad_to_deg( get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position))
+#	self.rotation =  get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position)
+	self.rotation_degrees = -45
+	print("Shoot Gunner:" + str(self.rotation_degrees))
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
@@ -59,6 +63,17 @@ func _on_Boom_finished():
 
 func configure(new_shooting_rate):
 	shooting_rate = new_shooting_rate
+
+
+func get_angle_relative_to_Gunner(gunner_pos: Vector2):
+	var tan_x = self.position.x - gunner_pos.x
+	var tan_y = self.position.y - gunner_pos.y
+#	gunner_pos
+	var current_angle = self.position.direction_to(gunner_pos).angle()
+	return current_angle
+
+
+#	self.rotation = current_angle
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
