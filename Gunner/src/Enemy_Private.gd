@@ -45,13 +45,13 @@ func _physics_process(delta):
 #		HealthBody2D.DEAD
 		2:
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-#			boom.play()
-			if not (explosion.get_node("ExplosionParticles").emitting):
-				explosion.position = self.global_position
-				print(self.global_position)
-				explosion.get_node("ExplosionParticles").emitting = true
-			if lifetime < 0:
-				queue_free()
+			boom.play()
+#			if not (explosion.get_node("ExplosionParticles").emitting):
+#				explosion.position = self.global_position
+#				print(self.global_position)
+#				explosion.get_node("ExplosionParticles").emitting = true
+#			if lifetime < 0:
+			queue_free()
 
 
 # When using HealthBody2D as type hint, I get the following error:

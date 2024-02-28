@@ -129,7 +129,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Gunner1.position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 0.5), 1, 5, 2)
+			enemy_wave.configure(Vector2(5, 0.2), 1, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
 

@@ -84,7 +84,7 @@ func _physics_process(delta):
 		2:
 			print("Gunner is dead")
 #TODO: Need to avoid walking to the parent...
-#			get_parent().get_node("GameOver").restart_game()
+			get_parent().get_node("GameOver").restart_game()
 
 	if Input.is_action_pressed("ui_shoot"):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
