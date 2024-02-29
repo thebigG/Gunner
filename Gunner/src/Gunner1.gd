@@ -76,6 +76,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	$LabelPos.set_text(str(self.position))
 	screen_size = get_viewport_rect()
 	time += delta
 	health_bar.value = self.health

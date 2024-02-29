@@ -4,6 +4,7 @@ extends HealthBody2D
 
 var shoot_bullet_timer: Timer = Timer.new()
 var shooting_rate = 1  # Hertz
+var info_label = Label.new()
 
 
 #var bullet: RigidBody2D = bullet_scene.instantiate()
@@ -17,6 +18,7 @@ func _ready():
 	shoot_bullet_timer.paused = false
 	self.damage_interval = 1.0
 	add_child(shoot_bullet_timer)
+	add_child(info_label)
 
 
 func print_func(arg: Node):
@@ -24,6 +26,7 @@ func print_func(arg: Node):
 
 
 func _physics_process(delta):
+	info_label.text = str(self.rotation)
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
@@ -48,8 +51,10 @@ func _exit_tree():
 func shoot_gunner():
 #	print(self.rotation_degrees)
 #	self.rotation_degrees = rad_to_deg( get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position))
-#	self.rotation =  get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position)
-	self.rotation_degrees = -45
+	self.rotation = get_angle_relative_to_Gunner(
+		get_tree().get_nodes_in_group("Gunner")[0].global_position
+	)
+#	self.rotation_degrees = -45
 	print("Shoot Gunner:" + str(self.rotation_degrees))
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
@@ -68,8 +73,10 @@ func configure(new_shooting_rate):
 func get_angle_relative_to_Gunner(gunner_pos: Vector2):
 	var tan_x = self.position.x - gunner_pos.x
 	var tan_y = self.position.y - gunner_pos.y
+	print("gunner_pos:" + str(gunner_pos))
 #	gunner_pos
-	var current_angle = self.position.direction_to(gunner_pos).angle()
+#	var current_angle = self.position.direction_to(gunner_pos).angle()
+	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
 
 
