@@ -26,7 +26,12 @@ func print_func(arg: Node):
 
 
 func _physics_process(delta):
-	info_label.text = str(self.rotation)
+	#TODO:Not sure why this rotation is offset by 90 degrees...
+	self.rotation = (
+		get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].global_position)
+		- PI / 2
+	)
+	info_label.text = str(self.rotation_degrees)
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
@@ -51,15 +56,15 @@ func _exit_tree():
 func shoot_gunner():
 #	print(self.rotation_degrees)
 #	self.rotation_degrees = rad_to_deg( get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position))
-	self.rotation = get_angle_relative_to_Gunner(
-		get_tree().get_nodes_in_group("Gunner")[0].global_position
-	)
 #	self.rotation_degrees = -45
-	print("Shoot Gunner:" + str(self.rotation_degrees))
+#	print("Shoot Gunner:" + str(self.rotation_degrees))
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
+#	bullet.rotation_degrees = self.rotation_degrees
 	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
-	bullet.shoot(Vector2(0, 500))
+	var v = Vector2(0, 500)
+	v.rotated(self.rotation)
+	bullet.shoot(v.rotated(self.rotation))
 
 
 func _on_Boom_finished():
@@ -71,16 +76,9 @@ func configure(new_shooting_rate):
 
 
 func get_angle_relative_to_Gunner(gunner_pos: Vector2):
-	var tan_x = self.position.x - gunner_pos.x
-	var tan_y = self.position.y - gunner_pos.y
-	print("gunner_pos:" + str(gunner_pos))
-#	gunner_pos
-#	var current_angle = self.position.direction_to(gunner_pos).angle()
+#	var current_angle = self.global_position.direction_to(gunner_pos).angle()
 	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
-
-
-#	self.rotation = current_angle
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
