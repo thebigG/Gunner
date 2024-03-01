@@ -1,7 +1,7 @@
-res://scene/EnemyWaves_Circle.tscn
-res://src/EnemyWaves_Circle.gd
 res://scene/EasyEnemy.tscn
+res://src/EnemyWaves_Circle.gd
 res://scene/EasyEnemy_Circle.tscn
+res://scene/EnemyWaves_Circle.tscn
 res://scene/Gunner1.tscn
 res://scene/EnemyWaves_ZigZag.tscn
 res://scene/EnemyBullet.tscn
@@ -11,7 +11,4 @@ res://scene/ParallaxDriverScene.tscn
 res://scene/Missile.tscn
 res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
-res://src/EnemyWaves_ZigZagLine.gd
-res://src/World.gd
-res://src/Gunner1.gd
 res://src/EasyEnemyCircle.gd
