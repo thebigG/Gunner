@@ -76,7 +76,7 @@ func shoot_gunner():
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
 	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
-	bullet.shoot(Vector2(0, 500))
+	bullet.shoot(Vector2(0, 500).rotated(self.rotation))
 
 
 func _on_Boom_finished():
