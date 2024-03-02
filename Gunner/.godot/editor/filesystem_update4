@@ -12,3 +12,4 @@ res://scene/Missile.tscn
 res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
 res://src/EasyEnemyCircle.gd
+res://src/Enemy_Private.gd

@@ -39,6 +39,10 @@ func print_func(arg: Node):
 
 
 func _physics_process(delta):
+	self.rotation = (
+		get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].global_position)
+		- PI / 2
+	)
 	if explosion.get_node("ExplosionParticles").emitting:
 		lifetime -= delta
 	match self.state:
@@ -85,5 +89,13 @@ func configure(new_shooting_rate):
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	pass
+
+
 #	queue_free()
 #	shoot_bullet_timer.queue_free()
+
+
+func get_angle_relative_to_Gunner(gunner_pos: Vector2):
+#	var current_angle = self.global_position.direction_to(gunner_pos).angle()
+	var current_angle = self.global_position.angle_to_point(gunner_pos)
+	return current_angle
