@@ -62,8 +62,7 @@ func shoot_gunner():
 	add_child(bullet)
 #	bullet.rotation_degrees = self.rotation_degrees
 	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
-	var v = Vector2(0, 500)
-	v.rotated(self.rotation)
+	var v = Vector2(0, 1000)
 	bullet.shoot(v.rotated(self.rotation))
 
 
