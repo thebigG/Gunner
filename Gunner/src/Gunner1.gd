@@ -21,7 +21,8 @@ var score = 0
 var hurt_sprite_frames = SpriteFrames.new()
 var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet.png")
-var time = 0
+var bullet_time = 0
+var special_bullet_time = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -79,7 +80,8 @@ func _ready():
 func _physics_process(delta):
 	$LabelPos.set_text(str(self.position))
 	screen_size = get_viewport_rect()
-	time += delta
+	bullet_time += delta
+	special_bullet_time += delta
 	health_bar.value = self.health
 	match self.state:
 #		HealthBody2D.DEAD
@@ -90,8 +92,8 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("ui_shoot"):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
-		if time >= delta * calculated_rate_k:
-			time = 0
+		if bullet_time >= delta * calculated_rate_k:
+			bullet_time = 0
 			print("Shoot")
 			var new_bullet = bullet_scene.instantiate()
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
@@ -110,8 +112,8 @@ func _physics_process(delta):
 		var calculated_rate_k = (
 			Engine.physics_ticks_per_second / desired_special_weapon_shooting_rate
 		)
-		if time >= delta * calculated_rate_k:
-			time = 0
+		if special_bullet_time >= delta * calculated_rate_k:
+			special_bullet_time = 0
 			print("Shoot Missile")
 			var new_bullet = bullet_missile_scene.instantiate()
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
