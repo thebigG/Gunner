@@ -5,6 +5,7 @@ extends HealthBody2D
 @export var bullet_missile_scene: PackedScene
 
 var desired_shooting_rate = 12.00
+var desired_special_weapon_shooting_rate = 1.00
 var current_velocity = Vector2()
 var screen_size
 var cruising_speed = 0
@@ -104,7 +105,11 @@ func _physics_process(delta):
 			new_bullet.shoot(get_bullet_velocity())
 
 	if Input.is_action_pressed("special_weapon"):
-		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
+#TODO: I think what might make the most sense for "special" weapon is a timeout rather than a "rate", maybe...
+#Though the same outcome can be achieved with a rate at the end of the day
+		var calculated_rate_k = (
+			Engine.physics_ticks_per_second / desired_special_weapon_shooting_rate
+		)
 		if time >= delta * calculated_rate_k:
 			time = 0
 			print("Shoot Missile")
@@ -117,7 +122,7 @@ func _physics_process(delta):
 			add_child(new_bullet)
 			$Shoot.play()
 
-			new_bullet.shoot(get_bullet_velocity())
+			new_bullet.shoot(get_special_bullet_velocity())
 
 	$Turn.set_frame(0)
 
@@ -180,6 +185,10 @@ func _physics_process(delta):
 
 func get_bullet_velocity():
 	return Vector2(0, desired_shooting_rate * -100)
+
+
+func get_special_bullet_velocity():
+	return Vector2(0, desired_special_weapon_shooting_rate * -500)
 
 
 func increment_score():

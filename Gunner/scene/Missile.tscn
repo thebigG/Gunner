@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://scaj2f0aftdk"]
 
 [ext_resource type="Script" path="res://src/Missile.gd" id="1_v2l5k"]
-[ext_resource type="Texture2D" uid="uid://b5taxdedxomoe" path="res://Assets/Bullet.png" id="2_c8q0w"]
+[ext_resource type="Texture2D" uid="uid://4i2pw68gxm7l" path="res://Assets/SpecialBullet.png" id="2_1o0s7"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 39.0
@@ -18,7 +18,7 @@ script = ExtResource("1_v2l5k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0117188, 0.0343607)
-texture = ExtResource("2_c8q0w")
+texture = ExtResource("2_1o0s7")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -11,3 +11,4 @@ res://scene/ParallaxDriverScene.tscn
 res://scene/Missile.tscn
 res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
+res://src/Gunner1.gd
