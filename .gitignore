@@ -6,3 +6,5 @@
 *build*
 *shader_cache*
 *editor*
+*node_modules*
+*exports*
