@@ -99,9 +99,11 @@ func _physics_process(delta):
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
+			new_bullet.global_position = self.global_position
 			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
-			new_bullet.position.y -= 10
-			add_child(new_bullet)
+			new_bullet.global_position.y -= 25
+			#add_child(new_bullet)
+			self.get_parent().get_node("Player").add_child(new_bullet)
 			$Shoot.play()
 
 			new_bullet.shoot(get_bullet_velocity())
@@ -120,8 +122,10 @@ func _physics_process(delta):
 
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
 			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
-			new_bullet.position.y -= 10
-			add_child(new_bullet)
+			new_bullet.global_position = self.global_position
+			new_bullet.global_position.y -= 25
+			print("new_bullet.global_position:" + str(new_bullet.global_position))
+			self.get_parent().get_node("Player").add_child(new_bullet)
 			$Shoot.play()
 
 			new_bullet.shoot(get_special_bullet_velocity())

@@ -37,3 +37,5 @@ script = ExtResource("6_3ney2")
 [node name="TryAGainButton" type="Button" parent="GameOver"]
 layout_mode = 2
 text = "Try Again"
+
+[node name="Player" type="Node" parent="."]
