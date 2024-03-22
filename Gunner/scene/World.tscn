@@ -12,8 +12,7 @@ process_mode = 1
 position = Vector2(2, 4.68179)
 script = ExtResource("3")
 
-[node name="Gunner1" parent="." instance=ExtResource("5")]
-position = Vector2(232, 0)
+[node name="Player" parent="." instance=ExtResource("5")]
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")
@@ -37,5 +36,3 @@ script = ExtResource("6_3ney2")
 [node name="TryAGainButton" type="Button" parent="GameOver"]
 layout_mode = 2
 text = "Try Again"
-
-[node name="Player" type="Node" parent="."]

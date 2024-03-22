@@ -46,7 +46,9 @@ func _ready():
 
 	health_bar.set_size(Vector2(10, 10))
 
-	cruising_speed = get_parent().get_node("EasyStageScene/ParallaxDriver").get("speed")
+	cruising_speed = get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").get(
+		"speed"
+	)
 #	current_velocity.y = -speed
 
 	hud = hud_scene.instantiate()
@@ -61,8 +63,8 @@ func _ready():
 		screen_size.size.x / 2 - (hud.get_size().x / 2),
 		clamp(
 			position.y,
-			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-			get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 		)
 	)
 
@@ -74,7 +76,7 @@ func _ready():
 	hud_grid.add_child(score_label)
 	hud_grid.add_child(health_bar)
 
-	get_parent().get_node("EasyStageScene").add_child(hud)
+	get_parent().get_parent().get_node("EasyStageScene").add_child(hud)
 
 
 func _physics_process(delta):
@@ -88,7 +90,7 @@ func _physics_process(delta):
 		2:
 			print("Gunner is dead")
 #TODO: Need to avoid walking to the parent...
-			get_parent().get_node("GameOver").restart_game()
+			get_parent().get_parent().get_node("GameOver").restart_game()
 
 	if Input.is_action_pressed("ui_shoot"):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
@@ -103,7 +105,7 @@ func _physics_process(delta):
 			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
 			new_bullet.global_position.y -= 25
 			#add_child(new_bullet)
-			self.get_parent().get_node("Player").add_child(new_bullet)
+			self.get_parent().add_child(new_bullet)
 			$Shoot.play()
 
 			new_bullet.shoot(get_bullet_velocity())
@@ -125,7 +127,7 @@ func _physics_process(delta):
 			new_bullet.global_position = self.global_position
 			new_bullet.global_position.y -= 25
 			print("new_bullet.global_position:" + str(new_bullet.global_position))
-			self.get_parent().get_node("Player").add_child(new_bullet)
+			self.get_parent().add_child(new_bullet)
 			$Shoot.play()
 
 			new_bullet.shoot(get_special_bullet_velocity())
@@ -176,17 +178,22 @@ func _physics_process(delta):
 
 	position.y = clamp(
 		position.y,
-		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
 
 	position.y = clamp(
 		position.y,
-		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - screen_size.size.y,
-		get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+		(
+			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+			- screen_size.size.y
+		),
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
 
-	hud.position.y = get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
+	hud.position.y = (
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
+	)
 
 
 func get_bullet_velocity():

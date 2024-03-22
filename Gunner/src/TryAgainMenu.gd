@@ -16,7 +16,7 @@ func _unhandled_input(input: InputEvent):
 
 
 func restart_game():
-	self.position = get_parent().get_node("Gunner1").position
+	self.position = get_parent().get_node("Player").get_node("Gunner1").position
 	var screen_size = get_viewport_rect()
 	self.position.x = screen_size.size.x / 2 - (self.get_size().x / 2)
 	self.show()

@@ -37,29 +37,31 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="3"]
 
-[node name="Gunner1" type="HealthBody2D" groups=["Gunner"]]
+[node name="Player" type="Node"]
+
+[node name="Gunner1" type="HealthBody2D" parent="." groups=["Gunner"]]
 script = ExtResource("1")
 bullet_scene = ExtResource("5")
 bullet_missile_scene = ExtResource("3_nirlv")
 
-[node name="Turn" type="AnimatedSprite2D" parent="."]
+[node name="Turn" type="AnimatedSprite2D" parent="Gunner1"]
 position = Vector2(8.40897, 0.840897)
 scale = Vector2(0.137614, 0.189213)
 sprite_frames = SubResource("1")
 animation = &"Left"
 
-[node name="Body" type="Area2D" parent="."]
+[node name="Body" type="Area2D" parent="Gunner1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gunner1/Body"]
 shape = SubResource("2")
 
-[node name="Shoot" type="AudioStreamPlayer" parent="."]
+[node name="Shoot" type="AudioStreamPlayer" parent="Gunner1"]
 stream = ExtResource("6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gunner1"]
 shape = SubResource("3")
 
-[node name="LabelPos" type="Label" parent="."]
+[node name="LabelPos" type="Label" parent="Gunner1"]
 offset_left = 29.0
 offset_top = -2.0
 offset_right = 88.0

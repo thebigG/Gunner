@@ -1,8 +1,9 @@
-res://scene/EasyEnemy.tscn
+res://scene/Gunner1.tscn
 res://src/EnemyWaves_Circle.gd
+res://src/Gunner1.gd
+res://scene/EasyEnemy.tscn
 res://scene/EasyEnemy_Circle.tscn
 res://scene/EnemyWaves_Circle.tscn
-res://scene/Gunner1.tscn
 res://scene/EnemyWaves_ZigZag.tscn
 res://scene/EnemyBullet.tscn
 res://scene/Bullet.tscn
@@ -12,4 +13,6 @@ res://scene/Missile.tscn
 res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
 res://scene/HUD.tscn
-res://src/Gunner1.gd
+res://src/World.gd
+res://scene/EasyStageScene.tscn
+res://src/TryAgainMenu.gd
