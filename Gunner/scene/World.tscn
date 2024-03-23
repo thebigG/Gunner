@@ -22,11 +22,26 @@ process_mode = 0
 
 [node name="PauseMenu" type="PanelContainer" parent="."]
 process_mode = 3
+offset_right = 62.0
+offset_bottom = 200.0
 script = ExtResource("4")
 
-[node name="ResumeButton" type="Button" parent="PauseMenu"]
+[node name="Menu" type="GridContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
 text = "Pause"
+
+[node name="Toggle Sound" type="Button" parent="PauseMenu/Menu"]
+layout_mode = 2
+text = "Toggle Sound
+"
+
+[node name="Dev options" type="Button" parent="PauseMenu/Menu"]
+layout_mode = 2
+text = "Dev Options
+"
 
 [node name="GameOver" type="PanelContainer" parent="."]
 process_mode = 3
