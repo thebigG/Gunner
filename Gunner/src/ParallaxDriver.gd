@@ -15,6 +15,7 @@ func _ready():
 func _physics_process(delta):
 	if game_started:
 		move_and_collide(current_direction)
+		print("pos:" + str(self.position))
 
 
 func start_game():
