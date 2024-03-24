@@ -15,3 +15,7 @@ res://scene/HUD.tscn
 res://scene/EasyStageScene.tscn
 res://src/PuaseMenu.gd
 res://src/ParallaxDriver.gd
+res://src/World.gd
+res://src/Enemy_Private.gd
+res://src/EasyEnemyCircle.gd
+res://src/Gunner1.gd

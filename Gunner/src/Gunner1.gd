@@ -106,7 +106,8 @@ func _physics_process(delta):
 			new_bullet.global_position.y -= 25
 			#add_child(new_bullet)
 			self.get_parent().add_child(new_bullet)
-			$Shoot.play()
+			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
+				$Shoot.play()
 
 			new_bullet.shoot(get_bullet_velocity())
 
@@ -128,7 +129,8 @@ func _physics_process(delta):
 			new_bullet.global_position.y -= 25
 			print("new_bullet.global_position:" + str(new_bullet.global_position))
 			self.get_parent().add_child(new_bullet)
-			$Shoot.play()
+			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
+				$Shoot.play()
 
 			new_bullet.shoot(get_special_bullet_velocity())
 

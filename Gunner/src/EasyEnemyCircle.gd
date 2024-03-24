@@ -37,7 +37,8 @@ func _physics_process(delta):
 		2:
 			queue_free()
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-			boom.play()
+			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
+				boom.play()
 
 
 # When using HealthBody2D as type hint, I get the following error:

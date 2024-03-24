@@ -49,7 +49,9 @@ func _physics_process(delta):
 #		HealthBody2D.DEAD
 		2:
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-			boom.play()
+
+			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
+				boom.play()
 #			if not (explosion.get_node("ExplosionParticles").emitting):
 #				explosion.position = self.global_position
 #				print(self.global_position)

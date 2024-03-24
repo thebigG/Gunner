@@ -5,6 +5,7 @@ extends Control
 func _ready():
 	$Menu/ResumeButton.process_mode = Node.PROCESS_MODE_ALWAYS
 	$Menu/ResumeButton.connect("pressed", Callable(self, "toggle_pause"))
+	$Menu/ToggleSound.connect("pressed", Callable(self, "toggle_sound"))
 
 
 func _unhandled_input(input: InputEvent):
@@ -26,3 +27,9 @@ func toggle_pause():
 		self.show()
 	else:
 		self.hide()
+
+
+func toggle_sound():
+	var sound_setting = get_parent().get("sound_on")
+	get_parent().set("sound_on", not (sound_setting))
+	print("toggle sound...:" + str(get_parent().get("sound_on")))

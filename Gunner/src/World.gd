@@ -15,6 +15,7 @@ var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circl
 var enemy_waves = []
 
 var game_started = false
+var sound_on = true
 signal start_game_signal
 
 
@@ -25,7 +26,7 @@ func _ready():
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
-#	$EasyStageScene/SoundTrack.play()
+	#$EasyStageScene/SoundTrack.play()
 	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
