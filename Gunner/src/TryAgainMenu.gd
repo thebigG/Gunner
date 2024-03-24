@@ -16,9 +16,12 @@ func _unhandled_input(input: InputEvent):
 
 
 func restart_game():
-	self.position = get_parent().get_node("Player").get_node("Gunner1").position
 	var screen_size = get_viewport_rect()
 	self.position.x = screen_size.size.x / 2 - (self.get_size().x / 2)
+	self.position.y = (
+		get_parent().get_node("EasyStageScene").get_node("ParallaxDriver").position.y
+		- (screen_size.size.y / 2)
+	)
 	self.show()
 	get_tree().paused = true
 	game_over = true

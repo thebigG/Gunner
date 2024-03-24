@@ -96,7 +96,6 @@ func _physics_process(delta):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
 		if bullet_time >= delta * calculated_rate_k:
 			bullet_time = 0
-			print("Shoot")
 			var new_bullet = bullet_scene.instantiate()
 			#		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 
