@@ -1,0 +1,13 @@
+diff --git a/Gunner/scene/World.tscn b/Gunner/scene/World.tscn
+index 3bf6fd9..557ad06 100644
+--- a/Gunner/scene/World.tscn
++++ b/Gunner/scene/World.tscn
+@@ -46,6 +46,8 @@ text = "Dev Options
+ [node name="GameOver" type="PanelContainer" parent="."]
+ process_mode = 3
+ visible = false
++offset_right = 81.0
++offset_bottom = 31.0
+ script = ExtResource("6_3ney2")
+ 
+ [node name="TryAGainButton" type="Button" parent="GameOver"]
