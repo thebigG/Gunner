@@ -31,14 +31,14 @@ layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
-text = "Pause"
+text = "Resume"
 
-[node name="Toggle Sound" type="Button" parent="PauseMenu/Menu"]
+[node name="ToggleSound" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
 text = "Toggle Sound
 "
 
-[node name="Dev options" type="Button" parent="PauseMenu/Menu"]
+[node name="DevOptions" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
 text = "Dev Options
 "
