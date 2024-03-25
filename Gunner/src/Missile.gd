@@ -11,6 +11,7 @@ func shoot(velocity: Vector2):
 
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "queue_free"))
 
 
 #	self.add_to_group("Gunner_Bullet")

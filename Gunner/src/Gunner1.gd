@@ -162,7 +162,6 @@ func _physics_process(delta):
 			$Turn.set_frame(0)
 
 	if Input.is_action_pressed("move_left"):
-		print("ui_left")
 		$Turn.set_animation("Left")
 		$Turn.play()
 		$Turn.set_frame(1)
