@@ -16,6 +16,7 @@ func _ready():
 #	self.contact_monitor = true
 #	self.max_contacts_reported = 8
 	self.add_to_group("Gunner_Bullet")
+	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "queue_free"))
 
 
 func configure(new_target_group: String):
