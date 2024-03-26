@@ -22,12 +22,18 @@ process_mode = 0
 
 [node name="PauseMenu" type="PanelContainer" parent="."]
 process_mode = 3
-offset_right = 62.0
+offset_left = -3.0
+offset_right = 109.0
 offset_bottom = 200.0
+focus_neighbor_bottom = NodePath("Menu")
+focus_next = NodePath("Menu")
+focus_mode = 2
 script = ExtResource("4")
 
 [node name="Menu" type="GridContainer" parent="PauseMenu"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("ResumeButton")
+focus_next = NodePath("ResumeButton")
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
@@ -35,6 +41,7 @@ text = "Resume"
 
 [node name="ToggleSound" type="Button" parent="PauseMenu/Menu"]
 layout_mode = 2
+toggle_mode = true
 text = "Toggle Sound
 "
 
