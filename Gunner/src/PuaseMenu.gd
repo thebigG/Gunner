@@ -24,6 +24,7 @@ func toggle_pause():
 	)
 	get_tree().paused = false if get_tree().paused else true
 	if get_tree().paused:
+		self.grab_focus()
 		self.show()
 	else:
 		self.hide()
