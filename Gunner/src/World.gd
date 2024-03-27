@@ -82,9 +82,6 @@ func get_enemy_type():
 	return random_enemy_type
 
 
-#	return 0
-
-
 func manage_node(node, enemy_type):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 
