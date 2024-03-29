@@ -14,3 +14,4 @@ res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
 res://scene/HUD.tscn
 res://scene/EasyStageScene.tscn
+res://src/Gunner1.gd

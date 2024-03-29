@@ -113,7 +113,6 @@ func _unhandled_input(input: InputEvent):
 func new_enemy_wave(number_of_enemies, type) -> Node:
 	counter += 1
 	var enemy_wave = null
-#	number_of_enemies = 1
 	match type:
 		ENEMY_TYPE.EASY:
 			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
