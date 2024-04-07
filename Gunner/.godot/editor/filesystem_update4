@@ -13,4 +13,8 @@ res://scene/Explosion.tscn
 res://scene/EasyStage.tscn
 res://scene/HUD.tscn
 res://scene/EasyStageScene.tscn
+res://scene/health_item.tscn
+res://scene/health_item.gd
+res://src/World.gd
+res://scene/HealthItem.tscn
 res://src/Gunner1.gd

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpld0tfjirhnm"]
+
+[ext_resource type="Script" path="res://src/HealthItem.gd" id="1_6hjg5"]
+[ext_resource type="Texture2D" uid="uid://cgfcr0y4vupfr" path="res://Assets/icon.png" id="2_hnsht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg45v"]
+
+[node name="HealthItem" type="Node2D"]
+script = ExtResource("1_6hjg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.369, 0.3)
+texture = ExtResource("2_hnsht")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_fg45v")

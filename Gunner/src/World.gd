@@ -18,6 +18,8 @@ var game_started = false
 var sound_on = true
 signal start_game_signal
 
+var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -97,11 +99,16 @@ func manage_node(node, enemy_type):
 #		if node != null:
 #			node.queue_free(
 
-	#Random wave size between 1 and 10
-	wave_size = randi() % 10 + 1
+	#Random wave size between 3 and 10
+	wave_size = randi() % 10 + 3
 	new_node = new_enemy_wave(wave_size, enemy_type)
 	print(wave_size)
 	return new_node
+
+
+func manage_health_item():
+	var new_health_item = health_item_scene.instantiate()
+	return new_health_item
 
 
 func _unhandled_input(input: InputEvent):
@@ -127,7 +134,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 0.2), 1, 5, 2)
+			enemy_wave.configure(Vector2(5, 0.2), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
 
