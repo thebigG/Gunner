@@ -102,7 +102,7 @@ func _physics_process(delta):
 			new_bullet.connect("hit_signal", Callable(self, "increment_score"))
 			new_bullet.global_position = self.global_position
 			#Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
-			new_bullet.global_position.y -= 25
+			new_bullet.global_position.y -= 50
 			#add_child(new_bullet)
 			self.get_parent().add_child(new_bullet)
 			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
