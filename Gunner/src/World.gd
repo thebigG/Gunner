@@ -60,9 +60,9 @@ func _physics_process(delta):
 		while i < (max_waves):
 			var temp = []
 			if len(enemy_waves) > 0:
-				temp.append(manage_node(enemy_waves[i], get_enemy_type()))
+				temp.append(manage_enemy_waves(enemy_waves[i], get_enemy_type()))
 			else:
-				temp.append(manage_node(null, get_enemy_type()))
+				temp.append(manage_enemy_waves(null, get_enemy_type()))
 			new_waves.append_array(temp)
 			i += 1
 		i = 0
@@ -78,13 +78,23 @@ func _physics_process(delta):
 			for e in enemy_waves:
 				add_child(e)
 
+		var healthb_item: RigidBody2D = manage_health_item()
+		if healthb_item != null:
+			healthb_item.position.y = $Player.get_node("Gunner1").position.y - 1000
+			healthb_item.position.x = get_viewport_rect().size.x / 2
+			add_child(healthb_item)
+			#health_item
+			#healthb_item.position =
+			print("health item")
+			pass
+
 
 func get_enemy_type():
 	var random_enemy_type = enemy_types[randi() % enemy_types.size()]
 	return random_enemy_type
 
 
-func manage_node(node, enemy_type):
+func manage_enemy_waves(node, enemy_type):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 
 	var new_node = null
@@ -107,7 +117,11 @@ func manage_node(node, enemy_type):
 
 
 func manage_health_item():
-	var new_health_item = health_item_scene.instantiate()
+	var health_item_chance = randf()
+	var new_health_item = null
+	print("health_item_chance:" + str(health_item_chance))
+	if health_item_chance > 0 and health_item_chance < 0.1:
+		new_health_item = health_item_scene.instantiate()
 	return new_health_item
 
 
