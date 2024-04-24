@@ -23,10 +23,12 @@ var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet.png")
 var bullet_time = 0
 var special_bullet_time = 0
+var jet_texture_sprites = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	jet_texture_sprites = $Turn.sprite_frames
 	hurt_sprite_frames.add_animation("Left")
 	hurt_sprite_frames.add_animation("Right")
 	hurt_sprite_frames.add_frame("Left", damaged_jet_texture, 0)
@@ -155,6 +157,9 @@ func _physics_process(delta):
 
 	if self.health <= 0.5:
 		$Turn.set_sprite_frames(hurt_sprite_frames)
+
+	elif self.health > 0.5:
+		$Turn.set_sprite_frames(jet_texture_sprites)
 
 	current_velocity.x = 0
 	current_velocity.y = cruising_speed * -1
