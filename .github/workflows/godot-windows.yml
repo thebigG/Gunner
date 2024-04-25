@@ -28,6 +28,8 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Install Godot Modules
+        run: make get_gdext_modules            
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
