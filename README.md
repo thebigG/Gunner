@@ -20,4 +20,9 @@ Though the game will probably provide the best experience via the desktop native
 
 To build the game from source(or "export" it from godot), you must use my own [custom godot modules ](https://github.com/thebigG/rsty_physics).
 
+## To fetch the godot run the following recipe:
+```
+make get_gdext_modules
+```
+
 
