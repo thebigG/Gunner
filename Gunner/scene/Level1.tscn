@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://cktw854wfx644"]
+[gd_scene load_steps=2 format=3 uid="uid://cktw854wfx644"]
 
-[node name="Level1" type="Node"]
+[ext_resource type="Script" path="res://src/Level1.gd" id="1_otohk"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_otohk")
