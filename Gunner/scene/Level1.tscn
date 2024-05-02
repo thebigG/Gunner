@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgj1hl5fdumnd" path="res://scene/GameOver.tscn" id="5_30ar0"]
 [ext_resource type="PackedScene" uid="uid://7qk1iejmi8pk" path="res://scene/EasyStageScene.tscn" id="6_lb1rj"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" groups=["World3D"]]
 script = ExtResource("1_otohk")
 
 [node name="Player" parent="." instance=ExtResource("2_jplys")]
