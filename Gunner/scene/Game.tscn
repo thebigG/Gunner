@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://div53v6jh7mjn"]
+
+[ext_resource type="Script" path="res://src/World.gd" id="1_cp42r"]
+[ext_resource type="PackedScene" uid="uid://b0448q6b760c7" path="res://scene/Gunner1.tscn" id="2_sujff"]
+[ext_resource type="AudioStream" uid="uid://bfyeri8yg4lsn" path="res://Assets/Boom.wav" id="3_gbc2i"]
+[ext_resource type="PackedScene" uid="uid://7qk1iejmi8pk" path="res://scene/EasyStageScene.tscn" id="4_m45qf"]
+[ext_resource type="PackedScene" uid="uid://ds228rqqiq2rp" path="res://scene/PauseMenu.tscn" id="5_wbatm"]
+[ext_resource type="PackedScene" uid="uid://cgj1hl5fdumnd" path="res://scene/GameOver.tscn" id="6_oufhe"]
+
+[node name="Game" type="Node2D" groups=["World3D"]]
+process_mode = 1
+position = Vector2(2, 4.68179)
+script = ExtResource("1_cp42r")
+
+[node name="Player" parent="." instance=ExtResource("2_sujff")]
+
+[node name="Boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gbc2i")
+
+[node name="EasyStageScene" parent="." instance=ExtResource("4_m45qf")]
+process_mode = 0
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_wbatm")]
+
+[node name="GameOver" parent="." instance=ExtResource("6_oufhe")]

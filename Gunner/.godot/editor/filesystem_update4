@@ -16,3 +16,5 @@ res://scene/HealthItem.tscn
 res://src/World.gd
 res://scene/Level1.tscn
 res://src/Level1.gd
+res://scene/PauseMenu.tscn
+res://scene/Game.tscn

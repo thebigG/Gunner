@@ -20,6 +20,8 @@ signal start_game_signal
 
 var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 
+var level: PackedScene = preload("res://scene/Level1.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

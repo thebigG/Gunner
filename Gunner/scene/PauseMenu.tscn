@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds228rqqiq2rp"]
+
+[ext_resource type="Script" path="res://src/PuaseMenu.gd" id="1_y0nsu"]
+
+[node name="PauseMenu" type="PanelContainer"]
+process_mode = 3
+offset_left = -3.0
+offset_right = 109.0
+offset_bottom = 200.0
+focus_neighbor_bottom = NodePath("Menu")
+focus_next = NodePath("Menu")
+focus_mode = 2
+script = ExtResource("1_y0nsu")
+
+[node name="Menu" type="GridContainer" parent="."]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("ResumeButton")
+focus_next = NodePath("ResumeButton")
+
+[node name="ResumeButton" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Resume"
+
+[node name="ToggleSound" type="Button" parent="Menu"]
+layout_mode = 2
+toggle_mode = true
+text = "Toggle Sound
+"
+
+[node name="DevOptions" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Dev Options
+"
