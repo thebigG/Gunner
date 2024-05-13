@@ -5,7 +5,7 @@ enum ENEMY_TYPE { EASY, CIRCLE }
 var enemy_types = [ENEMY_TYPE.EASY, ENEMY_TYPE.CIRCLE]
 @export var wave_size: int = 2
 var current_wave = 0
-var counter = 0
+var spwaned_waves = 0
 
 var is_ready: bool = false
 
@@ -20,6 +20,9 @@ signal start_game_signal
 
 var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 
+#Number of waves to clear this level
+var max_number_of_waves = 5
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,15 +31,12 @@ func _ready():
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
 	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
+	#$EasyStageScene/SoundTrack.connect("finished", $EasyStageScene/SoundTrack.play)
 	#$EasyStageScene/SoundTrack.play()
 	help_label.position.y -= 50
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
 	randomize()
-
-
-#	enemy_waves.append(new_enemy_wave(wave_size, ENEMY_TYPE.CIRCLE))
-#	add_child(enemy_waves[0])
 
 
 #I think is_wave_alive should be moved to Enemy_Waves script
@@ -76,6 +76,7 @@ func _physics_process(delta):
 		if len(new_waves) > 0 and len(enemy_waves) < max_waves:
 			enemy_waves.append_array(new_waves)
 			for e in enemy_waves:
+				spwaned_waves += 1
 				add_child(e)
 
 		var healthb_item: RigidBody2D = manage_health_item()
@@ -101,14 +102,14 @@ func manage_enemy_waves(node, enemy_type):
 			destroy_enemy_wave(node)
 			if node != null:
 				node.queue_free()
-#	if is_wave_alive(node) == false and game_started:
-##			Move the queue_free code to Enemy_Waves script
-#		if node != null:
-#			node.queue_free(
 
 	#Random wave size between 3 and 10
 	wave_size = randi() % 10 + 3
 	new_node = new_enemy_wave(wave_size, enemy_type)
+
+	if spwaned_waves > max_number_of_waves:
+		get_node("GameOver").restart_game()
+
 	print(wave_size)
 	return new_node
 
@@ -116,7 +117,6 @@ func manage_enemy_waves(node, enemy_type):
 func manage_health_item():
 	var health_item_chance = randf()
 	var new_health_item = null
-	print("health_item_chance:" + str(health_item_chance))
 	if health_item_chance > 0 and health_item_chance < 0.1:
 		new_health_item = health_item_scene.instantiate()
 	return new_health_item
@@ -129,7 +129,6 @@ func _unhandled_input(input: InputEvent):
 
 
 func new_enemy_wave(number_of_enemies, type) -> Node:
-	counter += 1
 	var enemy_wave = null
 	match type:
 		ENEMY_TYPE.EASY:

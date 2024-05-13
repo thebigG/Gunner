@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/World.gd" id="1_cp42r"]
 
-[node name="Game" type="Node2D" groups=["World3D"]]
+[node name="Game" type="Node2D"]
 process_mode = 1
 position = Vector2(2, 4.68179)
 script = ExtResource("1_cp42r")
