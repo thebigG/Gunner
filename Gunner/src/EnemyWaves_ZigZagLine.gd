@@ -1,7 +1,7 @@
 extends Path2D
 @export var enemy: PackedScene
 
-var wave_vecolity: Vector2 = Vector2.ZERO
+var wave_velocity: Vector2 = Vector2.ZERO
 var number_of_enemies = 0
 var ORIGIN: Vector2 = Vector2(250, 70)
 var X_GAP = 75
@@ -12,13 +12,13 @@ var shooting_rate = 1
 
 # The smaller the path, the faster the enemies traverse the path
 func configure(
-	new_wave_vecolity: Vector2,
+	new_wave_velocity: Vector2,
 	new_number_of_enemies: int,
 	path_offset: int,
 	new_shooting_rate: float
 ):
 	number_of_enemies = new_number_of_enemies
-	wave_vecolity = new_wave_vecolity
+	wave_velocity = new_wave_velocity
 	offset = path_offset
 	shooting_rate = new_shooting_rate
 
@@ -65,7 +65,7 @@ func is_wave_alive():
 
 func _physics_process(delta):
 	$EnemyPath.progress += offset
-	self.position.y += wave_vecolity.y
+	self.position.y += wave_velocity.y
 
 
 func visible_filter():

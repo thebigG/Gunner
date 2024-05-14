@@ -17,3 +17,5 @@ res://scene/HealthItem.tscn
 res://scene/PauseMenu.tscn
 res://src/Gunner1.gd
 res://src/Level1.gd
+res://src/EnemyWaves_Circle.gd
+res://src/EnemyWaves_ZigZagLine.gd
