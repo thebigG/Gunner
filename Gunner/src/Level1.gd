@@ -53,15 +53,14 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	var gunner_position: Vector2 = $Player.get_node("Gunner1").global_position
-	#enemy_waves
 
 	if len(enemy_waves) > 0 and is_instance_valid(enemy_waves[0]):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
-		if distance_to_gunner < 300:
-			enemy_waves[0].set("wave_velocity", Vector2.ZERO)
-		else:
-			enemy_waves[0].set("wave_velocity", Vector2(5, 1))
+		#if distance_to_gunner < 300:
+		#enemy_waves[0].set("wave_velocity", Vector2(5, -100))
+		#else:
+		#enemy_waves[0].set("wave_velocity", Vector2(5, 1))
 		print("position to gunner:" + str(distance_to_gunner))
 	#TODO:Need to start thinking about the "progression" in this game.
 	if game_started:
@@ -110,7 +109,6 @@ func manage_enemy_waves(node, enemy_type):
 
 	if node != null and is_instance_valid(node):
 		if node.position.y > enemy_y_threshold:
-			destroy_enemy_wave(node)
 			if node != null:
 				node.queue_free()
 
@@ -158,8 +156,3 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.configure(Vector2(5, 0.2), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
-
-
-func destroy_enemy_wave(wave: Path2D):
-	for enemy in wave.get_node("EnemyPath").get_children():
-		enemy.queue_free()
