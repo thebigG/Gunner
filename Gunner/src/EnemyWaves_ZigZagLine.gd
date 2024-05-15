@@ -1,4 +1,4 @@
-extends Path2D
+extends RigidBody2D
 @export var enemy: PackedScene
 
 var wave_velocity: Vector2 = Vector2.ZERO
@@ -28,7 +28,7 @@ func spawn():
 	for i in range(number_of_enemies):
 		var enemy_instance: HealthBody2D = enemy.instantiate()
 		enemy_instance.position = Vector2.ZERO
-		$EnemyPath.add_child(enemy_instance)
+		$Enemy_ZigZagLine/EnemyPath.add_child(enemy_instance)
 		enemy_instance.configure(shooting_rate)
 		enemy_instance.transform.origin.x = left_bound
 		left_bound += X_GAP
@@ -45,13 +45,16 @@ func spawn():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.
-	self.curve.clear_points()
+	$Enemy_ZigZagLine.curve.clear_points()
 #	TODO: I should make AnimationUtils a singleton
 #	AnimationUtils.new().h_line_pattern(self.curve, Vector2(75, 83), 50)
 #	AnimationUtils.new().rectangle_pattern(self.curve, Vector2(75, 83), 50, 100)
 #	AnimationUtils.new().zig_zag_pattern(Vector2(75, 83), 50, 5)
 	anim_utils.zig_zag_pattern(
-		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
+		$Enemy_ZigZagLine.curve,
+		anim_utils.zig_zag_pattern($Enemy_ZigZagLine.curve, Vector2(75, 83), 50, 5),
+		-50,
+		5
 	)
 
 
@@ -64,8 +67,7 @@ func is_wave_alive():
 
 
 func _physics_process(delta):
-	$EnemyPath.progress += offset
-	self.position.y += wave_velocity.y
+	$Enemy_ZigZagLine/EnemyPath.progress += offset
 
 
 func visible_filter():

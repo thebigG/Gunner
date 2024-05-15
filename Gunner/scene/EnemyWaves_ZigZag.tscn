@@ -3,18 +3,15 @@
 [ext_resource type="Script" path="res://src/EnemyWaves_ZigZagLine.gd" id="1_1467r"]
 [ext_resource type="PackedScene" uid="uid://b3ys05bod5o0o" path="res://scene/EasyEnemy.tscn" id="2_s4bkq"]
 
-[sub_resource type="Curve2D" id="1"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 257.319, 82.1228, 0, 0, 0, 0, 12, 78, 0, 0, 0, 0, 26.75, 60.75, 0, 0, 0, 0, 122.75, 50.25, 0, 0, 0, 0, 256.25, 80.5)
-}
-point_count = 5
+[sub_resource type="Curve2D" id="Curve2D_mfpqg"]
 
-[node name="Enemy_ZigZagLine" type="Path2D"]
-curve = SubResource("1")
+[node name="MovingWave" type="RigidBody2D"]
 script = ExtResource("1_1467r")
 enemy = ExtResource("2_s4bkq")
 
-[node name="EnemyPath" type="PathFollow2D" parent="."]
+[node name="Enemy_ZigZagLine" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mfpqg")
+
+[node name="EnemyPath" type="PathFollow2D" parent="Enemy_ZigZagLine"]
 position = Vector2(257.319, 82.1228)
-rotation = -6.28319
 rotates = false
