@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 @export var enemy: PackedScene
 
 var wave_velocity: Vector2 = Vector2.ZERO
@@ -21,6 +21,7 @@ func configure(
 	wave_velocity = new_wave_velocity
 	offset = path_offset
 	shooting_rate = new_shooting_rate
+	self.velocity = wave_velocity
 
 
 func spawn():
@@ -68,6 +69,7 @@ func is_wave_alive():
 
 func _physics_process(delta):
 	$Enemy_ZigZagLine/EnemyPath.progress += offset
+	move_and_slide()
 
 
 func visible_filter():

@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_k53tc"]
 
-[node name="MovingWave" type="RigidBody2D"]
+[node name="MovingWave" type="CharacterBody2D"]
 script = ExtResource("1_ucilq")
 enemy = ExtResource("2_a12ii")
 
