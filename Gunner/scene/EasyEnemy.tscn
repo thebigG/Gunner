@@ -9,27 +9,30 @@
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(22, 34)
 
-[node name="EasyEnemy" type="HealthBody2D" groups=["Enemy"]]
+[node name="EasyEnemy" type="CharacterBody2D" groups=["Enemy"]]
+
+[node name="EasyEnemyHealthBody2D" type="HealthBody2D" parent="." groups=["Enemy"]]
 script = ExtResource("1")
 bullet_scene = ExtResource("3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EasyEnemyHealthBody2D"]
 shape = SubResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="EasyEnemyHealthBody2D"]
 scale = Vector2(0.121649, 0.187686)
 texture = ExtResource("2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="EasyEnemyHealthBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EasyEnemyHealthBody2D/Area2D"]
 position = Vector2(-1, 0)
 shape = SubResource("2")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="EasyEnemyHealthBody2D"]
 position = Vector2(-1, -5.96046e-07)
 scale = Vector2(1.1, 1.7)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="EasyEnemyHealthBody2D"]
 position = Vector2(0, 0.5)
 scale = Vector2(1, 1.65)
+enable_node_path = NodePath("../..")

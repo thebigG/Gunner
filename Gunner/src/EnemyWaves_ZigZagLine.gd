@@ -27,11 +27,11 @@ func configure(
 func spawn():
 	var left_bound = 0
 	for i in range(number_of_enemies):
-		var enemy_instance: HealthBody2D = enemy.instantiate()
-		enemy_instance.position = Vector2.ZERO
+		var enemy_instance: Node = enemy.instantiate()
+		enemy_instance.get_node("EasyEnemyHealthBody2D").position = Vector2.ZERO
 		$Enemy_ZigZagLine/EnemyPath.add_child(enemy_instance)
-		enemy_instance.configure(shooting_rate)
-		enemy_instance.transform.origin.x = left_bound
+		enemy_instance.get_node("EasyEnemyHealthBody2D").configure(shooting_rate)
+		enemy_instance.get_node("EasyEnemyHealthBody2D").transform.origin.x = left_bound
 		left_bound += X_GAP
 
 

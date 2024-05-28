@@ -58,7 +58,10 @@ func _physics_process(delta):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
 		if distance_to_gunner < 300:
-			enemy_waves[0].set("velocity", Vector2(5, -300))
+			print("Spped:" + str($Player.get_node("Gunner1").get("cruising_speed") * -1))
+			enemy_waves[0].set(
+				"velocity", Vector2(5, get_node("EasyStageScene/ParallaxDriver").get("speed") * -1)
+			)
 		else:
 			enemy_waves[0].set("velocity", Vector2(5, 2))
 		print("position to gunner:" + str(distance_to_gunner))

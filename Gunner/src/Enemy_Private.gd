@@ -76,7 +76,8 @@ func _exit_tree():
 func shoot_gunner():
 	print("Shoot Gunner")
 	var bullet = bullet_scene.instantiate()
-	add_child(bullet)
+	get_tree().get_nodes_in_group("World3D")[0].add_child(bullet)
+	bullet.position = self.global_position
 	bullet.position.y += get_node("Area2D/CollisionShape2D").shape.size.y
 	bullet.shoot(Vector2(0, 500).rotated(self.rotation))
 
@@ -93,11 +94,6 @@ func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	pass
 
 
-#	queue_free()
-#	shoot_bullet_timer.queue_free()
-
-
 func get_angle_relative_to_Gunner(gunner_pos: Vector2):
-#	var current_angle = self.global_position.direction_to(gunner_pos).angle()
 	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
