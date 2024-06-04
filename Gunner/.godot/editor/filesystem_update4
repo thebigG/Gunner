@@ -1,6 +1,5 @@
 res://scene/EasyEnemy.tscn
 res://src/EnemyWaves_Circle.gd
-res://src/Enemy_Private.gd
 res://scene/EasyEnemy_Circle.tscn
 res://scene/EnemyWaves_Circle.tscn
 res://scene/Gunner1.tscn
@@ -17,3 +16,5 @@ res://scene/EasyStageScene.tscn
 res://scene/HealthItem.tscn
 res://scene/Level1.tscn
 res://scene/PauseMenu.tscn
+res://src/PuaseMenu.gd
+res://src/Settings.gd

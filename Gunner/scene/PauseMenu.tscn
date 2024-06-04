@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds228rqqiq2rp"]
+[gd_scene load_steps=3 format=3 uid="uid://ds228rqqiq2rp"]
 
 [ext_resource type="Script" path="res://src/PuaseMenu.gd" id="1_y0nsu"]
+[ext_resource type="Script" path="res://src/Settings.gd" id="2_fcrq1"]
 
 [node name="PauseMenu" type="PanelContainer"]
 process_mode = 3
@@ -31,3 +32,6 @@ text = "Toggle Sound
 layout_mode = 2
 text = "Dev Options
 "
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource("2_fcrq1")
