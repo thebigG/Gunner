@@ -33,5 +33,5 @@ layout_mode = 2
 text = "Dev Options
 "
 
-[node name="Settings" type="Node" parent="."]
+[node name="Settings" type="Node" parent="." groups=["Settings"]]
 script = ExtResource("2_fcrq1")

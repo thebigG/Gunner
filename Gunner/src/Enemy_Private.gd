@@ -50,7 +50,7 @@ func _physics_process(delta):
 		2:
 			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
 
-			if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
+			if get_tree().get_first_node_in_group("Settings").get("sound_on"):
 				boom.play()
 #			if not (explosion.get_node("ExplosionParticles").emitting):
 #				explosion.position = self.global_position

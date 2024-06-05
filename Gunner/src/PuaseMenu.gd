@@ -46,3 +46,9 @@ func toggle_sound():
 	current_level.set("sound_on", not (sound_setting))
 	last_sound_setting = current_level.get("sound_on")
 	print("toggle sound...:" + str(current_level.get("sound_on")))
+
+	var settings_node = get_tree().get_first_node_in_group("Settings")
+	sound_setting = settings_node.get("sound_on")
+	settings_node.set("sound_on", not (sound_setting))
+	last_sound_setting = settings_node.get("sound_on")
+	print("toggle sound...:" + str(settings_node.get("sound_on")))
