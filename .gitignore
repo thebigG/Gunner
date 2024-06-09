@@ -1,3 +1,20 @@
+# Godot 4+ specific ignores
+Gunner/.godot/*
+!Gunner/.godot/extension_list.cfg
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
 .import/
 *.translation
 .mono/
