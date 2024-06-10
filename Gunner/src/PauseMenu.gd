@@ -8,6 +8,7 @@ func _ready():
 	$Menu/ResumeButton.process_mode = Node.PROCESS_MODE_ALWAYS
 	$Menu/ResumeButton.connect("pressed", Callable(self, "toggle_pause"))
 	$Menu/ToggleSound.connect("pressed", Callable(self, "toggle_sound"))
+	$Menu/Quit.connect("pressed", Callable(self, "quit_game"))
 	var current_level = get_tree().get_first_node_in_group("World3D")
 	print("current_level:" + str(current_level))
 
@@ -15,6 +16,11 @@ func _ready():
 func _unhandled_input(input: InputEvent):
 	if input.is_action_pressed("ui_pause"):
 		toggle_pause()
+
+
+func quit_game():
+	#TODO: Will be a good place to save state(levels, scores, etc)...
+	get_tree().quit()
 
 
 func toggle_pause():
