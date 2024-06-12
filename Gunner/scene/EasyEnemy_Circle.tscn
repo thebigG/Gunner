@@ -11,6 +11,8 @@ size = Vector2(30.25, 39)
 
 [node name="EasyEnemyCircle" type="HealthBody2D" groups=["Enemy"]]
 position = Vector2(1, 0)
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_4btpp")
 bullet_scene = ExtResource("2_brt6y")
 
@@ -22,6 +24,8 @@ scale = Vector2(0.121649, 0.187686)
 texture = ExtResource("2_pxdex")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("2")
