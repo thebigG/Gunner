@@ -23,10 +23,9 @@ func _ready():
 	self.damage_interval = 1.0
 	explosion = explosion_particles.instantiate()
 	var particles: GPUParticles2D = explosion.get_node("ExplosionParticles")
-#	explosion.position = Vector2.ZERO
 	particles.emitting = false
 	particles.one_shot = true
-	particles.connect("finished", Callable(self, "after_death"))
+	particles.connect("finished", Callable(self, "after_explosion"))
 	add_child(explosion)
 	add_child(shoot_bullet_timer)
 	lifetime = particles.lifetime

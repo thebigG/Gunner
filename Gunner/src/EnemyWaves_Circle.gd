@@ -33,48 +33,10 @@ func spawn():
 		$Enemy_Circle/EnemyPath.add_child(enemy_instance)
 		enemy_instance.configure(shooting_rate)
 		enemy_instance.position.x = left_bound
-		enemy_instance.position.y = left_bound
 		left_bound += X_GAP
-#	print("count:" + str(self.curve.point_count))
-
-#	for i in range(self.curve.point_count):
-##		var enemy_instance: HealthBody2D = enemy.instantiate()
-##		enemy_instance.position = Vector2.ZERO
-##		$EnemyPath.add_child(enemy_instance)
-##		enemy_instance.configure(shooting_rate)
-###		enemy_instance.transform.origin.x = left_bound
-##		enemy_instance.transform.origin = self.curve.get_point_position(i)
-##		var new_pos = self.curve.get_point_position(i)
-##		enemy_instance.position = new_pos
-#		print("x:" + str(self.curve.get_point_position(i).x))
 
 	var pos_interval = 20
 	var current_pos = Vector2.ZERO
-
-
-#	for i in range(0, self.curve.point_count, 18):
-#		var enemy_instance: HealthBody2D = enemy.instantiate()
-##		enemy_instance.position = Vector2.ZERO
-#		$EnemyPath.add_child(enemy_instance)
-#		enemy_instance.configure(shooting_rate)
-##		enemy_instance.transform.origin.x = left_bound
-##		enemy_instance.transform.origin = self.curve.get_point_position(i)
-##		enemy_instance.position = current_pos
-#		var new_pos = self.curve.get_point_position(i)
-#		enemy_instance.position = Vector2(
-#			self.curve.get_point_position(i).x - 75.0, self.curve.get_point_position(i).y
-#		)
-#		current_pos.x += pos_interval
-#		current_pos.y += pos_interval
-
-#		print("x:" + str(self.curve.get_point_position(i).x -75.0))
-#
-#		print("y:" + str(self.curve.get_point_position(i).y))
-##		print("x:" + str(self.curve.get_point_position(i).x))
-
-#func circle_pattern():
-#	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
-#	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))
 
 
 # Called when the node enters the scene tree for the first time.

@@ -6,6 +6,9 @@ var shoot_bullet_timer: Timer = Timer.new()
 var shooting_rate = 1  # Hertz
 var info_label = Label.new()
 
+var explosion_particles: PackedScene = preload("res://scene/Explosion.tscn")
+var explosion: Node2D
+
 
 #var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
@@ -17,12 +20,24 @@ func _ready():
 	shoot_bullet_timer.autostart = true
 	shoot_bullet_timer.paused = false
 	self.damage_interval = 1.0
+
+	explosion = explosion_particles.instantiate()
+	var particles: GPUParticles2D = explosion.get_node("ExplosionParticles")
+	particles.emitting = false
+	particles.one_shot = true
+	particles.connect("finished", Callable(self, "after_explosion"))
+	add_child(explosion)
+
 	add_child(shoot_bullet_timer)
 	add_child(info_label)
 
 
 func print_func(arg: Node):
 	print("Arg:" + str(arg))
+
+
+func after_explosion():
+	queue_free()
 
 
 func _physics_process(delta):
@@ -35,10 +50,14 @@ func _physics_process(delta):
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
-			queue_free()
-			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-			if get_tree().get_first_node_in_group("Settings").get("sound_on"):
-				boom.play()
+			if not (explosion.get_node("ExplosionParticles").emitting):
+				explosion.position = self.position
+#				print(self.global_position)
+				var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
+
+				if get_tree().get_first_node_in_group("Settings").get("sound_on"):
+					boom.play()
+				explosion.get_node("ExplosionParticles").emitting = true
 
 
 # When using HealthBody2D as type hint, I get the following error:
