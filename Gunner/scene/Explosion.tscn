@@ -5,7 +5,9 @@
 [node name="Explosion" type="Node2D"]
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 100
 process_material = ExtResource("1_4g8ke")
+one_shot = true
 explosiveness = 1.0
 trail_lifetime = 1.3

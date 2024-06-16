@@ -26,9 +26,7 @@ func _ready():
 #	explosion.position = Vector2.ZERO
 	particles.emitting = false
 	particles.one_shot = true
-#	paritcles.finished.connect(self, queue_free)
-
-#	explosion.get_node("ExplosionParticles").one
+	particles.connect("finished", Callable(self, "after_death"))
 	add_child(explosion)
 	add_child(shoot_bullet_timer)
 	lifetime = particles.lifetime
@@ -36,6 +34,10 @@ func _ready():
 
 func print_func(arg: Node):
 	print("Arg:" + str(arg))
+
+
+func after_explosion():
+	queue_free()
 
 
 func _physics_process(delta):
@@ -48,16 +50,18 @@ func _physics_process(delta):
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
-			var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
-
-			if get_tree().get_first_node_in_group("Settings").get("sound_on"):
-				boom.play()
-#			if not (explosion.get_node("ExplosionParticles").emitting):
-#				explosion.position = self.global_position
+			if not (explosion.get_node("ExplosionParticles").emitting):
+				explosion.position = self.position
 #				print(self.global_position)
-#				explosion.get_node("ExplosionParticles").emitting = true
-#			if lifetime < 0:
-			queue_free()
+				var boom = get_tree().get_nodes_in_group("World3D")[0].get_node("Boom")
+
+				if get_tree().get_first_node_in_group("Settings").get("sound_on"):
+					boom.play()
+				explosion.get_node("ExplosionParticles").emitting = true
+
+			if lifetime < 0:
+				pass
+				#queue_free()
 
 
 # When using HealthBody2D as type hint, I get the following error:
