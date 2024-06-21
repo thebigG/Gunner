@@ -35,7 +35,6 @@ func spawn():
 		enemy_instance.position.x = left_bound
 		left_bound += X_GAP
 
-	var pos_interval = 20
 	var current_pos = Vector2.ZERO
 
 

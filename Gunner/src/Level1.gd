@@ -23,9 +23,12 @@ var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 #Number of waves to clear this level
 var max_number_of_waves = 5
 
+var world_speed = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	world_speed = get_node("EasyStageScene/ParallaxDriver").get("speed")
 #	process_mode = Node.PROCESS_MODE_ALWAYS
 	self.get_viewport().transient = false
 	var help_label = Label.new()
@@ -57,13 +60,12 @@ func _physics_process(delta):
 	if len(enemy_waves) > 0 and is_instance_valid(enemy_waves[0]):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
-		if distance_to_gunner < 300:
-			print("Spped:" + str($Player.get_node("Gunner1").get("cruising_speed") * -1))
-			enemy_waves[0].set(
-				"velocity", Vector2(5, get_node("EasyStageScene/ParallaxDriver").get("speed") * -1)
-			)
-		else:
-			enemy_waves[0].set("velocity", Vector2(5, 2))
+		#if distance_to_gunner < 300:
+		#enemy_waves[0].set(
+		#"velocity", Vector2(5, get_node("EasyStageScene/ParallaxDriver").get("speed") * -1)
+		#)
+		#else:
+		#enemy_waves[0].set("velocity", Vector2(5, 2))
 		print("position to gunner:" + str(distance_to_gunner))
 	#TODO:Need to start thinking about the "progression" in this game.
 	if game_started:
@@ -92,11 +94,11 @@ func _physics_process(delta):
 				spwaned_waves += 1
 				add_child(e)
 
-		var healthb_item: RigidBody2D = manage_health_item()
-		if healthb_item != null:
-			healthb_item.position.y = $Player.get_node("Gunner1").position.y - 1000
-			healthb_item.position.x = get_viewport_rect().size.x / 2
-			add_child(healthb_item)
+		var health_item: RigidBody2D = manage_health_item()
+		if health_item != null:
+			health_item.position.y = $Player.get_node("Gunner1").position.y - 1000
+			health_item.position.x = get_viewport_rect().size.x / 2
+			add_child(health_item)
 			print("health item")
 
 
@@ -148,7 +150,7 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
 
-			enemy_wave.configure(Vector2(5, 2), number_of_enemies, 5, 2)
+			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:
@@ -156,6 +158,6 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, 2), number_of_enemies, 5, 2)
+			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, 2)
 			enemy_wave.spawn()
 	return enemy_wave
