@@ -42,6 +42,10 @@ func _ready():
 	randomize()
 
 
+func get_current_level_progress():
+	return spwaned_waves / max_number_of_waves
+
+
 #I think is_wave_alive should be moved to Enemy_Waves script
 func is_wave_alive(current_wave: Path2D):
 	if current_wave == null:
