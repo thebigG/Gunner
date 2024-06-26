@@ -135,8 +135,9 @@ func manage_enemy_waves(node, enemy_type):
 func manage_health_item():
 	var health_item_chance = randf()
 	var new_health_item = null
-	if health_item_chance > 0 and health_item_chance < 0.1:
-		new_health_item = health_item_scene.instantiate()
+	if get_current_level_progress() > 0.5:
+		if health_item_chance > 0 and health_item_chance < 0.1:
+			new_health_item = health_item_scene.instantiate()
 	return new_health_item
 
 
