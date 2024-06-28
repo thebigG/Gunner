@@ -22,8 +22,9 @@ var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 
 #Number of waves to clear this level
 var max_number_of_waves = 5
-
 var world_speed = null
+
+var spawn_health = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -135,7 +136,8 @@ func manage_enemy_waves(node, enemy_type):
 func manage_health_item():
 	var health_item_chance = randf()
 	var new_health_item = null
-	if get_current_level_progress() > 0.5:
+	if get_current_level_progress() > 0.5 and spawn_health:
+		spawn_health = false
 		if health_item_chance > 0 and health_item_chance < 0.1:
 			new_health_item = health_item_scene.instantiate()
 	return new_health_item
