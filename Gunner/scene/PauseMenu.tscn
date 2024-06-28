@@ -5,6 +5,7 @@
 
 [node name="PauseMenu" type="PanelContainer"]
 process_mode = 3
+visible = false
 offset_left = -3.0
 offset_right = 109.0
 offset_bottom = 200.0
