@@ -5,7 +5,7 @@ enum ENEMY_TYPE { EASY, CIRCLE }
 var enemy_types = [ENEMY_TYPE.EASY, ENEMY_TYPE.CIRCLE]
 @export var wave_size: int = 2
 var current_wave = 0
-var spwaned_waves = 0
+var spwaned_waves = 0.0
 
 var is_ready: bool = false
 
@@ -21,7 +21,7 @@ signal start_game_signal
 var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 
 #Number of waves to clear this level
-var max_number_of_waves = 5
+var max_number_of_waves = 5.0
 var world_speed = null
 
 var spawn_health = true
@@ -99,10 +99,11 @@ func _physics_process(delta):
 				spwaned_waves += 1
 				add_child(e)
 
-		var health_item: RigidBody2D = manage_health_item()
+		var health_item: CharacterBody2D = manage_health_item()
 		if health_item != null:
 			health_item.position.y = $Player.get_node("Gunner1").position.y - 1000
 			health_item.position.x = get_viewport_rect().size.x / 2
+			health_item.set("move_velocity", Vector2(0, world_speed))
 			add_child(health_item)
 			print("health item")
 
@@ -137,9 +138,9 @@ func manage_health_item():
 	var health_item_chance = randf()
 	var new_health_item = null
 	if get_current_level_progress() > 0.5 and spawn_health:
+		#if health_item_chance > 0 and health_item_chance < 0.1:
+		new_health_item = health_item_scene.instantiate()
 		spawn_health = false
-		if health_item_chance > 0 and health_item_chance < 0.1:
-			new_health_item = health_item_scene.instantiate()
 	return new_health_item
 
 

@@ -17,6 +17,7 @@ var hud: PanelContainer = null
 var hud_grid: GridContainer = null
 var hud_theme = preload("res://Assets/Themes/hud_theme.tres")
 var score_label: Label = Label.new()
+var level_progress: Label = Label.new()
 var score = 0
 var hurt_sprite_frames = SpriteFrames.new()
 var hurt_jet_sprites = AnimatedSprite2D.new()
@@ -57,7 +58,7 @@ func _ready():
 	hud.size.x = screen_size.size.x - 300
 	hud.size.x = 300
 	hud_grid = hud.get_child(0)
-	hud_grid.columns = 2
+	hud_grid.columns = 3
 
 	health_bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
@@ -75,13 +76,23 @@ func _ready():
 
 	hud.theme = hud_theme
 	score_label.text = "Score:" + str(score)
+	level_progress.text = (
+		"Progress:"
+		+ str(get_tree().get_first_node_in_group("World3D").call("get_current_level_progress"))
+	)
 	hud_grid.add_child(score_label)
 	hud_grid.add_child(health_bar)
+	hud_grid.add_child(level_progress)
 
 	get_parent().get_parent().get_node("EasyStageScene").add_child(hud)
 
 
 func _physics_process(delta):
+	var current_progress = str(
+		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
+	)
+	print("current_progress:" + str(current_progress))
+	level_progress.text = "Progress:" + current_progress
 	$LabelPos.set_text(str(self.position))
 	screen_size = get_viewport_rect()
 	bullet_time += delta
