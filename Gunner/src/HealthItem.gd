@@ -16,3 +16,4 @@ func _process(delta):
 func heal_gunner(body):
 	if body.is_in_group("Gunner"):
 		body.heal()
+		queue_free()
