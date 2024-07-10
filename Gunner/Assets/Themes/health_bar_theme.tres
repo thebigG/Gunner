@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://clcadk8l2858n"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://clcadk8l2858n"]
 
-[ext_resource type="Texture2D" uid="uid://cvaatfudyku0v" path="res://Assets/Hearts/heart_health.png" id="1_afmc6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yxct"]
+bg_color = Color(0.886275, 0.247059, 1, 0)
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(1, 0, 0, 1)
@@ -8,12 +9,9 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0.27451, 0.564706, 0.247059, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_my2sp"]
-texture = ExtResource("1_afmc6")
-
 [resource]
 ProgressBar/colors/font_color = Color(0.968627, 1, 0, 1)
 ProgressBar/colors/font_color_shadow = Color(1, 0, 0, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6yxct")
 ProgressBar/styles/bg = SubResource("1")
 ProgressBar/styles/fg = SubResource("2")
-ProgressBar/styles/fill = SubResource("StyleBoxTexture_my2sp")
