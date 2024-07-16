@@ -21,6 +21,7 @@ func _unhandled_input(input: InputEvent):
 
 func restart_level():
 	#TODO: Will be a good place to save state(levels, scores, etc)...
+	self.visible = false
 	get_tree().reload_current_scene()
 
 
