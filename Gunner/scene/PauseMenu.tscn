@@ -31,7 +31,8 @@ text = "Toggle Sound
 
 [node name="DevOptions" type="Button" parent="Menu"]
 layout_mode = 2
-text = "Dev Options
+toggle_mode = true
+text = "Dev Mode
 "
 
 [node name="RestartLevel" type="Button" parent="Menu"]
