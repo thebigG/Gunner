@@ -67,7 +67,7 @@ func _physics_process(delta):
 func damage_gunner(gunner: Node2D):
 	print("damage_gunner")
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
-		gunner.damage()
+		gunner.damage_gunner()
 
 
 func _exit_tree():

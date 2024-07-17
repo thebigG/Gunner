@@ -10,12 +10,6 @@ func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
 
 
-#	position.x = -20
-#	position.y = 20
-#	position.x = 0
-#	position.y = 0
-
-
 func configure(new_target_group: String):
 	target_group = new_target_group
 
@@ -28,7 +22,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Gunner"):
 #		Play some cool animation
-		body.call("damage")
+		body.call("damage_gunner")
 		queue_free()
 	elif body.is_in_group("Gunner_Bullet"):
 		body.call("queue_free")

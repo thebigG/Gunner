@@ -242,6 +242,7 @@ func increment_score():
 	score += 1
 	score_label.text = "Score:" + str(score)
 
+
 #func heal():
 #self.health = 1.0
 
@@ -254,3 +255,8 @@ func increment_score():
 #	)
 #	hurt_animation.start()
 #	super.damage()
+
+
+func damage_gunner():
+	Input.start_joy_vibration(0, 0.5, 0, 0.5)
+	self.damage()

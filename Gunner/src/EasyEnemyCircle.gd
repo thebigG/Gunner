@@ -62,9 +62,8 @@ func _physics_process(delta):
 # Error calling from signal 'body_entered' to callable: 'HealthBody2D(Enemy_Private.gd)::damage_gunner': Cannot convert argument 1 from Object to Object.
 #That error is by design:https://github.com/thebigG/Gunner/issues/19
 func damage_gunner(gunner: Node2D):
-	print("damage_gunner")
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
-		gunner.damage()
+		gunner.damage_gunner()
 
 
 func _exit_tree():
