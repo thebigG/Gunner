@@ -1,6 +1,7 @@
 extends Node
 
 var sound_on = true
+var dev_mode_on = false
 
 
 # Called when the node enters the scene tree for the first time.

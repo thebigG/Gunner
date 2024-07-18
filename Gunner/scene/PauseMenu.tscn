@@ -29,7 +29,7 @@ toggle_mode = true
 text = "Toggle Sound
 "
 
-[node name="DevOptions" type="Button" parent="Menu"]
+[node name="ToggleDevMode" type="Button" parent="Menu"]
 layout_mode = 2
 toggle_mode = true
 text = "Dev Mode

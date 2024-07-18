@@ -8,6 +8,7 @@ func _ready():
 	$Menu/ResumeButton.process_mode = Node.PROCESS_MODE_ALWAYS
 	$Menu/ResumeButton.connect("pressed", Callable(self, "toggle_pause"))
 	$Menu/ToggleSound.connect("pressed", Callable(self, "toggle_sound"))
+	$Menu/ToggleDevMode.connect("pressed", Callable(self, "toggle_dev_mode"))
 	$Menu/RestartLevel.connect("pressed", Callable(self, "restart_level"))
 	$Menu/Quit.connect("pressed", Callable(self, "quit_game"))
 	var current_level = get_tree().get_first_node_in_group("World3D")
@@ -59,3 +60,11 @@ func toggle_sound():
 	settings_node.set("sound_on", not (sound_setting))
 	last_sound_setting = settings_node.get("sound_on")
 	print("toggle sound...:" + str(settings_node.get("sound_on")))
+
+
+func toggle_dev_mode():
+	var settings_node = get_tree().get_first_node_in_group("Settings")
+	var sound_setting = settings_node.get("dev_mode_on")
+	settings_node.set("dev_mode_on", not (sound_setting))
+	last_sound_setting = settings_node.get("dev_mode_on")
+	print("dev mode ...:" + str(settings_node.get("dev_mode_on")))
