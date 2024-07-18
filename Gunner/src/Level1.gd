@@ -15,7 +15,6 @@ var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circl
 var enemy_waves = []
 
 var game_started = false
-var sound_on = true
 signal start_game_signal
 
 var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
