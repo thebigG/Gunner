@@ -46,6 +46,10 @@ func _physics_process(delta):
 		get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].global_position)
 		- PI / 2
 	)
+	if get_tree().get_first_node_in_group("Settings").get("dev_mode_on"):
+		info_label.visible = true
+	else:
+		info_label.visible = false
 	info_label.text = str(self.rotation_degrees)
 	match self.state:
 #		HealthBody2D.DEAD

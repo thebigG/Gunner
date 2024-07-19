@@ -93,6 +93,11 @@ func _physics_process(delta):
 	)
 	print("current_progress:" + str(current_progress))
 	level_progress.text = "Progress:" + current_progress
+	if get_tree().get_first_node_in_group("Settings").get("dev_mode_on"):
+		$LabelPos.visible = true
+
+	else:
+		$LabelPos.visible = false
 	$LabelPos.set_text(str(self.position))
 	screen_size = get_viewport_rect()
 	bullet_time += delta
