@@ -12,7 +12,7 @@ size = Vector2(30.25, 39)
 [node name="EasyEnemyCircle" type="HealthBody2D" groups=["Enemy"]]
 position = Vector2(1, 0)
 collision_layer = 8
-collision_mask = 5
+collision_mask = 0
 script = ExtResource("1_4btpp")
 bullet_scene = ExtResource("2_brt6y")
 
