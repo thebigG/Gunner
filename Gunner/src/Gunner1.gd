@@ -35,7 +35,6 @@ func _ready():
 	hurt_sprite_frames.add_frame("Left", damaged_jet_texture, 0)
 	hurt_sprite_frames.add_frame("Right", damaged_jet_texture, 0)
 	self.visible = true
-#	add_child(hurt_animation)
 
 	self.damage_interval = 0.10
 	health_bar.max_value = self.MAX_HEALTH
@@ -264,4 +263,14 @@ func increment_score():
 
 func damage_gunner():
 	Input.start_joy_vibration(0, 0.5, 0, 0.5)
+	if hurt_animation.is_running():
+		hurt_animation.stop()
+	var tween = get_tree().create_tween()
+	tween.tween_property($Turn, "visible", false, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(
+		Tween.EASE_IN_OUT
+	)
+	tween.tween_property($Turn, "visible", true, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(
+		Tween.EASE_IN_OUT
+	)
+	tween.play()
 	self.damage()
