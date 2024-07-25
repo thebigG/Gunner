@@ -263,14 +263,12 @@ func increment_score():
 
 func damage_gunner():
 	Input.start_joy_vibration(0, 0.5, 0, 0.5)
-	if hurt_animation.is_running():
-		hurt_animation.stop()
 	var tween = get_tree().create_tween()
-	tween.tween_property($Turn, "visible", false, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(
+	tween.tween_property($Turn, "visible", false, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
 		Tween.EASE_IN_OUT
 	)
-	tween.tween_property($Turn, "visible", true, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(
+	tween.tween_property($Turn, "visible", true, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
 		Tween.EASE_IN_OUT
 	)
-	tween.play()
+
 	self.damage()
