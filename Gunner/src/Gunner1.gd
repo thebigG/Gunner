@@ -85,6 +85,13 @@ func _ready():
 
 	get_parent().get_parent().get_node("EasyStageScene").add_child(hud)
 
+	var y_position = clamp(
+		position.y,
+		0.1 * get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y,
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y * 0.1
+	)
+	self.position = Vector2(screen_size.size.x / 2, 0)
+
 
 func _physics_process(delta):
 	var current_progress = str(
