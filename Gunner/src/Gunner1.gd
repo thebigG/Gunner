@@ -85,30 +85,15 @@ func _ready():
 
 	get_parent().get_parent().get_node("EasyStageScene").add_child(hud)
 
-	var y_position = clamp(
-		position.y,
-		0.1 * get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y,
-		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y * 0.1
-	)
+	#var y_position = clamp(
+	#position.y,
+	#0.1 * get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y,
+	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y * 0.1
+	#)
 	self.position = Vector2(screen_size.size.x / 2, 0)
 
 
-func _physics_process(delta):
-	var current_progress = str(
-		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
-	)
-	print("current_progress:" + str(current_progress))
-	level_progress.text = "Progress:" + current_progress
-	if get_tree().get_first_node_in_group("Settings").get("dev_mode_on"):
-		$LabelPos.visible = true
-
-	else:
-		$LabelPos.visible = false
-	$LabelPos.set_text(str(self.position))
-	screen_size = get_viewport_rect()
-	bullet_time += delta
-	special_bullet_time += delta
-	health_bar.value = self.health
+func manage_health():
 	match self.state:
 #		HealthBody2D.DEAD
 		2:
@@ -116,6 +101,10 @@ func _physics_process(delta):
 #TODO: Need to avoid walking to the parent...
 			get_parent().get_parent().get_node("GameOver").restart_game()
 
+
+func manage_weapons(delta):
+	bullet_time += delta
+	special_bullet_time += delta
 	if Input.is_action_pressed("ui_shoot"):
 		var calculated_rate_k = Engine.physics_ticks_per_second / desired_shooting_rate
 		if bullet_time >= delta * calculated_rate_k:
@@ -160,9 +149,27 @@ func _physics_process(delta):
 				var vel: Vector2 = get_special_bullet_velocity()
 				#vel.set
 				new_bullet.shoot(get_special_bullet_velocity())
-				#special_missiles.append()
-			#var new_bullet = bullet_missile_scene.instantiate()
-			##		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
+
+
+func _physics_process(delta):
+	var current_progress = str(
+		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
+	)
+	level_progress.text = "Progress:" + current_progress
+	if get_tree().get_first_node_in_group("Settings").get("dev_mode_on"):
+		$LabelPos.visible = true
+
+	else:
+		$LabelPos.visible = false
+	$LabelPos.set_text(str(self.position))
+	screen_size = get_viewport_rect()
+	health_bar.value = self.health
+
+	manage_health()
+	manage_weapons(delta)
+	#special_missiles.append()
+	#var new_bullet = bullet_missile_scene.instantiate()
+	##		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
 #
 	#new_bullet.connect("hit_signal", Callable(self, "increment_score"))
 	##Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
@@ -219,13 +226,15 @@ func _physics_process(delta):
 	#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_velocity)
 
-	position.x = clamp(position.x, 0, screen_size.size.x - 0)
+	position.x = clamp(position.x, 0, screen_size.size.x)
 
-	position.y = clamp(
-		position.y,
-		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
-	)
+	#position.y = clamp(
+	#position.y,
+	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
+	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+	#)
+
+	#print("Parallax driver pos y:" + str(get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
 
 	position.y = clamp(
 		position.y,
