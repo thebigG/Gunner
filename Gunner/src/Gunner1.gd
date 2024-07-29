@@ -214,14 +214,6 @@ func _physics_process(delta):
 
 	position.x = clamp(position.x, 0, screen_size.size.x)
 
-	#position.y = clamp(
-	#position.y,
-	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 600,
-	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
-	#)
-
-	#print("Parallax driver pos y:" + str(get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y))
-
 	position.y = clamp(
 		position.y,
 		(
