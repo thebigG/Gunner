@@ -167,20 +167,6 @@ func _physics_process(delta):
 
 	manage_health()
 	manage_weapons(delta)
-	#special_missiles.append()
-	#var new_bullet = bullet_missile_scene.instantiate()
-	##		connect(signal: String,Callable(target: Object,method: String).bind(binds: Array = [  ),flags: int = 0)
-#
-	#new_bullet.connect("hit_signal", Callable(self, "increment_score"))
-	##Prevent bullet from colliding with Gunner and avoid "Push back" effect from bullet.
-	#new_bullet.global_position = self.global_position
-	#new_bullet.global_position.y -= 25
-	#print("new_bullet.global_position:" + str(new_bullet.global_position))
-	#self.get_parent().add_child(new_bullet)
-	#if get_tree().get_nodes_in_group("World3D")[0].get("sound_on"):
-	#$Shoot.play()
-#
-	#new_bullet.shoot(get_special_bullet_velocity())
 
 	$Turn.set_frame(0)
 
