@@ -150,23 +150,28 @@ func manage_weapons(delta):
 				#vel.set
 				new_bullet.shoot(get_special_bullet_velocity())
 
-
-func _physics_process(delta):
-	var current_progress = str(
-		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
-	)
-	level_progress.text = "Progress:" + current_progress
+func manage_dev_mode():
 	if get_tree().get_first_node_in_group("Settings").get("dev_mode_on"):
 		$LabelPos.visible = true
 
 	else:
 		$LabelPos.visible = false
 	$LabelPos.set_text(str(self.position))
+
+func _physics_process(delta):
+	var current_progress = str(
+		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
+	)
+	level_progress.text = "Progress:" + current_progress
+	
+	
 	screen_size = get_viewport_rect()
 	health_bar.value = self.health
 
 	manage_health()
 	manage_weapons(delta)
+	
+	manage_dev_mode()
 
 	$Turn.set_frame(0)
 
