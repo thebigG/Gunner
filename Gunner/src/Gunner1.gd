@@ -225,6 +225,7 @@ func _physics_process(delta):
 		(
 			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 			- screen_size.size.y
+			+ 100
 		),
 		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)

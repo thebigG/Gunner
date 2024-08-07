@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://hqirek2751fi" path="res://scene/EasyStage.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dgw8fb26gnp0h" path="res://scene/ParallaxDriverScene.tscn" id="3"]
 
-[node name="EasyStageScene" type="Node"]
+[node name="EasyStageScene" type="Node2D"]
 process_mode = 2
+position = Vector2(0, 100)
 
 [node name="EasyStage" parent="." instance=ExtResource("2")]
 
