@@ -24,7 +24,8 @@ var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet.png")
 var bullet_time = 0
 var special_bullet_time = 0
-var jet_texture_sprites = null
+var jet_texture_sprites: SpriteFrames = null
+var hud_gap = 100
 
 
 # Called when the node enters the scene tree for the first time.
@@ -220,18 +221,24 @@ func _physics_process(delta):
 
 	position.x = clamp(position.x, 0, screen_size.size.x)
 
+	var gunner_sprite_height = (
+		jet_texture_sprites.get_frame_texture("Left", 0).get_height() * $Turn.scale.y
+	)
+
+	print("height:" + str(gunner_sprite_height))
+	print("scale:" + str(hurt_jet_sprites.scale.y))
 	position.y = clamp(
 		position.y,
 		(
 			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 			- screen_size.size.y
-			+ 100
+			+ (hud_gap + gunner_sprite_height)
 		),
 		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 	)
 
 	hud.position.y = (
-		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - 100
+		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - hud_gap
 	)
 
 
