@@ -231,10 +231,13 @@ func _physics_process(delta):
 		position.y,
 		(
 			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
-			- screen_size.size.y
-			+ (hud_gap + gunner_sprite_height)
+			- (screen_size.size.y - (hud_gap))
+			+ (gunner_sprite_height / 2)
 		),
-		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+		(
+			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
+			- (gunner_sprite_height / 2)
+		)
 	)
 
 	hud.position.y = (
