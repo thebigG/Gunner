@@ -55,8 +55,8 @@ func _ready():
 #	current_velocity.y = -speed
 
 	hud = hud_scene.instantiate()
-	hud.size.x = screen_size.size.x - 300
-	hud.size.x = 300
+	hud.size.x = screen_size.size.x
+	hud.size.y = hud_gap
 	hud_grid = hud.get_child(0)
 	hud_grid.columns = 3
 
