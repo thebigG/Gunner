@@ -36,7 +36,9 @@ func _ready():
 	self.connect("start_game_signal", Callable($EasyStageScene/ParallaxDriver, "start_game"))
 	#$EasyStageScene/SoundTrack.connect("finished", $EasyStageScene/SoundTrack.play)
 	#$EasyStageScene/SoundTrack.play()
+	#screen_size = get_viewport_rect()
 	help_label.position.y -= 50
+	help_label.global_position.y = get_viewport_rect().size.y / 2 * -1
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
 	randomize()
