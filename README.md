@@ -14,7 +14,8 @@ Though the game will probably provide the best experience via the desktop native
 
 
 ## Sound Credits
-"Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+- "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+- mechanical key hard.wav by bigmonmulgrew -- https://freesound.org/s/378085/ -- License: Creative Commons 0
 
 ## Building
 
