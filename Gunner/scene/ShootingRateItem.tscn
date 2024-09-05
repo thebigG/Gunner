@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://ddekmyfdnxrek" path="res://Assets/378085__bigmonmulgrew__mechanical-key-hard.wav" id="3_vriii"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28obc"]
-radius = 42.6099
-height = 209.716
+radius = 44.3837
+height = 199.911
 
 [node name="ShootingRateItem" type="CharacterBody2D"]
 script = ExtResource("1_kfcav")
@@ -20,8 +20,7 @@ texture = ExtResource("2_eg1ds")
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-position = Vector2(2.17393, 3.67379)
-scale = Vector2(1, 1)
+position = Vector2(1.79694, -0.411533)
 shape = SubResource("CapsuleShape2D_28obc")
 
 [node name="ObtainedSoundEffect" type="AudioStreamPlayer" parent="."]
