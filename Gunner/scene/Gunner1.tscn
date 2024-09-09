@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0448q6b760c7"]
+[gd_scene load_steps=10 format=3 uid="uid://b0448q6b760c7"]
 
 [ext_resource type="Script" path="res://src/Gunner1.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://scaj2f0aftdk" path="res://scene/Missile.tscn" id="3_nirlv"]
@@ -35,10 +35,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="2"]
 
-[sub_resource type="CapsuleShape2D" id="3"]
-radius = 13.0
-height = 98.0
-
 [node name="Player" type="Node"]
 
 [node name="Gunner1" type="HealthBody2D" parent="." groups=["Gunner"]]
@@ -61,8 +57,9 @@ shape = SubResource("2")
 [node name="Shoot" type="AudioStreamPlayer" parent="Gunner1"]
 stream = ExtResource("6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gunner1"]
-shape = SubResource("3")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Gunner1"]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(7, -15, 41, 18, 40, 27, 5, 27, 1, 47, -4, 27, -39, 27, -39, 18, -5, -15, 0, -49, 3, -49)
 
 [node name="LabelPos" type="Label" parent="Gunner1"]
 offset_left = 29.0

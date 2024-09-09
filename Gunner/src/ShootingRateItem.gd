@@ -21,8 +21,6 @@ func destroy():
 func apply_boost_gunner(body):
 	if body.is_in_group("Gunner"):
 		var boost = 0.5
-		var current_rate = body.get("desired_shooting_rate")
-		current_rate = current_rate + (current_rate * boost)
-		body.set("desired_shooting_rate", current_rate)
+		body.call("boost_shooting_rate", boost)
 		$ObtainedSoundEffect.play()
 		self.visible = false

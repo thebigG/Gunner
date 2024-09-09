@@ -4,7 +4,9 @@ extends HealthBody2D
 
 @export var bullet_missile_scene: PackedScene
 
-var desired_shooting_rate = 12.00
+var starting_shooting_rate = 12.00
+
+var desired_shooting_rate = starting_shooting_rate
 var desired_special_weapon_shooting_rate = 1.00
 var current_velocity = Vector2()
 var screen_size
@@ -97,6 +99,10 @@ func _ready():
 	#get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y * 0.1
 	#)
 	self.position = Vector2(screen_size.size.x / 2, 0)
+
+	var shooting_boost = 1 + (desired_shooting_rate / starting_shooting_rate - 1)
+
+	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"
 
 
 func manage_health():
@@ -249,8 +255,6 @@ func _physics_process(delta):
 		get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y - hud_gap
 	)
 
-	current_shooting_rate_label.text = "Shooting Rate:" + str(desired_shooting_rate)
-
 
 func get_bullet_velocity():
 	return Vector2(0, desired_shooting_rate * -100)
@@ -290,3 +294,14 @@ func damage_gunner():
 	)
 
 	self.damage()
+
+
+#
+func boost_shooting_rate(boost):
+	var current_rate = desired_shooting_rate
+	current_rate = desired_shooting_rate + (current_rate * boost)
+	desired_shooting_rate = current_rate
+
+	var shooting_boost = 1 + (desired_shooting_rate / starting_shooting_rate - 1)
+
+	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"

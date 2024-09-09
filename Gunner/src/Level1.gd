@@ -18,14 +18,14 @@ var game_started = false
 signal start_game_signal
 
 var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
-var shooting_rate_item_scene: PackedScene = preload("res://scene/ShootingRateItem.tscn")
+var shooting_boost_item_scene: PackedScene = preload("res://scene/ShootingBoostItem.tscn")
 
 #Number of waves to clear this level
 var max_number_of_waves = 5.0
 var world_speed = null
 
 var spawn_health = true
-var shooting_rate_health = true
+var spawn_boost = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -110,12 +110,12 @@ func _physics_process(delta):
 			add_child(health_item)
 			print("health item")
 
-		var shooting_rate_item: CharacterBody2D = manage_shooting_rate_item()
-		if shooting_rate_item != null:
-			shooting_rate_item.position.y = $Player.get_node("Gunner1").position.y - 1000
-			shooting_rate_item.position.x = get_viewport_rect().size.x / 2
-			shooting_rate_item.set("move_velocity", Vector2(0, world_speed))
-			add_child(shooting_rate_item)
+		var shooting_boost_item: CharacterBody2D = manage_shooting_boost_item()
+		if shooting_boost_item != null:
+			shooting_boost_item.position.y = $Player.get_node("Gunner1").position.y - 1000
+			shooting_boost_item.position.x = get_viewport_rect().size.x / 2
+			shooting_boost_item.set("move_velocity", Vector2(0, world_speed))
+			add_child(shooting_boost_item)
 			print("health item")
 
 
@@ -155,14 +155,14 @@ func manage_health_item():
 	return new_health_item
 
 
-func manage_shooting_rate_item():
+func manage_shooting_boost_item():
 	var health_item_chance = randf()
-	var new_shooting_rate_item = null
-	if get_current_level_progress() > 0.4 and shooting_rate_health:
+	var new_shooting_boost_item = null
+	if get_current_level_progress() > 0.4 and spawn_boost:
 		#if health_item_chance > 0 and health_item_chance < 0.1:
-		new_shooting_rate_item = shooting_rate_item_scene.instantiate()
-		shooting_rate_health = false
-	return new_shooting_rate_item
+		new_shooting_boost_item = shooting_boost_item_scene.instantiate()
+		spawn_boost = false
+	return new_shooting_boost_item
 
 
 func _unhandled_input(input: InputEvent):

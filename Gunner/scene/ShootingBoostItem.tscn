@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbmt76iglrra"]
 
-[ext_resource type="Script" path="res://src/ShootingRateItem.gd" id="1_kfcav"]
-[ext_resource type="Texture2D" uid="uid://drfxl5k4wo8s1" path="res://Assets/FasterBullet.png" id="2_eg1ds"]
-[ext_resource type="AudioStream" uid="uid://ddekmyfdnxrek" path="res://Assets/378085__bigmonmulgrew__mechanical-key-hard.wav" id="3_vriii"]
+[ext_resource type="Script" path="res://src/ShootingRateItem.gd" id="1_rcam1"]
+[ext_resource type="Texture2D" uid="uid://drfxl5k4wo8s1" path="res://Assets/FasterBullet.png" id="2_yenvd"]
+[ext_resource type="AudioStream" uid="uid://ddekmyfdnxrek" path="res://Assets/378085__bigmonmulgrew__mechanical-key-hard.wav" id="3_s3duv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28obc"]
 radius = 44.3837
 height = 199.911
 
 [node name="ShootingRateItem" type="CharacterBody2D"]
-script = ExtResource("1_kfcav")
+script = ExtResource("1_rcam1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-51.6073, -43.8559)
 scale = Vector2(0.0675924, 0.070031)
-texture = ExtResource("2_eg1ds")
+texture = ExtResource("2_yenvd")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 scale = Vector2(5, 5)
@@ -24,4 +24,4 @@ position = Vector2(1.79694, -0.411533)
 shape = SubResource("CapsuleShape2D_28obc")
 
 [node name="ObtainedSoundEffect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vriii")
+stream = ExtResource("3_s3duv")
