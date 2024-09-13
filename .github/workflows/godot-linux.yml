@@ -31,7 +31,7 @@ jobs:
           cd $EXPORT_NAME
           godot --headless -v --export-debug "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: build/linux
