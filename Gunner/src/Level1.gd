@@ -83,9 +83,9 @@ func _physics_process(delta):
 		while i < (max_waves):
 			var temp = []
 			if len(enemy_waves) > 0:
-				temp.append(manage_enemy_waves(enemy_waves[i], get_enemy_type()))
+				temp.append(manage_enemy_waves(enemy_waves[i], get_enemy_type(), 2))
 			else:
-				temp.append(manage_enemy_waves(null, get_enemy_type()))
+				temp.append(manage_enemy_waves(null, get_enemy_type(), 2))
 			new_waves.append_array(temp)
 			i += 1
 		i = 0
@@ -124,7 +124,11 @@ func get_enemy_type():
 	return random_enemy_type
 
 
-func manage_enemy_waves(node, enemy_type):
+func manage_enemies():
+	pass
+
+
+func manage_enemy_waves(node, enemy_type, shooting_rate):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 
 	var new_node = null
@@ -136,7 +140,7 @@ func manage_enemy_waves(node, enemy_type):
 
 	#Random wave size between 3 and 10
 	wave_size = randi() % 10 + 3
-	new_node = new_enemy_wave(wave_size, enemy_type)
+	new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
 
 	if spwaned_waves > max_number_of_waves:
 		get_node("GameOver").restart_game()
@@ -171,7 +175,7 @@ func _unhandled_input(input: InputEvent):
 		game_started = true
 
 
-func new_enemy_wave(number_of_enemies, type) -> Node:
+func new_enemy_wave(number_of_enemies, type, shooting_rate) -> Node:
 	var enemy_wave = null
 	match type:
 		ENEMY_TYPE.EASY:
@@ -187,6 +191,6 @@ func new_enemy_wave(number_of_enemies, type) -> Node:
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, 2)
+			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, shooting_rate)
 			enemy_wave.spawn()
 	return enemy_wave
