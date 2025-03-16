@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpld0tfjirhnm"]
 
-[ext_resource type="Script" path="res://src/HealthItem.gd" id="1_6hjg5"]
+[ext_resource type="Script" uid="uid://emalsdno0trf" path="res://src/HealthItem.gd" id="1_6hjg5"]
 [ext_resource type="Texture2D" uid="uid://4qsghxh0wana" path="res://Assets/Hearts/Normal (2).PNG" id="2_nmi02"]
 [ext_resource type="AudioStream" uid="uid://ddekmyfdnxrek" path="res://Assets/378085__bigmonmulgrew__mechanical-key-hard.wav" id="3_5yufo"]
 

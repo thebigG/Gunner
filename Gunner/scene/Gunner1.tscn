@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0448q6b760c7"]
 
-[ext_resource type="Script" path="res://src/Gunner1.gd" id="1"]
+[ext_resource type="Script" uid="uid://dqgyypg48ueht" path="res://src/Gunner1.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://scaj2f0aftdk" path="res://scene/Missile.tscn" id="3_nirlv"]
 [ext_resource type="Texture2D" uid="uid://6xnskwqym1lv" path="res://Assets/Jet_resized.png" id="4_8p5fx"]
 [ext_resource type="PackedScene" uid="uid://daowc4rxs6f0r" path="res://scene/Bullet.tscn" id="5"]

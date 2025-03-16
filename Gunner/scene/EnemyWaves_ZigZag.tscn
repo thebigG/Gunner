@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://q4trypkcs57b"]
 
-[ext_resource type="Script" path="res://src/EnemyWaves_ZigZagLine.gd" id="1_1467r"]
+[ext_resource type="Script" uid="uid://d3opsuibur6tb" path="res://src/EnemyWaves_ZigZagLine.gd" id="1_1467r"]
 [ext_resource type="PackedScene" uid="uid://b3ys05bod5o0o" path="res://scene/EasyEnemy.tscn" id="2_s4bkq"]
 
 [sub_resource type="Curve2D" id="Curve2D_mfpqg"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbmt76iglrra"]
 
-[ext_resource type="Script" path="res://src/ShootingBoostItem.gd" id="1_4cn3e"]
+[ext_resource type="Script" uid="uid://chvrul2oygfs7" path="res://src/ShootingBoostItem.gd" id="1_4cn3e"]
 [ext_resource type="Texture2D" uid="uid://drfxl5k4wo8s1" path="res://Assets/FasterBullet.png" id="2_yenvd"]
 [ext_resource type="AudioStream" uid="uid://ddekmyfdnxrek" path="res://Assets/378085__bigmonmulgrew__mechanical-key-hard.wav" id="3_s3duv"]
 

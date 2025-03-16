@@ -8,7 +8,7 @@ var X_GAP = 75
 var offset = 100
 var anim_utils = AnimationUtils.new()
 var shooting_rate = 1
-
+var debug_counter  = 0
 
 # The smaller the path, the faster the enemies traverse the path
 func configure(
@@ -47,6 +47,7 @@ func _ready():
 #		self.curve, anim_utils.zig_zag_pattern(self.curve, Vector2(75, 83), 50, 5), -50, 5
 #	)
 #	anim_utils.circle_pattern(self.curve, Vector2(75, 83), 45, 10, 4)
+	debug_counter = 0
 	var points = get_full_circle_shape_2dvectors_1phase(75, 75, Vector2(75, 0))
 	for p in points:
 		$Enemy_Circle.curve.add_point(p)

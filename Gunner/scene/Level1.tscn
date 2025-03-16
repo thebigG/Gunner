@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cktw854wfx644"]
 
-[ext_resource type="Script" path="res://src/Level1.gd" id="1_otohk"]
+[ext_resource type="Script" uid="uid://bs5rubv6wqb7w" path="res://src/Level1.gd" id="1_otohk"]
 [ext_resource type="PackedScene" uid="uid://b0448q6b760c7" path="res://scene/Gunner1.tscn" id="2_jplys"]
 [ext_resource type="AudioStream" uid="uid://bfyeri8yg4lsn" path="res://Assets/Boom.wav" id="3_irlkm"]
 [ext_resource type="PackedScene" uid="uid://cgj1hl5fdumnd" path="res://scene/GameOver.tscn" id="5_30ar0"]
@@ -8,6 +8,7 @@
 
 [node name="Level1" type="Node2D" groups=["World3D"]]
 script = ExtResource("1_otohk")
+max_number_of_waves = 2.0
 
 [node name="Player" parent="." instance=ExtResource("2_jplys")]
 

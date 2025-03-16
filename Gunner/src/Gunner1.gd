@@ -198,7 +198,7 @@ func _physics_process(delta):
 	current_velocity.y = cruising_speed * -1
 	if Input.is_action_pressed("move_up"):
 		current_velocity.y = (cruising_speed + thrust) * (-1)
-		print(current_velocity.y)
+		#print(current_velocity.y)
 
 # TODO: Have to rethink this logic a bit since now Gunner has to keep up with the
 # the velocity of the camera.
@@ -236,8 +236,8 @@ func _physics_process(delta):
 		jet_texture_sprites.get_frame_texture("Left", 0).get_height() * $Turn.scale.y
 	)
 
-	print("height:" + str(gunner_sprite_height))
-	print("scale:" + str(hurt_jet_sprites.scale.y))
+	#print("height:" + str(gunner_sprite_height))
+	#print("scale:" + str(hurt_jet_sprites.scale.y))
 	position.y = clamp(
 		position.y,
 		(

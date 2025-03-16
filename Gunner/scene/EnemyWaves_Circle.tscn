@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba7o7my0r8dpj"]
 
-[ext_resource type="Script" path="res://src/EnemyWaves_Circle.gd" id="1_ucilq"]
+[ext_resource type="Script" uid="uid://cw0smq2lcs45" path="res://src/EnemyWaves_Circle.gd" id="1_ucilq"]
 [ext_resource type="PackedScene" uid="uid://c4ibjyt8woqrj" path="res://scene/EasyEnemy_Circle.tscn" id="2_a12ii"]
 
 [sub_resource type="Curve2D" id="Curve2D_k53tc"]

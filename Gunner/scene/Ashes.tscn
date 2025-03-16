@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmxa7mprxf5y0"]
 
-[ext_resource type="Material" uid="uid://bgbjuhiodmyoy" path="res://ashes.material" id="1"]
-[ext_resource type="AudioStream" uid="uid://ddgbs7fki063p" path="res://532191__mcmikai__fire-in-the-stove.wav" id="2"]
+[ext_resource type="Material" uid="uid://bgbjuhiodmyoy" path="res://scene/ashes.material" id="1"]
+[ext_resource type="AudioStream" uid="uid://ddgbs7fki063p" path="res://scene/532191__mcmikai__fire-in-the-stove.wav" id="2"]
 
 [node name="Flames" type="Node"]
 

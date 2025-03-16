@@ -21,7 +21,7 @@ var health_item_scene: PackedScene = preload("res://scene/HealthItem.tscn")
 var shooting_boost_item_scene: PackedScene = preload("res://scene/ShootingBoostItem.tscn")
 
 #Number of waves to clear this level
-var max_number_of_waves = 10.0
+@export var max_number_of_waves = 10.0
 var world_speed = null
 
 var spawn_health = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://scaj2f0aftdk"]
 
-[ext_resource type="Script" path="res://src/Missile.gd" id="1_v2l5k"]
+[ext_resource type="Script" uid="uid://ba6onyso8ry3i" path="res://src/Missile.gd" id="1_v2l5k"]
 [ext_resource type="Texture2D" uid="uid://4i2pw68gxm7l" path="res://Assets/SpecialBullet.png" id="2_1o0s7"]
 
 [sub_resource type="CapsuleShape2D" id="1"]

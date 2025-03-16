@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgj1hl5fdumnd"]
 
-[ext_resource type="Script" path="res://src/TryAgainMenu.gd" id="1_sruuj"]
+[ext_resource type="Script" uid="uid://c34qktm34g8gw" path="res://src/TryAgainMenu.gd" id="1_sruuj"]
 
 [node name="GameOver" type="PanelContainer"]
 process_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ds228rqqiq2rp"]
 
-[ext_resource type="Script" path="res://src/PauseMenu.gd" id="1_aireu"]
-[ext_resource type="Script" path="res://src/Settings.gd" id="2_fcrq1"]
+[ext_resource type="Script" uid="uid://dpwibqajm4b1m" path="res://src/PauseMenu.gd" id="1_aireu"]
+[ext_resource type="Script" uid="uid://b2v456edbypx1" path="res://src/Settings.gd" id="2_fcrq1"]
 
 [node name="PauseMenu" type="PanelContainer"]
 process_mode = 3
