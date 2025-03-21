@@ -8,7 +8,8 @@ var X_GAP = 75
 var offset = 100
 var anim_utils = AnimationUtils.new()
 var shooting_rate = 1
-var debug_counter  = 0
+var debug_counter = 0
+
 
 # The smaller the path, the faster the enemies traverse the path
 func configure(
