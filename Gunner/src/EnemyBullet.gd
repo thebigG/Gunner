@@ -8,6 +8,7 @@ func shoot(velocity):
 
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
+	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "queue_free"))
 
 
 func configure(new_target_group: String):

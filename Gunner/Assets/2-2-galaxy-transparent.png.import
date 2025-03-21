@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/2-2-galaxy-transparent.png-75d7d8b0adf9bf05c4
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

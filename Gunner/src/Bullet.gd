@@ -16,7 +16,8 @@ func _ready():
 #	self.contact_monitor = true
 #	self.max_contacts_reported = 8
 	self.add_to_group("Gunner_Bullet")
-	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "queue_free"))
+	var err = $VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "destroy"))
+	print("err:" + str(err))
 
 
 func configure(new_target_group: String):
@@ -25,7 +26,17 @@ func configure(new_target_group: String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var on_screen = $VisibleOnScreenNotifier2D.is_on_screen()
+	if on_screen:
+		pass
+	else:
+		print("Hello")
 	pass
+	
+
+func destroy():
+	self.remove_from_group("Gunner_Bullet")
+	self.queue_free()
 
 
 func _on_Area2D_body_entered(body):
