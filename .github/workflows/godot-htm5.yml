@@ -2,7 +2,7 @@ name: "HTML5 build"
 on: push
 
 env:
-  GODOT_VERSION: 4.2.1
+  GODOT_VERSION: 4.4
   EXPORT_NAME: Gunner
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     name: HTML5 Export
     runs-on: ubuntu-latest
     container:
-      image: thebigg1/godot-ci:v4.2.1.stable.official_b09f793f5
+      image: thebigg1/godot-ci:v4.4.stable.official_4c311cbee
     steps:
       - name: Checkout
         uses: actions/checkout@v2
