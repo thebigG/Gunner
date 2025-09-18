@@ -1,12 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0448q6b760c7"]
+[gd_scene load_steps=12 format=3 uid="uid://b0448q6b760c7"]
 
 [ext_resource type="Script" uid="uid://dqgyypg48ueht" path="res://src/Gunner1.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://scaj2f0aftdk" path="res://scene/Missile.tscn" id="3_nirlv"]
 [ext_resource type="Texture2D" uid="uid://6xnskwqym1lv" path="res://Assets/Jet_resized.png" id="4_8p5fx"]
+[ext_resource type="Shader" uid="uid://dtiijnw8pxm0w" path="res://scene/invert.gdshader" id="4_jafkf"]
 [ext_resource type="PackedScene" uid="uid://daowc4rxs6f0r" path="res://scene/Bullet.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://cguvi7fvshyf2" path="res://Assets/Jet_tilted_left_resized.png" id="5_dotx7"]
 [ext_resource type="AudioStream" uid="uid://cwxubnvu2h1jl" path="res://Assets/Shoot.wav" id="6"]
 [ext_resource type="Texture2D" uid="uid://trle6snqdx6t" path="res://Assets/Jet-tilted-right_resized.png" id="6_u6ktk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cm6o"]
+shader = ExtResource("4_jafkf")
+shader_parameter/blue = 0.9
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -44,6 +49,7 @@ bullet_scene = ExtResource("5")
 bullet_missile_scene = ExtResource("3_nirlv")
 
 [node name="Turn" type="AnimatedSprite2D" parent="Gunner1"]
+material = SubResource("ShaderMaterial_4cm6o")
 position = Vector2(5.72205e-06, 0)
 scale = Vector2(0.0795492, 0.0946065)
 sprite_frames = SubResource("1")
