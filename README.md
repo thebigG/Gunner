@@ -11,6 +11,20 @@ Though the game will probably provide the best experience via the desktop native
 - https://github.com/thebigG/rsty_physics
 
 
+# Formatting code
+This project uses gdformat. 
+
+To install:
+
+```
+pip3 install "gdtoolkit==4.*"
+```
+
+To Format:
+
+```
+make format
+```
 
 
 ## Sound Credits
