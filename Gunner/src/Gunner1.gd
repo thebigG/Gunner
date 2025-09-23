@@ -103,6 +103,8 @@ func _ready():
 	var shooting_boost = 1 + (desired_shooting_rate / starting_shooting_rate - 1)
 
 	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"
+	var material = self.material as ShaderMaterial
+	$Turn.material.set_shader_parameter("blue", 0.8)
 
 
 func manage_health():
