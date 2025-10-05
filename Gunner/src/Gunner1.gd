@@ -176,9 +176,9 @@ func manage_dev_mode():
 
 func _physics_process(delta):
 	var current_progress = str(
-		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress")
+		get_tree().get_first_node_in_group("World3D").call("get_current_level_progress_text")
 	)
-	level_progress.text = "Progress:" + current_progress
+	level_progress.text = "Wave:" + current_progress
 
 	screen_size = get_viewport_rect()
 	health_bar.value = self.health

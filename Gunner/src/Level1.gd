@@ -26,6 +26,8 @@ var world_speed = null
 
 var spawn_health = true
 var spawn_boost = true
+@onready
+var easy_stage_background: Sprite2D = get_node("EasyStageScene/EasyStage/ParallaxLayer/Background")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +50,10 @@ func _ready():
 
 func get_current_level_progress():
 	return spwaned_waves / max_number_of_waves
+
+
+func get_current_level_progress_text():
+	return str(spwaned_waves) + "/" + str(max_number_of_waves)
 
 
 #I think is_wave_alive should be moved to Enemy_Waves script
