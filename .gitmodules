@@ -1,0 +1,3 @@
+[submodule "Gunner/scene/lygia"]
+	path = Gunner/scene/lygia
+	url = git@github.com:thebigG/lygia.git
