@@ -27,3 +27,4 @@ mono_crash.*.json
 *exports*
 Gunner/bin/*
 !Gunner/bin/.gitkeep
+venv
