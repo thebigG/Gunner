@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqgyypg48ueht" path="res://src/Gunner1.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://scaj2f0aftdk" path="res://scene/Missile.tscn" id="3_nirlv"]
 [ext_resource type="Texture2D" uid="uid://6xnskwqym1lv" path="res://Assets/Jet_resized.png" id="4_8p5fx"]
-[ext_resource type="Shader" uid="uid://dtiijnw8pxm0w" path="res://scene/invert.gdshader" id="4_jafkf"]
+[ext_resource type="Shader" uid="uid://bul4qu43hd5dt" path="res://src/shaders/invert.gdshader" id="4_jafkf"]
 [ext_resource type="PackedScene" uid="uid://daowc4rxs6f0r" path="res://scene/Bullet.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://cguvi7fvshyf2" path="res://Assets/Jet_tilted_left_resized.png" id="5_dotx7"]
 [ext_resource type="AudioStream" uid="uid://cwxubnvu2h1jl" path="res://Assets/Shoot.wav" id="6"]
