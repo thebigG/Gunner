@@ -123,6 +123,7 @@ func _physics_process(delta):
 			shooting_boost_item.set("move_velocity", Vector2(0, world_speed))
 			add_child(shooting_boost_item)
 			print("health item")
+		manage_shader_params()
 
 
 func get_enemy_type():
@@ -173,6 +174,12 @@ func manage_shooting_boost_item():
 		new_shooting_boost_item = shooting_boost_item_scene.instantiate()
 		spawn_boost = false
 	return new_shooting_boost_item
+
+
+func manage_shader_params():
+	if get_current_level_progress() > 0.5:
+		var material: ShaderMaterial = easy_stage_background.material as ShaderMaterial
+		material.set_shader_parameter("day_over", true)
 
 
 func _unhandled_input(input: InputEvent):

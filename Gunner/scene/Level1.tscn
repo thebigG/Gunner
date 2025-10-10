@@ -8,7 +8,8 @@
 
 [node name="Level1" type="Node2D" groups=["World3D"]]
 script = ExtResource("1_otohk")
-max_number_of_waves = 2.0
+wave_size = 5
+max_number_of_waves = 5.0
 
 [node name="Player" parent="." instance=ExtResource("2_jplys")]
 

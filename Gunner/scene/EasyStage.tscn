@@ -1,8 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://hqirek2751fi"]
+[gd_scene load_steps=5 format=3 uid="uid://hqirek2751fi"]
 
 [ext_resource type="Texture2D" uid="uid://bty6rau8rkt56" path="res://Assets/sky-background.jpg" id="1"]
+[ext_resource type="Shader" uid="uid://xyxb4n223teh" path="res://src/shaders/EasyStageSunset.gdshader" id="1_3exsb"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibmao"]
+shader = ExtResource("1_3exsb")
+shader_parameter/day_over = false
 
 [node name="EasyStage" type="ParallaxBackground"]
 scroll_offset = Vector2(1, 360)
@@ -13,6 +18,7 @@ position = Vector2(0, 184)
 motion_mirroring = Vector2(0, 7000)
 
 [node name="Background" type="Sprite2D" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_ibmao")
 position = Vector2(-11, -269)
 scale = Vector2(2.03333, 2.00028)
 texture = ExtResource("1")
