@@ -4,7 +4,7 @@ name: "windows build"
 on: push
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4.5
   EXPORT_NAME: Gunner
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     name: Windows Export
     runs-on: ubuntu-latest
     container:
-      image: thebigg1/godot-ci:v4.4.stable.official_4c311cbee
+      image: thebigg1/godot-ci:v4.5.stable.official_4c311cbee
     steps:
       - name: Checkout
         uses: actions/checkout@v2
