@@ -5,9 +5,12 @@
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibmao"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3exsb"]
 shader = ExtResource("1_3exsb")
-shader_parameter/day_over = false
+shader_parameter/u_resolution = Vector2(0, 0)
+shader_parameter/u_time = 0.0
+shader_parameter/camera_pos = Vector2(0, 0)
+shader_parameter/parallax_factor = Vector2(0.5, 0.5)
 
 [node name="EasyStage" type="ParallaxBackground"]
 scroll_offset = Vector2(1, 360)
@@ -18,7 +21,7 @@ position = Vector2(0, 184)
 motion_mirroring = Vector2(0, 7000)
 
 [node name="Background" type="Sprite2D" parent="ParallaxLayer"]
-material = SubResource("ShaderMaterial_ibmao")
+material = SubResource("ShaderMaterial_3exsb")
 position = Vector2(-11, -269)
 scale = Vector2(2.03333, 2.00028)
 texture = ExtResource("1")
