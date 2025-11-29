@@ -32,6 +32,7 @@ var easy_stage_background: Sprite2D = get_node("EasyStageScene/EasyStage/Paralla
 @export var parallax_factor: Vector2 = Vector2(1.00, 1.00)
 var camera_node: Camera2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	world_speed = get_node("EasyStageScene/ParallaxDriver").get("speed")
@@ -48,7 +49,7 @@ func _ready():
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
 	randomize()
-	
+
 #	TODO: Figure a way to  initialize easy_stage_material once
 	var easy_stage_material: ShaderMaterial = easy_stage_background.material as ShaderMaterial
 	camera_node = get_viewport().get_camera_2d()
