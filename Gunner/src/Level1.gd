@@ -29,6 +29,8 @@ var spawn_boost = true
 @onready
 var easy_stage_background: Sprite2D = get_node("EasyStageScene/EasyStage/ParallaxLayer/Background")
 
+@export var parallax_factor: Vector2 = Vector2(1.00, 1.00)
+var camera_node: Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,6 +48,12 @@ func _ready():
 	$EasyStageScene.add_child(help_label)
 	get_tree().paused = false
 	randomize()
+	
+#	TODO: Figure a way to  initialize easy_stage_material once
+	var easy_stage_material: ShaderMaterial = easy_stage_background.material as ShaderMaterial
+	camera_node = get_viewport().get_camera_2d()
+	if camera_node:
+		easy_stage_material.set_shader_parameter("parallax_factor", parallax_factor)
 
 
 func get_current_level_progress():
@@ -177,9 +185,11 @@ func manage_shooting_boost_item():
 
 
 func manage_shader_params():
+	var easy_stage_material: ShaderMaterial = easy_stage_background.material as ShaderMaterial
+	if camera_node:
+		easy_stage_material.set_shader_parameter("camera_pos", camera_node.global_position)
 	if get_current_level_progress() > 0.5:
-		var material: ShaderMaterial = easy_stage_background.material as ShaderMaterial
-		material.set_shader_parameter("day_over", true)
+		easy_stage_material.set_shader_parameter("day_over", true)
 
 
 func _unhandled_input(input: InputEvent):
