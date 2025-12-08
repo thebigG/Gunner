@@ -24,6 +24,9 @@ jobs:
           tag_name: continuous-build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Coding Style
+        run: |
+          make check_format
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates

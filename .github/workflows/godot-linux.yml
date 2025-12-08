@@ -18,7 +18,7 @@ jobs:
           lfs: true
       - name: Coding Style
         run: |
-          make format
+          make check_format
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
