@@ -1,6 +1,7 @@
 format:
 	gdformat  Gunner/src
-	clang-format -i  Gunner/src/shaders/*.frag
+	clang-format -i  Gunner/src/shaders/*.gshader
+	clang-format -i  Gunner/src/shaders/*.gshaderinc
 
 check_format:
 	gdformat -c Gunner/src
