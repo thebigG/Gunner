@@ -9,7 +9,7 @@ uniform float u_time;
 #include "res://src/shaders/lygia/sdf/flowerSDF.gdshaderinc"
 #include "res://src/shaders/lygia/space/scale.gdshaderinc"
 #define SKY_BLUE covertRGB(vec3(48.00, 141.00, 255)) 
-
+#define DARK_SKY_BLUE covertRGB(vec3(4.00, 46.00, 96.00))
 
 uniform vec2 camera_pos;
 uniform vec2 parallax_factor = vec2(0.5, 0.5);
@@ -23,7 +23,7 @@ void fragment()
    vec2 offset = (camera_pos * parallax_factor) / resolution;
 
    st += offset;
-   vec3 color = SKY_BLUE;
+   vec3 color = DARK_SKY_BLUE;
 
 	st = scale(st, 8.0);
     vec2 scaled_st = st;
