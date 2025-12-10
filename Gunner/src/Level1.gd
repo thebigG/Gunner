@@ -94,6 +94,7 @@ func _physics_process(delta):
 	if game_started:
 		var new_waves = []
 		var i = 0
+		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
 		var max_waves = 1  # Could be part of the progression of the game
 		while i < (max_waves):
 			var temp = []
