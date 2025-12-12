@@ -32,6 +32,8 @@ var easy_stage_background: Sprite2D = get_node("EasyStageScene/EasyStage/Paralla
 @export var parallax_factor: Vector2 = Vector2(1.00, 1.00)
 var camera_node: Camera2D
 
+var level_complete = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -83,35 +85,25 @@ func _physics_process(delta):
 	if len(enemy_waves) > 0 and is_instance_valid(enemy_waves[0]):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
-		#if distance_to_gunner < 300:
-		#enemy_waves[0].set(
-		#"velocity", Vector2(5, get_node("EasyStageScene/ParallaxDriver").get("speed") * -1)
-		#)
-		#else:
-		#enemy_waves[0].set("velocity", Vector2(5, 2))
 		print("position to gunner:" + str(distance_to_gunner))
 	#TODO:Need to start thinking about the "progression" in this game.
 	if game_started:
 		var new_waves = []
-		var i = 0
 		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
 		var max_waves = 1  # Could be part of the progression of the game
-		while i < (max_waves):
-			var temp = []
-			if len(enemy_waves) > 0:
-				temp.append(manage_enemy_waves(enemy_waves[i], get_enemy_type(), 2))
-			else:
-				temp.append(manage_enemy_waves(null, get_enemy_type(), 2))
-			new_waves.append_array(temp)
-			i += 1
-		i = 0
+		var temp = []
+		if len(enemy_waves) > 0:
+			temp.append(manage_enemy_waves(enemy_waves[0], get_enemy_type(), 2))
+		else:
+			temp.append(manage_enemy_waves(null, get_enemy_type(), 2))
+		new_waves.append_array(temp)
+		var i = 0
 		var enemy_waves_len = len(enemy_waves)
 		if len(enemy_waves) > 0:
-			while i < enemy_waves_len:
-				if not (is_instance_valid(enemy_waves[i])):
-					enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
-					enemy_waves_len = len(enemy_waves)
-				i += 1
+			if not (is_instance_valid(enemy_waves[i])):
+				enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
+				enemy_waves_len = len(enemy_waves)
+
 		if len(new_waves) > 0 and len(enemy_waves) < max_waves:
 			enemy_waves.append_array(new_waves)
 			for e in enemy_waves:
@@ -152,8 +144,10 @@ func manage_enemy_waves(node, enemy_type, shooting_rate):
 
 	if node != null and is_instance_valid(node):
 		if node.position.y > enemy_y_threshold:
-			if node != null:
-				node.queue_free()
+			node.queue_free()
+#			Not sure if this is the best way to declare "game over"
+			if spwaned_waves + 1 > max_number_of_waves:
+				get_node("GameOver").restart_game()
 
 	#Random wave size between 3 and 10
 	wave_size = randi() % 10 + 3
