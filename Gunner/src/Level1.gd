@@ -86,7 +86,7 @@ func _physics_process(delta):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
 		print("position to gunner:" + str(distance_to_gunner))
-	#TODO:Need to start thinking about the "progression" in this game.
+	#TODO:Need to start thinking about the "progression" in th  is game.
 	if game_started:
 		var new_waves = []
 		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
@@ -196,13 +196,18 @@ func _unhandled_input(input: InputEvent):
 
 func new_enemy_wave(number_of_enemies, type, shooting_rate) -> Node:
 	var enemy_wave = null
+	# path_offset is the "rate" with which the enemies move inside of the wave pattern.
+	var path_offset = 5
 	match type:
 		ENEMY_TYPE.EASY:
 			enemy_wave = enemy_wave_scene_zig_zag.instantiate()
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = (get_viewport_rect().position.x / 2)
 
-			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, 2)
+#			NOTE:Maybe create a class/struct for configuring the wave...
+			enemy_wave.configure(
+				Vector2(5, world_speed), number_of_enemies, path_offset, shooting_rate
+			)
 			enemy_wave.spawn()
 
 		ENEMY_TYPE.CIRCLE:
@@ -210,6 +215,8 @@ func new_enemy_wave(number_of_enemies, type, shooting_rate) -> Node:
 			enemy_wave.transform.origin.y = $Player.get_node("Gunner1").position.y - 1000
 			enemy_wave.transform.origin.x = get_viewport_rect().position.x / 2
 
-			enemy_wave.configure(Vector2(5, world_speed), number_of_enemies, 5, shooting_rate)
+			enemy_wave.configure(
+				Vector2(5, world_speed), number_of_enemies, path_offset, shooting_rate
+			)
 			enemy_wave.spawn()
 	return enemy_wave
