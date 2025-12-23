@@ -86,7 +86,7 @@ func _physics_process(delta):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
 		print("position to gunner:" + str(distance_to_gunner))
-	#TODO:Need to start thinking about the "progression" in th  is game.
+	#TODO:Need to start thinking about the "progression" in this game.
 	if game_started:
 		var new_waves = []
 		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
