@@ -81,7 +81,6 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	var gunner_position: Vector2 = $Player.get_node("Gunner1").global_position
-
 	if len(enemy_waves) > 0 and is_instance_valid(enemy_waves[0]):
 		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
 		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
@@ -91,12 +90,12 @@ func _physics_process(delta):
 		var new_waves = []
 		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
 		var max_waves = 1  # Could be part of the progression of the game
-		var temp = []
+		var temp = null
 		if len(enemy_waves) > 0:
-			temp.append(manage_enemy_waves(enemy_waves[0], get_enemy_type(), 2))
+			temp = manage_enemy_waves(enemy_waves[0], get_enemy_type(), 2)
 		else:
-			temp.append(manage_enemy_waves(null, get_enemy_type(), 2))
-		new_waves.append_array(temp)
+			temp = manage_enemy_waves(null, get_enemy_type(), 2)
+		new_waves.append(temp)
 		var i = 0
 		var enemy_waves_len = len(enemy_waves)
 		if len(enemy_waves) > 0:
