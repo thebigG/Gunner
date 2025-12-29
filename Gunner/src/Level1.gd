@@ -4,7 +4,7 @@ extends Node2D
 enum ENEMY_TYPE { EASY, CIRCLE }
 var enemy_types = [ENEMY_TYPE.EASY, ENEMY_TYPE.CIRCLE]
 @export var wave_size: int = 2
-var current_wave = 0
+var current_wave = null
 var spwaned_waves = 0.0
 
 var is_ready: bool = false
@@ -12,8 +12,6 @@ var is_ready: bool = false
 var enemy_wave_scene_zig_zag: PackedScene = preload("res://scene/EnemyWaves_ZigZag.tscn")
 
 var enemy_wave_scene_circle: PackedScene = preload("res://scene/EnemyWaves_Circle.tscn")
-var enemy_waves = []
-
 var game_started = false
 signal start_game_signal
 
@@ -38,7 +36,6 @@ var level_complete = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	world_speed = get_node("EasyStageScene/ParallaxDriver").get("speed")
-#	process_mode = Node.PROCESS_MODE_ALWAYS
 	self.get_viewport().transient = false
 	var help_label = Label.new()
 	help_label.text = "Use arrow keys to move. Press the Space Bar to shoot/start the game."
@@ -81,33 +78,13 @@ func is_wave_alive(current_wave: Path2D):
 
 func _physics_process(delta):
 	var gunner_position: Vector2 = $Player.get_node("Gunner1").global_position
-	if len(enemy_waves) > 0 and is_instance_valid(enemy_waves[0]):
-		print("enemy_waves[0] position:" + str(enemy_waves[0].global_position))
-		var distance_to_gunner = enemy_waves[0].global_position.distance_to(gunner_position)
+	if is_instance_valid(current_wave):
+		print("enemy_waves[0] position:" + str(current_wave.global_position))
+		var distance_to_gunner = current_wave.global_position.distance_to(gunner_position)
 		print("position to gunner:" + str(distance_to_gunner))
 	#TODO:Need to start thinking about the "progression" in this game.
 	if game_started:
-		var new_waves = []
-		# I'm not sure if the concept of "max_waves" makes sense in the game (at least if there is levels)...
-		var max_waves = 1  # Could be part of the progression of the game
-		var temp = null
-		if len(enemy_waves) > 0:
-			temp = manage_enemy_waves(enemy_waves[0], get_enemy_type(), 2)
-		else:
-			temp = manage_enemy_waves(null, get_enemy_type(), 2)
-		new_waves.append(temp)
-		var i = 0
-		var enemy_waves_len = len(enemy_waves)
-		if len(enemy_waves) > 0:
-			if not (is_instance_valid(enemy_waves[i])):
-				enemy_waves.remove_at(enemy_waves.find(enemy_waves[i]))
-				enemy_waves_len = len(enemy_waves)
-
-		if len(new_waves) > 0 and len(enemy_waves) < max_waves:
-			enemy_waves.append_array(new_waves)
-			for e in enemy_waves:
-				spwaned_waves += 1
-				add_child(e)
+		manage_enemy_waves(get_enemy_type(), 2)
 
 		var health_item: CharacterBody2D = manage_health_item()
 		if health_item != null:
@@ -136,27 +113,28 @@ func manage_enemies():
 	pass
 
 
-func manage_enemy_waves(node, enemy_type, shooting_rate):
-	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
-
+func manage_enemy_waves(enemy_type, shooting_rate):
 	var new_node = null
-
-	if node != null and is_instance_valid(node):
-		if node.position.y > enemy_y_threshold:
-			node.queue_free()
-#			Not sure if this is the best way to declare "game over"
+	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
+	if current_wave != null and is_instance_valid(current_wave):
+		if current_wave.position.y > enemy_y_threshold:
+			current_wave.queue_free()
 			if spwaned_waves + 1 > max_number_of_waves:
+				#Not sure if this is the best way to declare "game over"
 				get_node("GameOver").restart_game()
-
-	#Random wave size between 3 and 10
-	wave_size = randi() % 10 + 3
-	new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
-
-	if spwaned_waves > max_number_of_waves:
-		get_node("GameOver").restart_game()
-
-	print(wave_size)
-	return new_node
+			#Random wave size between 3 and 10
+#			This duplicated wave code should be moved to a function...?
+			wave_size = randi() % 10 + 3
+			new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
+			current_wave = new_node
+			spwaned_waves += 1
+			add_child(current_wave)
+	else:
+		wave_size = randi() % 10 + 3
+		new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
+		current_wave = new_node
+		spwaned_waves += 1
+		add_child(current_wave)
 
 
 func manage_health_item():
