@@ -113,8 +113,14 @@ func manage_enemies():
 	pass
 
 
+func spawn_enemy_wave(enemy_type, shooting_rate):
+	wave_size = randi() % 10 + 3
+	self.current_wave = new_enemy_wave(wave_size, enemy_type, shooting_rate)
+	self.spwaned_waves += 1
+	add_child(current_wave)
+
+
 func manage_enemy_waves(enemy_type, shooting_rate):
-	var new_node = null
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 	if current_wave != null and is_instance_valid(current_wave):
 		if current_wave.position.y > enemy_y_threshold:
@@ -122,26 +128,15 @@ func manage_enemy_waves(enemy_type, shooting_rate):
 			if spwaned_waves + 1 > max_number_of_waves:
 				#Not sure if this is the best way to declare "game over"
 				get_node("GameOver").restart_game()
-			#Random wave size between 3 and 10
-#			This duplicated wave code should be moved to a function...?
-			wave_size = randi() % 10 + 3
-			new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
-			current_wave = new_node
-			spwaned_waves += 1
-			add_child(current_wave)
+			spawn_enemy_wave(enemy_type, shooting_rate)
 	else:
-		wave_size = randi() % 10 + 3
-		new_node = new_enemy_wave(wave_size, enemy_type, shooting_rate)
-		current_wave = new_node
-		spwaned_waves += 1
-		add_child(current_wave)
+		spawn_enemy_wave(enemy_type, shooting_rate)
 
 
 func manage_health_item():
 	var health_item_chance = randf()
 	var new_health_item = null
 	if get_current_level_progress() > 0.2 and spawn_health:
-		#if health_item_chance > 0 and health_item_chance < 0.1:
 		new_health_item = health_item_scene.instantiate()
 		spawn_health = false
 	return new_health_item
@@ -151,7 +146,6 @@ func manage_shooting_boost_item():
 	var health_item_chance = randf()
 	var new_shooting_boost_item = null
 	if get_current_level_progress() > 0.4 and spawn_boost:
-		#if health_item_chance > 0 and health_item_chance < 0.1:
 		new_shooting_boost_item = shooting_boost_item_scene.instantiate()
 		spawn_boost = false
 	return new_shooting_boost_item
