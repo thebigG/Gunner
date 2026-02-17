@@ -4,6 +4,7 @@ extends Node2D
 enum ENEMY_TYPE { EASY, CIRCLE }
 var enemy_types = [ENEMY_TYPE.EASY, ENEMY_TYPE.CIRCLE]
 @export var wave_size: int = 2
+@export var random_waves: bool = true
 var current_wave = null
 var spwaned_waves = 0.0
 
@@ -114,11 +115,11 @@ func manage_enemies():
 
 
 func spawn_enemy_wave(enemy_type, shooting_rate):
-	wave_size = randi() % 10 + 3
+	if random_waves:
+		wave_size = randi() % 10 + 3
 	self.current_wave = new_enemy_wave(wave_size, enemy_type, shooting_rate)
 	self.spwaned_waves += 1
 	add_child(current_wave)
-
 
 func manage_enemy_waves(enemy_type, shooting_rate):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
