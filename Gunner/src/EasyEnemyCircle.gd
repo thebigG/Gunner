@@ -100,8 +100,6 @@ func get_angle_relative_to_Gunner(gunner_pos: Vector2):
 	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
 
-
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	pass
-#	queue_free()
-#	shoot_bullet_timer.queue_free()
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+#	TODO:Add check for y-threshold, since circular patterns might trigger this code twice
+	shoot_bullet_timer.queue_free()

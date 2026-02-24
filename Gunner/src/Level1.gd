@@ -78,6 +78,9 @@ func is_wave_alive(current_wave: Path2D):
 
 
 func _physics_process(delta):
+	print("*****************************")
+	print_orphan_nodes()
+	print("*****************************")
 	var gunner_position: Vector2 = $Player.get_node("Gunner1").global_position
 	if is_instance_valid(current_wave):
 		print("enemy_waves[0] position:" + str(current_wave.global_position))

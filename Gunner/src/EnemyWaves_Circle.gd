@@ -36,8 +36,12 @@ func spawn():
 		enemy_instance.position.x = left_bound
 		left_bound += X_GAP
 
-	var current_pos = Vector2.ZERO
 
+func _exit_tree():
+	print("break")
+#	TODO:Think about making anim_utils a singleton ...?
+#   I don't want call "new" on it more than once...
+	anim_utils.queue_free()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
