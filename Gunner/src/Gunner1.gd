@@ -29,7 +29,7 @@ var bullet_time = 0
 var special_bullet_time = 0
 var jet_texture_sprites: SpriteFrames = null
 var hud_gap = 100
-@export var infinite_health = false 
+@export var infinite_health = false
 
 
 # Called when the node enters the scene tree for the first time.

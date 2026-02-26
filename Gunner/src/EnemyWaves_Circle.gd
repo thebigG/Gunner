@@ -43,6 +43,7 @@ func _exit_tree():
 #   I don't want call "new" on it more than once...
 	anim_utils.queue_free()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.

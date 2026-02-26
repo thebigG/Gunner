@@ -70,6 +70,7 @@ func damage_gunner(gunner: Node2D):
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
 		gunner.damage_gunner()
 
+
 func shoot_gunner():
 #	print(self.rotation_degrees)
 #	self.rotation_degrees = rad_to_deg( get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position))

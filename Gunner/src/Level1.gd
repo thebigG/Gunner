@@ -124,6 +124,7 @@ func spawn_enemy_wave(enemy_type, shooting_rate):
 	self.spwaned_waves += 1
 	add_child(current_wave)
 
+
 func manage_enemy_waves(enemy_type, shooting_rate):
 	var enemy_y_threshold = get_node("EasyStageScene/ParallaxDriver").position.y
 	if current_wave != null and is_instance_valid(current_wave):
