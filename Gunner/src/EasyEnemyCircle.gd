@@ -37,6 +37,7 @@ func print_func(arg: Node):
 
 
 func after_explosion():
+	shoot_bullet_timer.queue_free()
 	queue_free()
 
 
@@ -69,11 +70,6 @@ func damage_gunner(gunner: Node2D):
 	if is_instance_valid(gunner) and gunner.is_in_group("Gunner"):
 		gunner.damage_gunner()
 
-
-func _exit_tree():
-	pass
-
-
 func shoot_gunner():
 #	print(self.rotation_degrees)
 #	self.rotation_degrees = rad_to_deg( get_angle_relative_to_Gunner(get_tree().get_nodes_in_group("Gunner")[0].position))
@@ -99,7 +95,3 @@ func get_angle_relative_to_Gunner(gunner_pos: Vector2):
 #	var current_angle = self.global_position.direction_to(gunner_pos).angle()
 	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-#	TODO:Add check for y-threshold, since circular patterns might trigger this code twice
-	shoot_bullet_timer.queue_free()

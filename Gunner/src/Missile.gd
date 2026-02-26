@@ -18,6 +18,7 @@ func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"))
 	$VisibleOnScreenNotifier2D.connect("screen_exited", Callable(self, "queue_free"))
 	#	self.add_to_group("Gunner_Bullet")
+	self.add_child(trigger_timer)
 
 
 func configure(new_target_group: String):
@@ -52,7 +53,6 @@ func _on_Area2D_body_entered(body):
 		trigger_timer.autostart = true
 		trigger_timer.paused = false
 		triggered = true
-		self.add_child(trigger_timer)
 	##		Play some cool animation
 	##TODO:Collect nodes for 0.5 secs/or some amount of time and then trigger
 	##explosion for each node collected

@@ -36,6 +36,7 @@ func print_func(arg: Node):
 
 
 func after_explosion():
+	shoot_bullet_timer.queue_free()
 	queue_free()
 
 

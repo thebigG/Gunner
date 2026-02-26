@@ -29,6 +29,7 @@ var bullet_time = 0
 var special_bullet_time = 0
 var jet_texture_sprites: SpriteFrames = null
 var hud_gap = 100
+@export var infinite_health = false 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -286,6 +287,8 @@ func increment_score():
 
 
 func damage_gunner():
+	if infinite_health:
+		return
 	Input.start_joy_vibration(0, 0.5, 0, 0.5)
 	var tween = get_tree().create_tween()
 	tween.tween_property($Turn, "visible", false, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
