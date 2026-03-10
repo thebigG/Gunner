@@ -10,8 +10,6 @@ var explosion: Node2D
 
 var lifetime
 
-
-#var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
@@ -29,10 +27,6 @@ func _ready():
 	add_child(explosion)
 	add_child(shoot_bullet_timer)
 	lifetime = particles.lifetime
-
-
-func print_func(arg: Node):
-	print("Arg:" + str(arg))
 
 
 func after_explosion():
@@ -90,10 +84,6 @@ func _on_Boom_finished():
 
 func configure(new_shooting_rate):
 	shooting_rate = new_shooting_rate
-
-
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	pass
 
 
 func get_angle_relative_to_Gunner(gunner_pos: Vector2):

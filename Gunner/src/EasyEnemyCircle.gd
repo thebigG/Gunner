@@ -9,8 +9,6 @@ var info_label = Label.new()
 var explosion_particles: PackedScene = preload("res://scene/Explosion.tscn")
 var explosion: Node2D
 
-
-#var bullet: RigidBody2D = bullet_scene.instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
@@ -30,10 +28,6 @@ func _ready():
 
 	add_child(shoot_bullet_timer)
 	add_child(info_label)
-
-
-func print_func(arg: Node):
-	print("Arg:" + str(arg))
 
 
 func after_explosion():
@@ -93,6 +87,5 @@ func configure(new_shooting_rate):
 
 
 func get_angle_relative_to_Gunner(gunner_pos: Vector2):
-#	var current_angle = self.global_position.direction_to(gunner_pos).angle()
 	var current_angle = self.global_position.angle_to_point(gunner_pos)
 	return current_angle
