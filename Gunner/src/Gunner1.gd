@@ -272,20 +272,6 @@ func increment_score():
 	score_label.text = "Score:" + str(score)
 
 
-#func heal():
-#self.health = 1.0
-
-#func damage():
-#	Input.start_joy_vibration(0, 0.5, 0, 1)
-#	if hurt_animation.is_active():
-#		hurt_animation.stop_all()
-#	hurt_animation.interpolate_property(
-#		self, "visible", false, true, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
-#	)
-#	hurt_animation.start()
-#	super.damage()
-
-
 func damage_gunner():
 	if infinite_health:
 		return
