@@ -35,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Right",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [sub_resource type="RectangleShape2D" id="2"]
@@ -49,12 +49,22 @@ bullet_scene = ExtResource("5")
 bullet_missile_scene = ExtResource("3_nirlv")
 infinite_health = true
 
-[node name="Turn" type="AnimatedSprite2D" parent="Gunner1"]
+[node name="Player" type="AnimatedSprite2D" parent="Gunner1"]
 material = SubResource("ShaderMaterial_4cm6o")
 position = Vector2(5.72205e-06, 0)
 scale = Vector2(0.0795492, 0.0946065)
 sprite_frames = SubResource("1")
-animation = &"Right"
+animation = &"Left"
+frame_progress = 0.31649983
+
+[node name="Player2" type="Sprite2D" parent="Gunner1/Player"]
+modulate = Color(0, 0, 0, 0.5176471)
+z_index = -1
+material = SubResource("ShaderMaterial_4cm6o")
+position = Vector2(5.722046e-06, 0)
+scale = Vector2(0.842, 1)
+texture = ExtResource("4_8p5fx")
+offset = Vector2(1000, 1000)
 
 [node name="Body" type="Area2D" parent="Gunner1"]
 

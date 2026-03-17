@@ -34,7 +34,7 @@ var hud_gap = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	jet_texture_sprites = $Turn.sprite_frames
+	jet_texture_sprites = $Player.sprite_frames
 	hurt_sprite_frames.add_animation("Left")
 	hurt_sprite_frames.add_animation("Right")
 	hurt_sprite_frames.add_frame("Left", damaged_jet_texture, 0)
@@ -105,7 +105,7 @@ func _ready():
 
 	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"
 	var material = self.material as ShaderMaterial
-	$Turn.material.set_shader_parameter("blue", 0.8)
+	$Player.material.set_shader_parameter("blue", 0.8)
 
 
 func manage_health():
@@ -189,13 +189,13 @@ func _physics_process(delta):
 
 	manage_dev_mode()
 
-	$Turn.set_frame(0)
+	$Player.set_frame(0)
 
 	if self.health <= 0.5:
-		$Turn.set_sprite_frames(hurt_sprite_frames)
+		$Player.set_sprite_frames(hurt_sprite_frames)  
 
 	elif self.health > 0.5:
-		$Turn.set_sprite_frames(jet_texture_sprites)
+		$Player.set_sprite_frames(jet_texture_sprites)
 
 	current_velocity.x = 0
 	current_velocity.y = cruising_speed * -1
@@ -209,26 +209,26 @@ func _physics_process(delta):
 		current_velocity.y = (cruising_speed + thrust)
 #
 	if Input.is_action_pressed("move_right"):
-		$Turn.set_animation("Right")
-		$Turn.play()
-		$Turn.set_frame(1)
+		$Player.set_animation("Right")
+		$Player.play()
+		$Player.set_frame(1)
 		current_velocity.x = cruising_speed + thrust
 
 	#Would like a cleaner way of doing this...
 	else:
-		if $Turn.animation == "Right":
-			$Turn.stop()
-			$Turn.set_frame(0)
+		if $Player.animation == "Right":
+			$Player.stop()
+			$Player.set_frame(0)
 
 	if Input.is_action_pressed("move_left"):
-		$Turn.set_animation("Left")
-		$Turn.play()
-		$Turn.set_frame(1)
+		$Player.set_animation("Left")
+		$Player.play()
+		$Player.set_frame(1)
 		current_velocity.x = (-1) * (cruising_speed + thrust)
 	else:
-		if $Turn.animation == "Left":
-			$Turn.stop()
-			$Turn.set_frame(0)
+		if $Player.animation == "Left":
+			$Player.stop()
+			$Player.set_frame(0)
 
 	#	Figure out a way to limit the viewport for the player
 	move_and_collide(current_velocity)
@@ -236,7 +236,7 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 0, screen_size.size.x)
 
 	var gunner_sprite_height = (
-		jet_texture_sprites.get_frame_texture("Left", 0).get_height() * $Turn.scale.y
+		jet_texture_sprites.get_frame_texture("Left", 0).get_height() * $Player.scale.y
 	)
 
 	#print("height:" + str(gunner_sprite_height))
@@ -248,7 +248,7 @@ func _physics_process(delta):
 			- (screen_size.size.y - (hud_gap))
 			+ (gunner_sprite_height / 2)
 		),
-		(
+		( 
 			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 			- (gunner_sprite_height / 2)
 		)
@@ -277,10 +277,10 @@ func damage_gunner():
 		return
 	Input.start_joy_vibration(0, 0.5, 0, 0.5)
 	var tween = get_tree().create_tween()
-	tween.tween_property($Turn, "visible", false, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
+	tween.tween_property($Player, "visible", false, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
 		Tween.EASE_IN_OUT
 	)
-	tween.tween_property($Turn, "visible", true, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
+	tween.tween_property($Player, "visible", true, 0.15).set_trans(Tween.TRANS_LINEAR).set_ease(
 		Tween.EASE_IN_OUT
 	)
 
