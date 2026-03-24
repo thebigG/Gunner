@@ -57,7 +57,7 @@ sprite_frames = SubResource("1")
 animation = &"Left"
 frame_progress = 0.31649983
 
-[node name="Player2" type="Sprite2D" parent="Gunner1/Player"]
+[node name="Shadow" type="Sprite2D" parent="Gunner1/Player"]
 modulate = Color(0, 0, 0, 0.5176471)
 z_index = -1
 material = SubResource("ShaderMaterial_4cm6o")
