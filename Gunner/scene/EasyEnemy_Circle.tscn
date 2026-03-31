@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4ibjyt8woqrj"]
+[gd_scene load_steps=8 format=3 uid="uid://c4ibjyt8woqrj"]
 
 [ext_resource type="Script" uid="uid://dqvhbxjfqplqq" path="res://src/EasyEnemyCircle.gd" id="1_4btpp"]
 [ext_resource type="PackedScene" uid="uid://cokvvlqerget" path="res://scene/EnemyBullet.tscn" id="2_brt6y"]
 [ext_resource type="Texture2D" uid="uid://b36rf0ukb4b67" path="res://Assets/Enemy.png" id="2_pxdex"]
+[ext_resource type="Shader" uid="uid://bul4qu43hd5dt" path="res://src/shaders/invert.gdshader" id="4_a6xd6"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67r48"]
+shader = ExtResource("4_a6xd6")
+shader_parameter/blue = 0.9
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(30.25, 39)
@@ -22,6 +27,15 @@ shape = SubResource("1")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.121649, 0.187686)
 texture = ExtResource("2_pxdex")
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.5176471)
+z_index = -1
+material = SubResource("ShaderMaterial_67r48")
+position = Vector2(156.18713, 122.545074)
+scale = Vector2(0.842, 1)
+texture = ExtResource("2_pxdex")
+offset = Vector2(10, 10)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
