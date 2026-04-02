@@ -42,14 +42,9 @@ func spawn():
 #	self.curve.add_point(Vector2(0,0), Vector2(0,0),  Vector2(300, 0))
 #	self.curve.add_point(Vector2(0,0), Vector2(0,100), Vector2(0, 500))
 
-
-func _exit_tree():
-	print("break")
-	anim_utils.queue_free()
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_child(anim_utils)
 # Still learning how the points actually work.
 	$Enemy_ZigZagLine.curve.clear_points()
 #	TODO: I should make AnimationUtils a singleton

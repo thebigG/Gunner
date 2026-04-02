@@ -37,16 +37,10 @@ func spawn():
 		left_bound += X_GAP
 
 
-func _exit_tree():
-	print("break")
-#	TODO:Think about making anim_utils a singleton ...?
-#   I don't want call "new" on it more than once...
-	anim_utils.queue_free()
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # Still learning how the points actually work.
+	add_child(anim_utils)
 	$Enemy_Circle.curve.clear_points()
 #	TODO: I should make AnimationUtils a singleton
 #	anim_utils.zig_zag_pattern(
