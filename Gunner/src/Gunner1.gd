@@ -23,7 +23,6 @@ var current_shooting_rate_label: Label = Label.new()
 var level_progress: Label = Label.new()
 var score = 0
 var hurt_sprite_frames = SpriteFrames.new()
-var hurt_jet_sprites = AnimatedSprite2D.new()
 var damaged_jet_texture = load("res://Assets/DamagedJet_resized.png")
 var bullet_time = 0
 var special_bullet_time = 0
