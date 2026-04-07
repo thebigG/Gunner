@@ -191,7 +191,7 @@ func _physics_process(delta):
 	$Player.set_frame(0)
 
 	if self.health <= 0.5:
-		$Player.set_sprite_frames(hurt_sprite_frames)  
+		$Player.set_sprite_frames(hurt_sprite_frames)
 
 	elif self.health > 0.5:
 		$Player.set_sprite_frames(jet_texture_sprites)
@@ -247,7 +247,7 @@ func _physics_process(delta):
 			- (screen_size.size.y - (hud_gap))
 			+ (gunner_sprite_height / 2)
 		),
-		( 
+		(
 			get_parent().get_parent().get_node("EasyStageScene/ParallaxDriver").position.y
 			- (gunner_sprite_height / 2)
 		)

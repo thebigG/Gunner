@@ -10,6 +10,7 @@ var explosion: Node2D
 
 var lifetime
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))

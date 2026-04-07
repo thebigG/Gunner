@@ -9,6 +9,7 @@ var info_label = Label.new()
 var explosion_particles: PackedScene = preload("res://scene/Explosion.tscn")
 var explosion: Node2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "damage_gunner"))
