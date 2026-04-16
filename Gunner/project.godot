@@ -22,12 +22,15 @@ PauseMenu="*res://scene/PauseMenu.tscn"
 [debug]
 
 settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 
 [display]
 
 window/size/viewport_width=500
 window/size/viewport_height=790
 window/size/resizable=false
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/size/width=600
 window/size/height=850
 
