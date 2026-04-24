@@ -7,9 +7,11 @@ uniform float u_time;
 #include "res://src/shaders/lygia/draw/fill.gdshaderinc"
 
 #include "res://src/shaders/lygia/sdf/flowerSDF.gdshaderinc"
+#include "res://src/shaders/lygia/sdf/starSDF.gdshaderinc"
 #include "res://src/shaders/lygia/space/scale.gdshaderinc"
 #define SKY_BLUE covertRGB(vec3(48.00, 141.00, 255))
 #define DARK_SKY_BLUE covertRGB(vec3(4.00, 46.00, 96.00))
+#define DARK_SKY covertRGB(vec3(0.0, 0.0, 0.0))
 
 uniform vec2 camera_pos;
 uniform vec2 parallax_factor = vec2(0.5, 0.5);
@@ -25,13 +27,20 @@ void fragment()
     st += offset;
     vec3 color = DARK_SKY_BLUE;
 
-    st             = scale(st, 8.0);
+    st             = scale(st, 15.0);
     vec2 scaled_st = st;
     st             = fract(st); // Wrap around 1.0
 
     // Now we have 9 spaces that go from 0-1
 
-    float circle_sdf = flowerSDF(st, 4);
+    // define your mask rect
+    //	TODO:Have to port "rect"
+    // float mask = rect(originalSt, vec2(0.2), vec2(0.8));
+    //
+    //// blend: use scaledSt inside the rect, originalSt outside
+    // st = mix(originalSt, scaledSt, mask);
+
+    float circle_sdf = starSDF(st, 5);
     //// circle_sdf = stroke(circle_sdf, 1.00, 0.1);
     // if (scaled_st.x > 1.00 && scaled_st.y > 1.00)
     //{
@@ -46,7 +55,8 @@ void fragment()
     //{
     // circle_sdf = stroke(circle_sdf, 0.5, 0.1);
     //}
-    circle_sdf = stroke(circle_sdf, 0.5, 0.1);
+    circle_sdf = stroke(circle_sdf, 0.5, 0.2);
+    // circle_sdf = stroke(circle_sdf, 0.5, 0.1);
     color += vec3(circle_sdf);
     COLOR = vec4(color, 1.0);
 }
