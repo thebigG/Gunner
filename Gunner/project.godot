@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gunner"
-run/main_scene="res://scene/Game.tscn"
+run/main_scene="uid://div53v6jh7mjn"
 config/features=PackedStringArray("4.5")
 config/icon="res://Assets/icon.png"
 
@@ -28,7 +28,6 @@ settings/stdout/verbose_stdout=true
 
 window/size/viewport_width=500
 window/size/viewport_height=790
-window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 window/size/width=600
