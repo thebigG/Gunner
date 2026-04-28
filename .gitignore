@@ -28,3 +28,5 @@ mono_crash.*.json
 Gunner/bin/*
 !Gunner/bin/.gitkeep
 venv
+nightly_staging/*
+!nightly_staging/.gitkeep
