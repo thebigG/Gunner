@@ -30,6 +30,8 @@ var jet_texture_sprites: SpriteFrames = null
 var hud_gap = 100
 @export var infinite_health = false
 
+var boost_txt = "Boost: "
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -102,7 +104,7 @@ func _ready():
 
 	var shooting_boost = 1 + (desired_shooting_rate / starting_shooting_rate - 1)
 
-	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"
+	current_shooting_rate_label.text = boost_txt + str(shooting_boost) + "X"
 	var material = self.material as ShaderMaterial
 	$Player.material.set_shader_parameter("blue", 0.8)
 
@@ -294,4 +296,4 @@ func boost_shooting_rate(boost):
 
 	var shooting_boost = 1 + (desired_shooting_rate / starting_shooting_rate - 1)
 
-	current_shooting_rate_label.text = "Shooting Boost: " + str(shooting_boost) + "X"
+	current_shooting_rate_label.text = boost_txt + str(shooting_boost) + "X"
